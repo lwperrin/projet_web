@@ -25,7 +25,7 @@ class Sequence(models.Model):
 
 
 class Annotation(models.Model):
-    id = models.CharField(max_length=50, primary_key=True)
+    id = models.CharField(max_length=50, primary_key=True) # The same than the sequence but with '.X' with X a number to allow multipple annotation.
     gene = models.CharField(max_length=10, default='')
     gene_biotype = models.CharField(max_length=50, default='')
     transcript_biotype = models.CharField(max_length=50, default='')
