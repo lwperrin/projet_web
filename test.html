@@ -12,14 +12,6 @@
 <div class="center">
     <h2> Registration Form</h2>
     <div class="container">
-        <!--
-        Start a form for user information
-          If the email address is valid and doesn't already have an account,
-          if the password confirmation is correct,
-          then create the account in the database
-          If a special role is requested too,
-          then send a mail to Admin for approval
-        -->
         <form action= "<?php echo $_SERVER['PHP_SELF'] ; ?>" method='POST'>
           <label for="email"><b>Email</b></label><br>
           <input type="text" placeholder="Email" name="email" id="email" required><br>
