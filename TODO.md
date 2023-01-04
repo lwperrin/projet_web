@@ -8,6 +8,8 @@
 
 - [ ] Front
     - [ ] Banner or floating menu
+    - [ ] Create a sign up page
+    - [ ] Visualizing a particular pattern in a sequence
 
 - [ ] Database
     - [X] UML diagram
