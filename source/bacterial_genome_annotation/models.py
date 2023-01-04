@@ -11,25 +11,14 @@ class User(models.Model):
     role = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(3)])
     # 0: viewer | 1: annotator | 2: validator | 3: administrator
 
-class Annotator(User):
-    argumentForAnnotators = models.CharField(max_length=100)
-
-class Validator(Annotator):
-    argumentForValidators = models.CharField(max_length=100)
-
-class Administrator(Validator):
-    argumentForAdministrators = models.CharField(max_length=100)
-
 class Genome(models.Model):
     id = models.CharField(max_length=50, primary_key=True)
     fullSequence = models.TextField()
-    isAnnoted = models.BooleanField(default=False)
 
 class Sequence(models.Model):
     id = models.CharField(max_length=50, primary_key=True)
     sequence = models.TextField()
     position = models.IntegerField(default=0, validators=[MinValueValidator(0)])
-    isAnnoted = models.BooleanField(default=False)
     isCds = models.BooleanField(default=True) # True: cds | False: peptidic
 
     genome = models.ForeignKey(Genome, on_delete=models.CASCADE)
@@ -45,5 +34,5 @@ class Annotation(models.Model):
     isValidate = models.BooleanField(default=False)
     
     sequence = models.ForeignKey(Sequence, on_delete=models.CASCADE)
-    annotator = models.ForeignKey(Annotator, on_delete=models.SET_NULL, null=True, related_name="annotationForAnnotator")
-    validator = models.ForeignKey(Validator, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")
+    annotator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForAnnotator")
+    validator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")

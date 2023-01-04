@@ -1,6 +1,6 @@
 digraph model_graph {
   // Dotfile by Django-Extensions graph_models
-  // Created: 2023-01-04 09:33
+  // Created: 2023-01-04 10:46
   // Cli Options: -g --dot -o doc/uml/diagram.dot bacterial_genome_annotation
 
   fontname = "Roboto"
@@ -91,84 +91,6 @@ digraph model_graph {
       </TABLE>
       >]
   
-    bacterial_genome_annotation_models_Annotator [label=<
-      <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
-      <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
-      <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
-      Annotator
-      </B></FONT></TD></TR>
-    
-    
-      <TR><TD ALIGN="LEFT" BORDER="0">
-      <FONT FACE="Roboto"><B>user_ptr</B></FONT>
-      </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto"><B>OneToOneField (mail)</B></FONT>
-      </TD></TR>
-    
-    
-    
-      <TR><TD ALIGN="LEFT" BORDER="0">
-      <FONT FACE="Roboto">argumentForAnnotators</FONT>
-      </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto">CharField</FONT>
-      </TD></TR>
-    
-    
-      </TABLE>
-      >]
-  
-    bacterial_genome_annotation_models_Validator [label=<
-      <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
-      <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
-      <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
-      Validator
-      </B></FONT></TD></TR>
-    
-    
-      <TR><TD ALIGN="LEFT" BORDER="0">
-      <FONT FACE="Roboto"><B>annotator_ptr</B></FONT>
-      </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto"><B>OneToOneField (user_ptr)</B></FONT>
-      </TD></TR>
-    
-    
-    
-      <TR><TD ALIGN="LEFT" BORDER="0">
-      <FONT FACE="Roboto">argumentForValidators</FONT>
-      </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto">CharField</FONT>
-      </TD></TR>
-    
-    
-      </TABLE>
-      >]
-  
-    bacterial_genome_annotation_models_Administrator [label=<
-      <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
-      <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
-      <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
-      Administrator
-      </B></FONT></TD></TR>
-    
-    
-      <TR><TD ALIGN="LEFT" BORDER="0">
-      <FONT FACE="Roboto"><B>validator_ptr</B></FONT>
-      </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto"><B>OneToOneField (annotator_ptr)</B></FONT>
-      </TD></TR>
-    
-    
-    
-      <TR><TD ALIGN="LEFT" BORDER="0">
-      <FONT FACE="Roboto">argumentForAdministrators</FONT>
-      </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto">CharField</FONT>
-      </TD></TR>
-    
-    
-      </TABLE>
-      >]
-  
     bacterial_genome_annotation_models_Genome [label=<
       <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
       <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
@@ -189,14 +111,6 @@ digraph model_graph {
       <FONT FACE="Roboto">fullSequence</FONT>
       </TD><TD ALIGN="LEFT">
       <FONT FACE="Roboto">TextField</FONT>
-      </TD></TR>
-    
-    
-    
-      <TR><TD ALIGN="LEFT" BORDER="0">
-      <FONT FACE="Roboto">isAnnoted</FONT>
-      </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto">BooleanField</FONT>
       </TD></TR>
     
     
@@ -223,14 +137,6 @@ digraph model_graph {
       <FONT FACE="Roboto"><B>genome</B></FONT>
       </TD><TD ALIGN="LEFT">
       <FONT FACE="Roboto"><B>ForeignKey (id)</B></FONT>
-      </TD></TR>
-    
-    
-    
-      <TR><TD ALIGN="LEFT" BORDER="0">
-      <FONT FACE="Roboto">isAnnoted</FONT>
-      </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto">BooleanField</FONT>
       </TD></TR>
     
     
@@ -280,7 +186,7 @@ digraph model_graph {
       <TR><TD ALIGN="LEFT" BORDER="0">
       <FONT FACE="Roboto"><B>annotator</B></FONT>
       </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto"><B>ForeignKey (user_ptr)</B></FONT>
+      <FONT FACE="Roboto"><B>ForeignKey (mail)</B></FONT>
       </TD></TR>
     
     
@@ -296,7 +202,7 @@ digraph model_graph {
       <TR><TD ALIGN="LEFT" BORDER="0">
       <FONT FACE="Roboto"><B>validator</B></FONT>
       </TD><TD ALIGN="LEFT">
-      <FONT FACE="Roboto"><B>ForeignKey (annotator_ptr)</B></FONT>
+      <FONT FACE="Roboto"><B>ForeignKey (mail)</B></FONT>
       </TD></TR>
     
     
@@ -356,25 +262,16 @@ digraph model_graph {
 
   // Relations
 
-  bacterial_genome_annotation_models_Annotator -> bacterial_genome_annotation_models_User
-  [label=" multi-table\ninheritance"] [arrowhead=empty, arrowtail=none, dir=both];
-
-  bacterial_genome_annotation_models_Validator -> bacterial_genome_annotation_models_Annotator
-  [label=" multi-table\ninheritance"] [arrowhead=empty, arrowtail=none, dir=both];
-
-  bacterial_genome_annotation_models_Administrator -> bacterial_genome_annotation_models_Validator
-  [label=" multi-table\ninheritance"] [arrowhead=empty, arrowtail=none, dir=both];
-
   bacterial_genome_annotation_models_Sequence -> bacterial_genome_annotation_models_Genome
   [label=" genome (sequence)"] [arrowhead=none, arrowtail=dot, dir=both];
 
   bacterial_genome_annotation_models_Annotation -> bacterial_genome_annotation_models_Sequence
   [label=" sequence (annotation)"] [arrowhead=none, arrowtail=dot, dir=both];
 
-  bacterial_genome_annotation_models_Annotation -> bacterial_genome_annotation_models_Annotator
+  bacterial_genome_annotation_models_Annotation -> bacterial_genome_annotation_models_User
   [label=" annotator (annotationForAnnotator)"] [arrowhead=none, arrowtail=dot, dir=both];
 
-  bacterial_genome_annotation_models_Annotation -> bacterial_genome_annotation_models_Validator
+  bacterial_genome_annotation_models_Annotation -> bacterial_genome_annotation_models_User
   [label=" validator (annotationForValidator)"] [arrowhead=none, arrowtail=dot, dir=both];
 
 
