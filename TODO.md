@@ -11,11 +11,16 @@
     - [X] Create a sign up page
     - [ ] Visualizing a particular pattern in a sequence
 
-- [ ] Database
+- [X] Database
     - [X] UML diagram
-    - [ ] Migrations
+    - [X] Migrations
+    - [X] Import data
 
 ## Optional features
 
-- [ ] Compress the sequence into 2 bits fields instead of char fields
+### Database optimization
+
+- [ ] Use `update_conflicts = True` in bulk_create. Only works with Django > 4.1
+- [ ] Compress the sequences
+- [ ] Make a command to create a bunch of example users and new annotations
 

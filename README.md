@@ -4,9 +4,16 @@ Web project of 2022-2023 in master AMI2B. The purpose is to build a web applicat
 
 ## Environnement
 
-We used for this project [python 3.9.12](https://www.python.org/downloads/release/python-3912/). The list of external modules, including [django](https://www.djangoproject.com), is available in [the requirements file](requirements.txt). To install them directly, just run : 
+We used for this project [python 3.9.12](https://www.python.org/downloads/release/python-3912/). The list of external modules, including [django 4.1.4](https://www.djangoproject.com), is available in [the requirements file](requirements.txt). To install them directly, just run : 
 ```
 pip install -r "requirements.txt"
+```
+## Import data
+
+You must put the data folder at the root of the project (where you find doc and source). Then, just run those two commands :
+```
+python source/manage.py migrate
+python source/manage.py import_my_data
 ```
 
 ## Classes
