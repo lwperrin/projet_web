@@ -10,7 +10,7 @@
     - [ ] Banner or floating menu
 
 - [ ] Database
-    - [X] ULM diagram
+    - [X] UML diagram
     - [ ] Migrations
 
 ## Optional features
