@@ -13,12 +13,12 @@ pip install -r "requirements.txt"
 
 Here is the UML class diagram, obtained directly from [django-extensions](https://django-extensions.readthedocs.io/en/latest/graph_models.html?highlight=graph).
 
-![diagram image](webapp/uml/diagram.png "UML Class Diagram")
+![diagram image](doc/uml/diagram.png "UML Class Diagram")
 
 To recreate it, just run the two commands bellow:
 
 ```
-python webapp/manage.py graph_models -g --dot -o webapp/uml/diagram.dot bacterial_genome_annotation
+python source/manage.py graph_models -g --dot -o doc/uml/diagram.dot bacterial_genome_annotation
 
-dot -Tpng webapp/uml/diagram.dot -o webapp/uml/diagram.png
+dot -Tpng doc/uml/diagram.dot -o doc/uml/diagram.png
 ```

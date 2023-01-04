@@ -1,7 +1,7 @@
 digraph model_graph {
   // Dotfile by Django-Extensions graph_models
-  // Created: 2022-12-20 20:27
-  // Cli Options: -g --dot -o webapp/uml/diagram.dot bacterial_genome_annotation
+  // Created: 2023-01-04 09:33
+  // Cli Options: -g --dot -o doc/uml/diagram.dot bacterial_genome_annotation
 
   fontname = "Roboto"
   fontsize = 8
