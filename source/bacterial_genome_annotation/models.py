@@ -31,6 +31,7 @@ class Annotation(models.Model):
     transcript_biotype = models.CharField(max_length=50, default='')
     gene_symbol = models.CharField(max_length=10, default='')
     description = models.CharField(max_length=200, default='')
+    transcript = models.CharField(max_length=200, default='')
     isValidate = models.BooleanField(default=False)
     
     sequence = models.ForeignKey(Sequence, on_delete=models.CASCADE)

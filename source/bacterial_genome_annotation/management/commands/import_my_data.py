@@ -39,7 +39,7 @@ class Command(BaseCommand):
                     #self.stdout.write(self.style.SUCCESS(record.id))
                     #self.stdout.write(self.style.SUCCESS(str(record.description)))
                     sequences.append(Sequence())
-                    sequences[-1].id = record.id
+                    sequences[-1].id = record.id+'_cds'
                     sequences[-1].sequence = record.seq
                     sequences[-1].position = 0
                     sequences[-1].genome = genome # Set the foreign key to link with the genome
@@ -73,15 +73,72 @@ class Command(BaseCommand):
                             elif desc[j].startswith('description:'):
                                 annotations[-1].description = ' '.join(desc[j:]).split(':')[1]
                                 j+=len(desc)
+                            elif desc[j].startswith('transcript:'):
+                                annotations[-1].transcript = desc[j].split(':')[1]
+                                j+=1
+                            else:
+                                self.stdout.write(desc[j])
+                                j+=1
+                            annotations[-1].isValidate = True
+                
+                self.stdout.write(self.style.SUCCESS("saving..."))
+                Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+                Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+                
+            with open("data/"+bacteriaName+"_pep.fa") as file:
+                # Sequences creation 
+                self.stdout.write(self.style.SUCCESS("data/"+bacteriaName+"_pep.fa"))
+                sequences = []
+                annotations = []
+                for record in SeqIO.parse(file, "fasta"):
+                    #self.stdout.write(self.style.SUCCESS(record.id))
+                    #self.stdout.write(self.style.SUCCESS(str(record.description)))
+                    sequences.append(Sequence())
+                    sequences[-1].id = record.id+'_pep'
+                    sequences[-1].sequence = record.seq
+                    sequences[-1].position = 0
+                    sequences[-1].genome = genome # Set the foreign key to link with the genome
+                    sequences[-1].isCds = False
+
+                    # Extracting data from description. Two description examples :
+                    # ABG68043 cds chromosome:ASM1330v1:Chromosome:190:255
+                    # AAN78515 cds chromosome:ASM744v1:Chromosome:10716:11282:-1 gene:c0015 gene_biotype:protein_coding transcript_biotype:protein_coding gene_symbol:yaaH description:Hypothetical protein yaaH
+                    desc = record.description.split(' ')
+                    sequences[-1].position = int(desc[2].split(':')[3])
+
+                    # Try to find an annotation
+                    j = 3
+                    if len(desc)>3:
+                        annotations.append(Annotation())
+                        annotations[-1].id = sequences[-1].id + '.0'
+                        annotations[-1].sequence = sequences[-1] # Set the foreign key to link with the sequence
+                        while len(desc)>j:
+                            if desc[j].startswith('gene:'):
+                                annotations[-1].gene = desc[j].split(':')[1]
+                                j+=1
+                            elif desc[j].startswith('gene_biotype:'):
+                                annotations[-1].gene_biotype = desc[j].split(':')[1]
+                                j+=1
+                            elif desc[j].startswith('transcript_biotype:'):
+                                annotations[-1].transcript_biotype = desc[j].split(':')[1]
+                                j+=1
+                            elif desc[j].startswith('gene_symbol:'):
+                                annotations[-1].gene_symbol = desc[j].split(':')[1]
+                                j+=1
+                            elif desc[j].startswith('description:'):
+                                annotations[-1].description = ' '.join(desc[j:]).split(':')[1]
+                                j+=len(desc)
+                            elif desc[j].startswith('transcript:'):
+                                annotations[-1].transcript = desc[j].split(':')[1]
+                                j+=1
                             else:
                                 self.stdout.write(self.style.SUCCESS(' '.join(desc)))
                                 j+=1
                             annotations[-1].isValidate = True
                 
-                self.stdout.write(self.style.SUCCESS("saving1"))
+                self.stdout.write(self.style.SUCCESS("saving..."))
                 Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
                 Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
-                
                 """sequenceFields = Sequence._meta.get_fields()
                 sequenceFields = [field.name for field in sequenceFields if field.name != 'id']
                 self.stdout.write(self.style.SUCCESS(str(sequenceFields)))
