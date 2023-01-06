@@ -21,6 +21,6 @@
 ### Database optimization
 
 - [ ] Use `update_conflicts = True` in bulk_create. Only works with Django > 4.1
-- [X] Compress the sequences : 10 Mo can be free if we use the compression in [utils](source/bacterial_genome_annotation/utils.py)
+- [X] Compress the sequences : 10 Mo can be free if we use the compression in [utils.py](source/bacterial_genome_annotation/utils.py)
 - [ ] Make a command to create a bunch of example users and new annotations
 
