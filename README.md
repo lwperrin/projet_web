@@ -15,6 +15,7 @@ You must put the data folder at the root of the project (where you find doc and 
 python source/manage.py migrate
 python source/manage.py import_my_data
 ```
+Note that it is also possible to compress the data using the functions in [utils.py](source/bacterial_genome_annotation/utils.py) to gain around 10 Mo.
 
 ## Classes
 
