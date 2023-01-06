@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bacterial_genome_annotation',
     'django_extensions',
+    'gallery',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
