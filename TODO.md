@@ -15,6 +15,7 @@
     - [X] UML diagram
     - [X] Migrations
     - [X] Import data
+    - [ ] Authentification
 
 ## Optional features
 

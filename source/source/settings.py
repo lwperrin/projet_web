@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bacterial_genome_annotation',
-    'phone_field',
     'django_extensions',
 ]
 
@@ -124,3 +123,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Custome users
+
+AUTH_USER_MODEL = 'bacterial_genome_annotation.User'
