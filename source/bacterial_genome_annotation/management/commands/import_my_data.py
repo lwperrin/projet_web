@@ -91,8 +91,6 @@ class Command(BaseCommand):
                 sequences = []
                 annotations = []
                 for record in SeqIO.parse(file, "fasta"):
-                    #self.stdout.write(self.style.SUCCESS(record.id))
-                    #self.stdout.write(self.style.SUCCESS(str(record.description)))
                     sequences.append(Sequence())
                     sequences[-1].id = record.id+'_pep'
                     sequences[-1].sequence = record.seq
