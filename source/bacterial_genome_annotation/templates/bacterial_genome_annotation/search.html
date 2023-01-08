@@ -1,0 +1,17 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% block content %}
+    <div style = "max-width:470px;">
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Envoyer">
+        </form>
+    </div>
+    <ul>
+        {% for seq in sequences %}
+            <li>{{ seq.id }} - {{ seq.sequence }}</li>
+        {% empty %}
+            <li>No sequence found.</li>
+        {% endfor %}
+        </ul>
+{% endblock %}
