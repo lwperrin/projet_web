@@ -11,11 +11,12 @@
     - [X] Create a sign up page
     - [ ] Visualizing a particular pattern in a sequence
 
-- [X] Database
+- [ ] Database
     - [X] UML diagram
     - [X] Migrations
     - [X] Import data
     - [X] Authentification
+    - [ ] Pattern search
 
 ## Optional features
 
@@ -25,4 +26,7 @@
 - [X] Compress the sequences : 10 Mo can be free if we use the compression in [utils.py](source/bacterial_genome_annotation/utils.py)
 - [X] Default group Reader
 - [ ] Make a command to create a bunch of example users and new annotations
+- [ ] Pattern search optimization
+    - [ ] Use Burrows-Wheeler Transform : from scratch or via [this repos](https://github.com/Axl-Lvy/Index-structure-and-mapping)
+    - [ ] Complex pattern search (for exemple with regular expressions)
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="{% static 'bacterial_genome_annotation/style.css' %}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>ALDS</h1>
+</header>
+
+<nav>
+	<div id="annot">
+		<p><a href="annoter.html">Annoter</a></p>
+	</div>
+
+	<div id ="addgenome"><p><a href="AddGenome.html">AddGenome</a></p>
+	</div>
+	<div id ="parser"><p><a href="Parser.html">Parser</a></p>
+	</div>
+</nav>	
+<div class = "connect">
+	<div>
+		<br>
+		<a href="LoginPage.html">se connecter</a>
+		<br>
+		<br>
+		<a href ="Account.html">nous rejoindre</a>
+		<br>
+		<br>
+	</div>
+</div>
+
+<body>
+	{% block content %} {%endblock %}
+</body>
+
+<footer>
+	<li><a href= "contact.html">Contact</a></li>
+	<br>
+	<li><a href= "qui_nous_sommes.html">Qui Sommes nous?</a></li>
+	<br>
+	<li><a href="aide.html">Aide</a></li>
+</footer>
+
+</html>
