@@ -1,1 +1,0 @@
-default_app_config = 'bacterial_genome_annotation.apps.MyAppConfig'
