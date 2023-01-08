@@ -21,7 +21,7 @@ Note that it is also possible to compress the data using the functions in [utils
 
 ### Users
 
-You can run `python source/manage.py create-users` to create a bunch of example users. Their logins and password are stores in [default_users.txt](source/bacterial_genome_annotation/assets/default_users.txt). You can change or add lines in this file to custom the creation of users. The admin is the *superuser* (different from firstAdmin@gmail.com) and you can login as him in [the admin site](http://127.0.0.1:8000/admin) by default with :
+You can run `python source/manage.py create-users` to create a bunch of example users. Their logins and password are stored in [default_users.txt](source/bacterial_genome_annotation/assets/default_users.txt). You can change or add lines in this file to custom the creation of users. The admin is the *superuser* (different from firstAdmin@gmail.com) and you can login as him in [the admin site](http://127.0.0.1:8000/admin) by default with :
 
 login :     `admin@admin.com`
 password :  `Ac1net0bactErb@umannii`
