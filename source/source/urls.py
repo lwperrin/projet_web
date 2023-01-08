@@ -21,9 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Base),
-    path('home.html/',views.home),
-    path('annoter.html/',views.annoter),
+    path('',views.home, name="home"),
+    path('annoter/',views.annoter),
     path('AddGenome.html/',views.AddGenome),
     path('AddGenome.html/',views.Account),
     path('AddGenome.html/',views.LoginPage), 

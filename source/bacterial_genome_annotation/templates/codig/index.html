@@ -1,0 +1,39 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'gestion_commandes/styles.css' %}" />
+
+<html>
+    <head><title>CoDIG</title></head>
+
+    <section class="header">
+        <h1>
+            <a  href= {% url 'home' %}>
+                <img src="{% static 'logo/logoCodig.png' %}" alt="logo" width=80>
+            </a>
+        </h1>
+    </section>
+    
+    
+    <nav>
+        <ul>
+            <li class="deroulant"><a1 href="#">Gestion &ensp;</a1>
+                <ul class= "sous">
+                    <li><a href={% url 'clients' %}>Clients</a></li>
+                    <li><a href={% url 'produits' %}>Produits</a></li>
+                    <li><a href={% url 'prestataires' %}>Prestataires</a></li>
+                </ul>
+            </li>
+            <li class="deroulant"><a1 1href="#">Commandes &ensp;</a1>
+                <ul class= "sous">
+                    <li><a href="#">Suivi</a></li>
+                    <li><a href="#">Nouvelle</a></li>
+                </ul>
+            </li>
+            <li><a1 href="#">Prospect</a1></li>
+        </ul>
+    </nav>
+    <body>
+
+        {% block content %}{% endblock %}
+
+    </body>
+</html>

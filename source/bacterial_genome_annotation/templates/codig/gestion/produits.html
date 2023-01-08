@@ -1,0 +1,26 @@
+{% extends 'gestion_commandes/index.html' %}
+
+{% block content %}
+
+<p>Produits actuels :</p>
+    <ul>
+        {% for produit in produits %}
+        <li><section>
+            <a>Produit n° {{produit.id}} : {{produit.name}}</a>
+            <a>
+                <form action="{% url 'delete_produit' id=produit.id %}">
+                    <button type='submit'>SUPPRIMER</button>
+                </form>
+            </a>
+        </section></li>
+        {% endfor %}
+    </ul>
+    <p>Ajout d'un nouveau produit</p>
+
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Envoyer">
+    </form>
+
+{% endblock content %}

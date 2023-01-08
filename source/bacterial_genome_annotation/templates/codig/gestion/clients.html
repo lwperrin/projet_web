@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'gestion_commandes/styles.css' %}" />
+
+<section class="band">
+    <center><a>Gestion des clients</a></center>
+</section>
+<body>
+{% block content %}
+
+<a>Clients actuels :</a>
+    <ul>
+        {% for client in clients %}
+        <li><section>
+            <a>Client n° {{client.id}} : {{client.name}}</a>
+            <a>
+                <form action="{% url 'delete_client' id=client.id %}">
+                    <button type='submit'>SUPPRIMER</button>
+                </form>
+            </a>
+        </section></li>
+        {% endfor %}
+    </ul>
+    <p>Ajout d'un nouveau client</p>
+
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Envoyer">
+    </form>
+
+{% endblock content %}
+</body>
