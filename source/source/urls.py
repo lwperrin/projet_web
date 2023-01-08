@@ -16,8 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from bacterial_genome_annotation import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Base, name='base')
+    path('',views.home, name="home"),
+    path('annoter/',views.annoter),
+    path('AddGenome.html/',views.AddGenome),
+    path('AddGenome.html/',views.Account),
+    path('AddGenome.html/',views.LoginPage), 
 ]
+
+urlpatterns += static(settings.STATIC_URL,
+ document_root=settings.STATIC_ROOT)
