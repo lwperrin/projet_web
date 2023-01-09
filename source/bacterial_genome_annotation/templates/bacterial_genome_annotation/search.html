@@ -1,4 +1,5 @@
 {% extends 'bacterial_genome_annotation/Base.html' %}
+{% load mytags %}
 {% block content %}
     <div style = "max-width:470px;">
         <form action="" method="post" novalidate>
@@ -8,10 +9,12 @@
         </form>
     </div>
     <ul>
-        {% for seq in sequences %}
-            <li>{{ seq.id }} - {{ seq.sequence }}</li>
+        {% for seq in sequences|slice:":50" %}
+            <li>
+                <a href="{% url 'sequence' id=seq.id %}" > {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a>
+            </li>
         {% empty %}
             <li>No sequence found.</li>
         {% endfor %}
-        </ul>
+    </ul>
 {% endblock %}

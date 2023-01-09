@@ -34,7 +34,6 @@ def Search(request):
             transcript_name = form.cleaned_data['transcript_name']
             description = form.cleaned_data['description']
             seq = form.cleaned_data['sequence']
-            print(isCds)
             # Querry
             sequences = Sequence.objects.all()
             if bacterial_name!='':
@@ -48,5 +47,17 @@ def Search(request):
             if description!='':
                 sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__description__contains=description)
             if seq!='':
-                sequences = sequences.filter(sequence__contains=seq)
-    return render(request, 'bacterial_genome_annotation/search.html', {"form": form, "description": description, "sequences": sequences[:50]})
+                sequences = sequences.filter(sequence__regex='.*'+'.*'.join(seq.split('%'))+'.*')
+    return render(request, 'bacterial_genome_annotation/search.html', {"form": form, "description": description, "sequences": sequences})
+
+def SequenceView(request, id):
+    sequence = Sequence.objects.get(id=id)
+    print(sequence.id)
+    annotationsValidated = Annotation.objects.filter(sequence=sequence, isValidate=True)
+    annotations = Annotation.objects.filter(sequence=sequence, isValidate=False)
+    params = {
+        "seq":sequence,
+        "annotationsValidated":annotationsValidated,
+        "annotations":annotations
+    }
+    return render(request, 'bacterial_genome_annotation/sequence.html', params)
