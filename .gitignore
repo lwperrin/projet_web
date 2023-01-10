@@ -144,3 +144,7 @@ GitHub.sublime-settings
 
 # codig (for axel)
 codig/
+# Elastic Beanstalk Files
+.elasticbeanstalk/
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
