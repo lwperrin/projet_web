@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from bacterial_genome_annotation import views
 from django.conf.urls.static import static
 from django.conf import settings
@@ -27,7 +27,8 @@ urlpatterns = [
     path('annoter/',views.annoter),
     path('AddGenome.html/',views.AddGenome),
     path('AddGenome.html/',views.Account),
-    path('AddGenome.html/',views.LoginPage), 
+    path('AddGenome.html/',views.LoginPage),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL,

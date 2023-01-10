@@ -25,7 +25,13 @@
 <div class = "connect">
 	<div>
 		<br>
-		<a href="LoginPage.html">se connecter</a>
+		{% if user.is_authenticated %}
+			<p>Vous êtes connecté en tant que {{ user.email }}</p>
+			<a href="{% url 'logout' %}">Se Déconnecter</a>
+		{% else %}
+			<p>Vous n'êtes pas connecté</p>
+			<a href="{% url 'login' %}">Se Connecter</a>
+		{% endif %}
 		<br>
 		<br>
 		<a href ="Account.html">nous rejoindre</a>
