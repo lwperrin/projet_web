@@ -22,6 +22,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name="home"),
+    path('search/', views.Search, name="search"),
+    path('search/sequence&id=<str:id>', views.SequenceView, name='sequence'),
     path('annoter/',views.annoter),
     path('AddGenome.html/',views.AddGenome),
     path('AddGenome.html/',views.Account),

@@ -70,6 +70,6 @@ class Annotation(models.Model):
     transcript = models.CharField(max_length=200, default='')
     isValidate = models.BooleanField(default=False)
     
-    sequence = models.ForeignKey(Sequence, on_delete=models.CASCADE)
+    sequence = models.ForeignKey(Sequence, on_delete=models.CASCADE, related_name='annotationForSequence', related_query_name='annotationQueryName')
     annotator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForAnnotator")
     validator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")
