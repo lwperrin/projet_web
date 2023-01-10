@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from Bio import SeqIO
 from os import listdir
 from ...models import *
+from os.path import dirname
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
@@ -15,13 +16,14 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # Import data from fasta files
         bacteriaNamesList = []
-        for fileName in listdir('data'):
+        relativePath = dirname(__file__) + '/../../../../data/'
+        for fileName in listdir(relativePath):
             # Find bacteria names from file names
             if (not fileName.endswith('s.fa')) and (not fileName.endswith('p.fa')) and fileName.endswith('.fa'):
                 bacteriaNamesList.append(fileName[:-3])
 
         for bacteriaName in bacteriaNamesList:
-            with open("data/"+bacteriaName+".fa") as file:
+            with open(relativePath+bacteriaName+".fa") as file:
                 # Genome creation
                 for record in SeqIO.parse(file, "fasta"):
                     genome = Genome()
@@ -30,9 +32,9 @@ class Command(BaseCommand):
                     genome.save()
                     break
 
-            with open("data/"+bacteriaName+"_cds.fa") as file:
+            with open(relativePath+bacteriaName+"_cds.fa") as file:
                 # Sequences creation 
-                self.stdout.write(self.style.SUCCESS("data/"+bacteriaName+"_cds.fa"))
+                self.stdout.write(self.style.SUCCESS(bacteriaName+"_cds.fa"))
                 sequences = []
                 annotations = []
                 for record in SeqIO.parse(file, "fasta"):
@@ -85,9 +87,9 @@ class Command(BaseCommand):
                 Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
                 Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
                 
-            with open("data/"+bacteriaName+"_pep.fa") as file:
+            with open(relativePath+bacteriaName+"_pep.fa") as file:
                 # Sequences creation 
-                self.stdout.write(self.style.SUCCESS("data/"+bacteriaName+"_pep.fa"))
+                self.stdout.write(self.style.SUCCESS(bacteriaName+"_pep.fa"))
                 sequences = []
                 annotations = []
                 for record in SeqIO.parse(file, "fasta"):
