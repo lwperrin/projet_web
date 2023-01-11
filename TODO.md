@@ -16,7 +16,8 @@
     - [X] Migrations
     - [X] Import data
     - [X] Authentification
-    - [ ] Pattern search
+    - [X] Pattern search
+    - [ ] Forum
 
 ## Optional features
 
@@ -28,5 +29,6 @@
 - [ ] Make a command to create a bunch of example users and new annotations
 - [ ] Pattern search optimization
     - [ ] Use Burrows-Wheeler Transform : from scratch or via [this repos](https://github.com/Axl-Lvy/Index-structure-and-mapping)
-    - [ ] Complex pattern search (for exemple with regular expressions)
+    - [X] Complex pattern search (for exemple with regular expressions)
+    - [ ] Autocompletion
 
