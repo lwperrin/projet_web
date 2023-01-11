@@ -24,7 +24,7 @@ urlpatterns = [
     path('',views.home, name="home"),
     path('search/', views.Search, name="search"),
     path('search/sequence&id=<str:id>', views.SequenceView, name='sequence'),
-    path('annoter/',views.annoter),
+    path('annoter/',views.annoter, name='annoter'),
     path('AddGenome.html/',views.AddGenome),
     path('AddGenome.html/',views.Account),
     path('AddGenome.html/',views.LoginPage),
