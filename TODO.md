@@ -19,6 +19,10 @@
     - [X] Pattern search
     - [ ] Forum
 
+## Report
+    - [X] Justify why there can be multiple annotations for one sequence
+    - [ ] 
+
 ## Optional features
 
 ### Database optimization
