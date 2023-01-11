@@ -5,11 +5,14 @@
 - [ ] HTML structure
     - [ ] Pages schemes
     - [ ] Link between pages
+    - [ ] Forum page
+    - [ ] Annotation comment
 
 - [ ] Front
-    - [ ] Banner or floating menu
+    - [ ] Banner or floating menu or sidebar
     - [X] Create a sign up page
     - [ ] Visualizing a particular pattern in a sequence
+    - [ ] Bootstrap 5
 
 - [ ] Database
     - [X] UML diagram
@@ -17,13 +20,16 @@
     - [X] Import data
     - [X] Authentification
     - [X] Pattern search
-    - [ ] Forum
+    - [ ] Comments
+    - [ ] Scroll
 
 ## Report
-    - [X] Justify why there can be multiple annotations for one sequence
-    - [ ] 
+
+- [ ] Justify why there can be multiple annotations for one sequence
 
 ## Optional features
+
+- [ ] Chat(gpt) help
 
 ### Database optimization
 
