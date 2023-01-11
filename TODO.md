@@ -41,4 +41,5 @@
     - [ ] Use Burrows-Wheeler Transform : from scratch or via [this repos](https://github.com/Axl-Lvy/Index-structure-and-mapping)
     - [X] Complex pattern search (for exemple with regular expressions)
     - [ ] Autocompletion
+- [ ] Color the searched pattern
 
