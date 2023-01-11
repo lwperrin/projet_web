@@ -31,6 +31,10 @@
 
 - [ ] Chat(gpt) help
 
+### Front
+
+- [ ] Multi theme
+
 ### Database optimization
 
 - [ ] Use `update_conflicts = True` in bulk_create. Only works with Django > 4.1
