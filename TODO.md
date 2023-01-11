@@ -20,7 +20,7 @@
     - [ ] Forum
 
 ## Report
-    - [ ] Justify why there can be multiple annotations for one sequence
+    - [X] Justify why there can be multiple annotations for one sequence
     - [ ] 
 
 ## Optional features
