@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> Registration</title>
-</head>
-
-<body>
-<header>
-    <h1>Test</h1>
-</header>
-<div class="center">
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% block content %}
     <h2> Registration Form</h2>
     <div class="container">
         
@@ -36,10 +26,9 @@
           <button name ='submit' class="big_submit_button" type="submit">Register</button>
         <div class="Log in">
             <span>Already have an account ?</span>
-            <a href="LoginPage.html"> LoginPage.html </a>
+            <a href="LoginPage.html"> Login </a>
         </div>
     </div>
 </div>  
-</body>
-</html>      
+{% endblock %}  
  
