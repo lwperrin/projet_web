@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import SearchForm
+from .forms import AnnotForm
 from .models import *
 
 # Create your views here.
@@ -19,7 +20,41 @@ def LoginPage(request):
     return render(request, 'bacterial_genome_annotation/LoginPage.html')
 
 def annoter(request):
-    return render(request, 'bacterial_genome_annotation/annoter.html')
+    form = AnnotForm()
+    description = 'empty'
+    #sequences = []
+    if request.method == "POST":
+        form = AnnotForm(request.POST)
+        if form.is_valid():
+            id = form.cleaned_data['ID']
+            gene = orm.cleaned_data['gene name']
+            gene_biotype = form.cleaned_data['gene_biotype']
+            transcript_biotype = form.cleaned_data['biotype transcript_name']
+            gene_symbol = form.cleaned_data['gene symbol']
+            description = form.cleaned_data['description']
+            transcript = form.cleaned_data['transcript']
+            isValidate = form.cleaned_data['isValidate']
+
+            # Querry
+            #sequences = Sequence.objects.all()
+            #if bacterial_name!='':
+            #    sequences = sequences.filter(genome__id__contains=bacterial_name)
+            #if isCds:
+            #    sequences = sequences.filter(isCds=isCds)
+            #if gene_name!='':
+            #    sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__gene__contains=gene_name)
+            #if transcript_name!='':
+            #    sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__transcript__contains=transcript_name)
+            #if description!='':
+            #    sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__description__contains=description)
+            #if seq!='':
+            #    sequences = sequences.filter(sequence__regex='.*'+'.*'.join(seq.split('%'))+'.*')
+    return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form, "description": description})#, "sequences": sequences})
+
+    #return render(request, 'bacterial_genome_annotation/annoter.html')
+
+def Parser(request):
+    return render(request, 'bacterial_genome_annotation/Parser.html')
 
 def Search(request):
     form = SearchForm()
