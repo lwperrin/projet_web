@@ -27,7 +27,7 @@ urlpatterns = [
     path('annoter/',views.annoter, name='annoter'),
     path('AddGenome.html/',views.AddGenome, name="AddGenome"),
     path('Parser.html/', views.Parser, name="Parser"),
-    #path('AddGenome.html/',views.Account),
+    path('Account.html/',views.Account, name = 'Account'),
     #path('AddGenome.html/',views.LoginPage),
     path("accounts/", include("django.contrib.auth.urls")),
     path('annoter/sequence&id=<str:id>', views.SequenceView, name='sequence'),
