@@ -7,7 +7,7 @@
     <link href="{% static 'bacterial_genome_annotation/style.css'%}" rel="stylesheet"/>
 </head>
 <header>
-    <h1><a href="{% url 'home' %}">ALDN<a/></h1>
+    <h1><a href="{% url 'home' %}">LADN<a/></h1>
 </header>
 <body>
 <nav>
@@ -15,9 +15,9 @@
 		<p><a href="{% url 'annoter' %}">Annoter</a></p>
 	</div>
 
-	<div id ="addgenome"><p><a href="AddGenome.html">AddGenome</a></p>
+	<div id ="addgenome"><p><a href="{% url 'AddGenome' %}">AddGenome</a></p>
 	</div>
-	<div id ="parser"><p><a href="Parser.html">Parser</a></p>
+	<div id ="parser"><p><a href="{% url 'Parser' %}">Parser</a></p>
 	</div>
 	<div id ="search"><p><a href={% url 'search' %}>Search</a></p>
 	</div>

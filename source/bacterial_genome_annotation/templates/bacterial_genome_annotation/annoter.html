@@ -1,47 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Annoter</title>
-    <link href="style.css" rel="stylesheet">
-</head>
-<body>
-<header>
-    <h1>Annoter</h1>
-</header>
-
-<nav>
-	<div id="annot">
-		<p><a href="home.html">Home</a></p>
-	</div>
-
-	<div id ="addgenome"><p><a href="AddGenome.html">AddGenome</a></p>
-	</div>
-	<div id ="parser"><p><a href="Parser.html">Parser</a></p>
-	</div>
-</nav>	
-<div class = "connect">
-	<div>
-		<br>
-		<a href="LoginPage.html">se connecter</a>
-		<br>
-		<br>
-		<a href ="Account.html">nous rejoindre</a>
-		<br>
-		<br>
-	</div>
-</div>
-
-<body>
-	
-</body>
-
-<footer>
-	<li><a href= "contact.html">Contact</a></li>
-	<br>
-	<li><a href= "qui_nous_sommes.html">Qui Sommes nous?</a></li>
-	<br>
-	<li><a href="aide.html">Aide</a></li>
-</footer>
-
-</html>
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% load mytags %}
+{% block content %}
+    <div style = "max-width:470px;">
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Envoyer">
+        </form>
+    </div>
+    <ul>
+        {% for seq in sequences|slice:":50" %}
+            <li>
+                <a href="{% url 'sequence' id=seq.id %}" > {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a>
+            </li>
+        {% empty %}
+            <li>No sequence found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
