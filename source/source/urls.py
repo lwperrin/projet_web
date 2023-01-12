@@ -25,10 +25,12 @@ urlpatterns = [
     path('search/', views.Search, name="search"),
     path('search/sequence&id=<str:id>', views.SequenceView, name='sequence'),
     path('annoter/',views.annoter, name='annoter'),
-    path('AddGenome.html/',views.AddGenome),
-    path('AddGenome.html/',views.Account),
-    path('AddGenome.html/',views.LoginPage),
+    path('AddGenome.html/',views.AddGenome, name="AddGenome"),
+    path('Parser.html/', views.Parser, name="Parser"),
+    #path('AddGenome.html/',views.Account),
+    #path('AddGenome.html/',views.LoginPage),
     path("accounts/", include("django.contrib.auth.urls")),
+    path('annoter/sequence&id=<str:id>', views.SequenceView, name='sequence'),
 ]
 
 urlpatterns += static(settings.STATIC_URL,
