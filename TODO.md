@@ -4,6 +4,12 @@
 
 - [ ] HTML structure
     - [ ] Pages schemes
+        - [ ] Annot
+        - [ ] Parser
+        - [ ] Add
+        - [ ] Login
+        - [ ] Account
+        - [ ] Search 
     - [ ] Link between pages
     - [ ] Forum page
     - [ ] Annotation comment
