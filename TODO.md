@@ -4,13 +4,19 @@
 
 - [ ] HTML structure
     - [ ] Pages schemes
-        - [ ] Annot
+        - [X] Annot
         - [ ] Parser
-        - [ ] Add
-        - [ ] Login
-        - [ ] Account
-        - [ ] Search 
+        - [X] Add
+        - [X] Login
+        - [X] Account
+        - [X] Search 
     - [ ] Link between pages
+        - [X] Annot
+        - [ ] Parser
+        - [X] Add
+        - [X] Login
+        - [X] Account
+        - [X] Search
     - [ ] Forum page
     - [ ] Annotation comment
 
