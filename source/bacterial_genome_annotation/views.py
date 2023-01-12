@@ -27,7 +27,7 @@ def annoter(request):
         form = AnnotForm(request.POST)
         if form.is_valid():
             id = form.cleaned_data['ID']
-            gene = orm.cleaned_data['gene name']
+            gene = form.cleaned_data['gene name']
             gene_biotype = form.cleaned_data['gene_biotype']
             transcript_biotype = form.cleaned_data['biotype transcript_name']
             gene_symbol = form.cleaned_data['gene symbol']
