@@ -1,5 +1,31 @@
+from Bio.Blast import NCBIWWW, NCBIXML
+from Bio import SeqIO
+
 # Usefull function and class are coded here.
 
+def blastn(sequence: str):
+    results = []
+    result_handle = NCBIWWW.qblast("blastn", "nt", sequence)
+    print(f'blasting : {sequence}')
+    with open('results.xml', 'w') as save_file: 
+        blast_results = result_handle.read() 
+        save_file.write(blast_results)
+    E_VALUE_THRESH = 1e-20
+    for record in NCBIXML.parse(open("results.xml")): 
+        if record.alignments: 
+            print("\n") 
+            print("query: %s" % record.query[:100]) 
+            for align in record.alignments: 
+                for hsp in align.hsps: 
+                    if hsp.expect < E_VALUE_THRESH: 
+                        print("match: %s " % align.title)
+                        results.append(align.title)
+
+def blastp(sequence: str):
+    result_handle = NCBIWWW.qblast("blastp", "nr", sequence)
+    with open('results.xml', 'w') as save_file: 
+        blast_results = result_handle.read() 
+        save_file.write(blast_results)
 ## Sequence compressor
 
 def cds2compact(sequence: str)->str:

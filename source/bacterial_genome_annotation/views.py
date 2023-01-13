@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import SearchForm
 from .forms import AnnotForm
 from .models import *
+from .utils import blastn, blastp
 
 # Create your views here.
 def home(request):
@@ -53,7 +54,13 @@ def annoter(request):
 
     #return render(request, 'bacterial_genome_annotation/annoter.html')
 
-def Parser(request):
+def Parser(request, id):
+    if id!='0':
+        sequence = Sequence.objects.get(id=id)
+        if sequence.isCds:
+            blastn(sequence.sequence)
+        else:
+            blastp(sequence.sequence)
     return render(request, 'bacterial_genome_annotation/Parser.html')
 
 def Search(request):

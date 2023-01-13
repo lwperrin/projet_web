@@ -8,15 +8,15 @@
 
         {% for a in annotationsValidated %}
 
-            <a>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</a>
+            <p>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</p>
         
-            <a>Description: {{a.description}}</a>
+            <p>Description: {{a.description}}</p>
             
-            <a>Annotation de {{a.annotator.first_name}} {{a.annotator.last_name}} and validated by {{a.validator.first_name}} {{a.validator.last_name}}</a>
+            <p>Annotation de {{a.annotator.first_name}} {{a.annotator.last_name}} and validated by {{a.validator.first_name}} {{a.validator.last_name}}</p>
         {% empty %}
-            <a>Not validated annotation yet !</a>
+            <p>Not validated annotation yet !</p>
         {% endfor %}
-            
+            <p><a href="{% url 'Parser' id=seq.id %}" >BLAST</a></p>
         <a>Other annotations:</a>
         {% for a in annotations %}
             <li>
