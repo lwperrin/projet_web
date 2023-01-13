@@ -38,6 +38,7 @@
     - [X] Pattern search
     - [ ] Comments
     - [ ] Scroll
+    - [ ] Django-RQ to build tasks queues
 - [ ] Other
     - [ ] Use blast API
 
