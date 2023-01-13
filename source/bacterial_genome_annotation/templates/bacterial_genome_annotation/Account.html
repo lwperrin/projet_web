@@ -1,34 +1,34 @@
 {% extends 'bacterial_genome_annotation/Base.html' %}
 {% block content %}
-    <h2> Registration Form</h2>
-    <div class="container">
-        
-          <label for="email"><b>Email</b></label><br>
-          <input type="text" placeholder="Email" name="email" id="email" required><br>
-          <label for="psw"><b>Password</b></label><br>
-          <input type="password" placeholder="Password" name="psw" id="psw" required minlength="7"><br> <!-- Password must be at least 7 characters long-->
-          <label for="psw2"><b>Confirm Password</b></label><br>
-          <input type="password" placeholder="Confirm password" name="psw2" id="psw2" required minlength="7"><br>
-          <label for="first_name"><b>First Name</b></label><br>
-          <input type="text" placeholder="First Name" name="first_name" id="first_name" required><br>
-          <label for="last_name"><b>Last Name</b></label><br>
-          <input type="text" placeholder="Last Name" name="last_name" id="last_name" required><br>
-          <label for="tel"><b>Telephone Number</b></label><br>
-          <input type="text" placeholder="Telephone Number" name="tel" id="tel" required><br>
-          <div class="role_select">
-              <label for="role"> <b>Select role</b></label>
-              <select name="role" id="role">
-                  <option value="Administrator">Administrator</option>
-                  <option value="Annotator">Annotator</option>
-                  <option value="Validator">Validator</option>
-              </select>
-          </div>
-          <button name ='submit' class="big_submit_button" type="submit">Register</button>
+<h2> Registration Form</h2>  
+      
+    <label for="email"><b>Email</b></label><br>
+    <input type="text" placeholder="Email" name="email" id="email" required><br>
+    <label for="psw"><b>Password</b></label><br>
+    <input type="password" placeholder="Password" name="psw" id="psw" required minlength="7"><br> <!-- Password must be at least 7 characters long-->
+    <label for="psw2"><b>Confirm Password</b></label><br>
+    <input type="password" placeholder="Confirm password" name="psw2" id="psw2" required minlength="7"><br>
+    <label for="first_name"><b>First Name</b></label><br>
+    <input type="text" placeholder="First Name" name="first_name" id="first_name" required><br>
+    <label for="last_name"><b>Last Name</b></label><br>
+    <input type="text" placeholder="Last Name" name="last_name" id="last_name" required><br>
+    <label for="tel"><b>Telephone Number</b></label><br>
+    <input type="text" placeholder="Telephone Number" name="tel" id="tel" required><br>
+    <div class="role_select">
+        <label for="role"> <b>Select role</b></label>
+        <select name="role" id="role">
+            <option value="Administrator">Administrator</option>
+            <option value="Annotator">Annotator</option>
+            <option value="Validator">Validator</option>
+        </select>
+    <button name ='submit' class="big_submit_button" type="submit">Register</button>
         <div class="Log in">
             <span>Already have an account ?</span>
             <a href="LoginPage.html"> Login </a>
         </div>
     </div>
-</div>  
+  
 {% endblock %}  
+ 
+ 
  
