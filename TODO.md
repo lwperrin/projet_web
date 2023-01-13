@@ -38,6 +38,9 @@
     - [X] Pattern search
     - [ ] Comments
     - [ ] Scroll
+- [ ] Other
+    - [ ] Use blast API
+
 
 ## Report
 
