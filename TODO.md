@@ -39,8 +39,10 @@
     - [ ] Comments
     - [ ] Scroll
     - [ ] Django-RQ to build tasks queues
+
 - [ ] Other
-    - [ ] Use blast API
+    - [X] Use blast API
+    - [ ] Blast visualization
 
 
 ## Report
@@ -49,7 +51,8 @@
 
 ## Optional features
 
-- [ ] Chat(gpt) help
+- [ ] Chat help
+- [ ] FAQ
 
 ### Front
 
