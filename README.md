@@ -37,7 +37,8 @@ You can have acces to the html pages in [templates](source/bacterial_genome_anno
 - [**annotate**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/annoter.html), where you can annotate a sequence. Page not functional for the moment.
 - [**addgenome**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/AddGenome.html) where you can upload a genome. Page not functional for the moment.
 - [**parser**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/Parser.html) where you can blast a sequence against the ncbi database. The blast is implemented but not the visualisation.
-- [**search**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/search.html) where you can look for a sequence from differents entries such as the genome, the gene, the description or a k-mer.
+- [**search**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/search.html) where you can look for a sequence from differents entries such as the genome, the gene, the description or a k-mer. You can click on any sequence to view the next page : sequence.
+- [**search/sequence&id=<seq.id>**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/sequence.html) where you find the annotations and informations about the sequence with seq.id as id, and you can click on *BLAST*, which will redirect you to *parser* with the blast of the sequence against the ncbi database.
 
 ### Site schema
 
