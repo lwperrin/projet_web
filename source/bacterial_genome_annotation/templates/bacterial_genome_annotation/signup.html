@@ -1,0 +1,41 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% load mytags %}
+{% block content %}
+<!-- templates/registration/login.html -->
+    <h2>Sign Up</h2>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+    </form>
+    {% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // catch the form's submit event
+            $('#id_email').keyup(function () {
+                // create an AJAX call
+                $.ajax({
+                    data: $(this).serialize(), // get the form data
+                    url: "{% url 'validate_email' %}",
+                    // on success
+                    success: function (response) {
+                        if (response.is_taken == true) {
+                            $('#id_email').removeClass('is-valid').addClass('is-invalid');
+                            $('#id_email').after('<div class="invalid-feedback d-block" id="emailError">This email is not available!</div>')
+                        }
+                    },
+                    // on error
+                    error: function (response) {
+                        // alert the error if any error occured
+                        console.log(response.responseJSON.errors)
+                    }
+                });
+
+                return false;
+            });
+        })
+    </script>
+    {% endblock javascript %}
+{% endblock %}

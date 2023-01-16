@@ -1,27 +1,30 @@
 from django.shortcuts import render
-from .forms import SearchForm
-from .forms import AnnotForm
+from .forms import SearchForm, AnnotForm, UserCreationForm
 from .models import *
 from .utils import blastn, blastp
+from django.http import HttpRequest, JsonResponse
 import threading
+from django.views import generic
+from django.urls import reverse_lazy
+from django.contrib.auth import login, authenticate
 
 # Create your views here.
-def home(request):
+def home(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/home.html')
 
-def Base(request):
+def Base(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/Base.html')
 
-def AddGenome(request):
+def AddGenome(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AddGenome.html')
 
-def Account(request):
+def Account(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/Account.html')
 
-def LoginPage(request):
+def LoginPage(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/LoginPage.html')
 
-def annoter(request):
+def annoter(request: HttpRequest):
     form = AnnotForm()
     description = 'empty'
     #sequences = []
@@ -53,9 +56,7 @@ def annoter(request):
             #    sequences = sequences.filter(sequence__regex='.*'+'.*'.join(seq.split('%'))+'.*')
     return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form, "description": description})#, "sequences": sequences})
 
-    #return render(request, 'bacterial_genome_annotation/annoter.html')
-
-def Parser(request, id):
+def Parser(request: HttpRequest, id):
     params = {"progression": "", "results": []}
     if id!='0':
         query = BlastResult.objects.filter(id=id)
@@ -85,7 +86,7 @@ def Parser(request, id):
             
     return render(request, 'bacterial_genome_annotation/Parser.html', params)
 
-def Search(request):
+def Search(request: HttpRequest):
     form = SearchForm()
     description = 'empty'
     sequences = []
@@ -114,7 +115,7 @@ def Search(request):
                 sequences = sequences.filter(sequence__regex='.*'+'.*'.join(seq.split('%'))+'.*')
     return render(request, 'bacterial_genome_annotation/search.html', {"form": form, "description": description, "sequences": sequences})
 
-def SequenceView(request, id):
+def SequenceView(request: HttpRequest, id):
     sequence = Sequence.objects.get(id=id)
     print(sequence.id)
     annotationsValidated = Annotation.objects.filter(sequence=sequence, isValidate=True)
@@ -125,3 +126,21 @@ def SequenceView(request, id):
         "annotations":annotations
     }
     return render(request, 'bacterial_genome_annotation/sequence.html', params)
+
+class SignUpView(generic.CreateView):
+    template_name = 'bacterial_genome_annotation/signup.html'
+    form_class = UserCreationForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        valid = super().form_valid(form)
+        login(self.request, self.object)
+        return valid
+    
+def validate_email(request: HttpRequest):
+    """Check email availability"""
+    email = request.GET.get('email', None)
+    response = {
+        'is_taken': User.objects.filter(email__iexact=email).exists()
+    }
+    return JsonResponse(response)

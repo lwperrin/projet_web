@@ -26,15 +26,13 @@
 	<div>
 		<br>
 		{% if user.is_authenticated %}
-			<p>Vous êtes connecté en tant que {{ user.email }}</p>
-			<a href="{% url 'logout' %}">Se Déconnecter</a>
+			<p>You are connected as {{ user.email }}</p>
+			<a href="{% url 'logout' %}">Log Out</a>
 		{% else %}
 			<p>Vous n'êtes pas connecté</p>
-			<a href="{% url 'login' %}">Se Connecter</a>
+			<a href="{% url 'login' %}">Sign In</a>
+			<a href="{% url 'signup' %}">Sign Up</a>
 		{% endif %}
-		<br>
-		<br>
-		<a href ="{% url 'Account' %}">Sign In </a>
 		<br>
 		<br>
 	</div>

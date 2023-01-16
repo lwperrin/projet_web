@@ -30,6 +30,8 @@ urlpatterns = [
     path('Account/',views.Account, name = 'Account'),
     #path('AddGenome.html/',views.LoginPage),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("signup/", views.SignUpView.as_view(), name="signup"),
+    path('validate_email', views.validate_email, name='validate_email'),
 ]
 
 urlpatterns += static(settings.STATIC_URL,
