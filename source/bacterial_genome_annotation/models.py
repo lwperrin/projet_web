@@ -73,3 +73,19 @@ class Annotation(models.Model):
     sequence = models.ForeignKey(Sequence, on_delete=models.CASCADE, related_name='annotationForSequence', related_query_name='annotationQueryName')
     annotator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForAnnotator")
     validator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")
+
+class BlastResult(models.Model):
+    id = models.CharField(max_length=100, primary_key=True)
+    isCds = models.BooleanField(default=True)
+    numberOfResults = models.IntegerField(default=0)
+    isFinished = models.BooleanField(default=False)
+    sequence = models.CharField(max_length=300)
+
+class BlastHit(models.Model):
+    id = models.CharField(max_length=100, primary_key=True)
+    num = models.IntegerField()
+    definition = models.CharField(max_length=100)
+    accession = models.CharField(max_length=50)
+    len = models.IntegerField()
+
+    blastResult = models.ForeignKey(BlastResult, on_delete=models.CASCADE)

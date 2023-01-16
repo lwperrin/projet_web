@@ -3,6 +3,7 @@ from .forms import SearchForm
 from .forms import AnnotForm
 from .models import *
 from .utils import blastn, blastp
+import threading
 
 # Create your views here.
 def home(request):
@@ -55,13 +56,34 @@ def annoter(request):
     #return render(request, 'bacterial_genome_annotation/annoter.html')
 
 def Parser(request, id):
+    params = {"progression": "", "results": []}
     if id!='0':
-        sequence = Sequence.objects.get(id=id)
-        if sequence.isCds:
-            blastn(sequence.sequence)
+        query = BlastResult.objects.filter(id=id)
+        if not query:
+            sequence = Sequence.objects.get(id=id)
+            blast = BlastResult()
+            blast.id = id
+            blast.isCds = sequence.isCds
+            blast.sequence = sequence.sequence
+            blast.save()
+            if sequence.isCds:
+                thread = threading.Thread(target=blastn, args=(blast,))
+                thread.start()
+            else:
+                thread = threading.Thread(target=blastp, args=(blast,))
+                thread.start()
         else:
-            blastp(sequence.sequence)
-    return render(request, 'bacterial_genome_annotation/Parser.html')
+            list = BlastHit.objects.filter(blastResult__id=id)
+            if not list:
+                if not BlastResult.objects.get(id=id):
+                    params['progression'] = 'Something went wrong'
+                else:
+                    params['progression'] = 'Still in progress'
+            else:
+                params['progression'] = 'Finished !'
+                params['results'] = list
+            
+    return render(request, 'bacterial_genome_annotation/Parser.html', params)
 
 def Search(request):
     form = SearchForm()
