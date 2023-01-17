@@ -23,7 +23,40 @@
                     success: function (response) {
                         if (response.is_taken == true) {
                             $('#id_email').removeClass('is-valid').addClass('is-invalid');
+                            $('#emailError').remove()
                             $('#id_email').after('<div class="invalid-feedback d-block" id="emailError">This email is not available!</div>')
+                        } else if (response.is_valid == false) {
+                            $('#id_email').removeClass('is-valid').addClass('is-invalid');
+                            $('#emailError').remove()
+                            $('#id_email').after('<div class="invalid-feedback d-block" id="emailError">This is not a valid email!</div>')
+                        } else {
+                            $('#id_email').removeClass('is-invalid').addClass('is-valid');
+                            $('#emailError').remove()
+                        }
+                    },
+                    // on error
+                    error: function (response) {
+                        // alert the error if any error occured
+                        console.log(response.responseJSON.errors)
+                    }
+                });
+
+                return false;
+            });
+            $('#id_password1').keyup(function () {
+                // create an AJAX call
+                $.ajax({
+                    data: $(this).serialize(), // get the form data
+                    url: "{% url 'validate_password' %}",
+                    // on success
+                    success: function (response) {
+                        if (response.is_valid == false) {
+                            $('#id_password1').removeClass('is-valid').addClass('is-invalid');
+                            $('#passwordError').remove()
+                            $('#id_password1').after('<div class="invalid-feedback d-block" id="passwordError">'+response.message+'</div>')
+                        } else {
+                            $('#id_password1').removeClass('is-invalid').addClass('is-valid');
+                            $('#passwordError').remove()
                         }
                     },
                     // on error

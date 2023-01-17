@@ -7,6 +7,9 @@ import threading
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.password_validation import validate_password as v_p
+from django.core.exceptions import ValidationError
+import re
 
 # Create your views here.
 def home(request: HttpRequest):
@@ -140,7 +143,17 @@ class SignUpView(generic.CreateView):
 def validate_email(request: HttpRequest):
     """Check email availability"""
     email = request.GET.get('email', None)
+    print(bool(re.fullmatch(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+', email)))
     response = {
-        'is_taken': User.objects.filter(email__iexact=email).exists()
+        'is_taken': User.objects.filter(email__iexact=email).exists(),
+        'is_valid': bool(re.fullmatch(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+', email))
     }
     return JsonResponse(response)
+
+def validate_password(request: HttpRequest):
+    password = request.GET.get('password1', None)
+    try:
+        v_p(password)
+        return JsonResponse({'is_valid': True, 'message': 'Password is valid'})
+    except ValidationError as e:
+        return JsonResponse({'is_valid': False, 'message': ' '.join(e.messages)})
