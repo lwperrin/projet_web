@@ -69,4 +69,6 @@
     - [X] Complex pattern search (for exemple with regular expressions)
     - [ ] Autocompletion
 - [ ] Color the searched pattern
+- [X] launch blast in background
+- [X] Validate email and password in live (ajax)
 
