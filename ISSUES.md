@@ -1,5 +1,5 @@
 # Questions à poser au prof
 
-- Qu'est ce qu'un "proxy model" ?
-- Est ce optimal d'utiliser les groupes django même s'ils sont ManyToMany ?
-- Pb de la recherche 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+- Redis server
+- javascript : bonne idée de effacer et réécrire à chaque fois ?
+- autocomplétion : comment ajouter des caractères sélctionnés ? si la requète ne finit pas ?
