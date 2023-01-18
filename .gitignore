@@ -148,3 +148,6 @@ codig/
 .elasticbeanstalk/
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# blast outputs
+results.xml
