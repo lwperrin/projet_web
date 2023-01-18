@@ -21,7 +21,10 @@
                     url: "{% url 'validate_email' %}",
                     // on success
                     success: function (response) {
-                        if (response.is_taken == true) {
+                        if (response.is_empty) {
+                            $('#id_password1').removeClass('is-valid').addClass('is-invalid');
+                            $('#emailError').remove()
+                        } else if (response.is_taken == true) {
                             $('#id_email').removeClass('is-valid').addClass('is-invalid');
                             $('#emailError').remove()
                             $('#id_email').after('<div class="invalid-feedback d-block" id="emailError">This email is not available!</div>')
@@ -50,7 +53,10 @@
                     url: "{% url 'validate_password' %}",
                     // on success
                     success: function (response) {
-                        if (response.is_valid == false) {
+                        if (response.is_empty) {
+                            $('#id_password1').removeClass('is-valid').addClass('is-invalid');
+                            $('#passwordError').remove()
+                        } else if (response.is_valid == false) {
                             $('#id_password1').removeClass('is-valid').addClass('is-invalid');
                             $('#passwordError').remove()
                             $('#id_password1').after('<div class="invalid-feedback d-block" id="passwordError">'+response.message+'</div>')

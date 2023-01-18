@@ -19,12 +19,14 @@
         - [X] Search
     - [ ] Forum page
     - [ ] Annotation comment
+    - [ ] Account page (different depending on the user group)
+    - [ ] Search in home
 
 - [ ] Front
     - [ ] Banner or floating menu or sidebar
     - [X] Create a sign up page
     - [ ] Visualizing a particular pattern in a sequence
-    - [ ] Bootstrap 5
+    - [ ] Bootstrap 4
     - [ ] front page: put a side-bar with a menu to access every feature
     - [ ] front page: separate into 4 different zones, each one explaining one feature (annotate, add, parse, search)
     - [ ] search genome: displays the genomes found and brightens the searched pattern
@@ -39,6 +41,8 @@
     - [ ] Comments
     - [ ] Scroll
     - [ ] Django-RQ to build tasks queues
+    - [ ] Regex to contains then regex
+    - [ ] Search by validate
 
 - [ ] Other
     - [X] Use blast API

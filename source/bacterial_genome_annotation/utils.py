@@ -6,12 +6,12 @@ from .models import BlastHit, BlastResult
 
 def blastn(blast: BlastResult):
     results = []
-    result_handle = NCBIWWW.qblast("blastn", "nt", blast.sequence)
+    result_handle = NCBIWWW.qblast("blastn", "nt", blast.sequence, hitlist_size=101)
     print(f'blasting : {blast.sequence}')
     blast_results = result_handle.read()
     with open('results.xml', 'w') as file:
         file.write(blast_results)
-    record = NCBIXML.read(open('results.xml'))
+    record = NCBIXML.read(open('results.xml'), )
     i=0
     for align in record.alignments:
         hit = BlastHit()

@@ -142,9 +142,9 @@ class SignUpView(generic.CreateView):
     
 def validate_email(request: HttpRequest):
     """Check email availability"""
-    email = request.GET.get('email', None)
-    print(bool(re.fullmatch(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+', email)))
+    email = request.GET.get('email', '')
     response = {
+        'is_empty': email=='',
         'is_taken': User.objects.filter(email__iexact=email).exists(),
         'is_valid': bool(re.fullmatch(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+', email))
     }
@@ -152,8 +152,9 @@ def validate_email(request: HttpRequest):
 
 def validate_password(request: HttpRequest):
     password = request.GET.get('password1', None)
+    # mettre en post
     try:
         v_p(password)
-        return JsonResponse({'is_valid': True, 'message': 'Password is valid'})
+        return JsonResponse({'is_valid': True, 'message': 'Password is valid', 'is_empty': password==''})
     except ValidationError as e:
-        return JsonResponse({'is_valid': False, 'message': ' '.join(e.messages)})
+        return JsonResponse({'is_valid': False, 'message': ' '.join(e.messages), 'is_empty': password==''})
