@@ -1,0 +1,30 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% load mytags %}
+{% block content %}
+    <ul>
+        <a>Sequence: {{seq.id}} - Position: {{seq.position}} - Genome {{seq.genome.id}}</a>
+
+        <a>{{seq.sequence}}</a>
+
+        {% for a in annotationsValidated %}
+
+            <p>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</p>
+        
+            <p>Description: {{a.description}}</p>
+            
+            <p>Annotation de {{a.annotator.first_name}} {{a.annotator.last_name}} and validated by {{a.validator.first_name}} {{a.validator.last_name}}</p>
+        {% empty %}
+            <p>Not validated annotation yet !</p>
+        {% endfor %}
+            <p><a href="{% url 'Parser' id=seq.id %}" >BLAST</a></p>
+        <a>Other annotations:</a>
+        {% for a in annotations %}
+            <li>
+                <a>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</a>
+                
+
+                <a>Description: {{a.description}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% block content %}
+{% load static %}
+		<h2>LADN</h2>
+		<p>LADN est le résultat d'un projet web visant à mettre 
+			en place un outils qui vise à ajouter, modifier et annoter
+			des génomes par des utilisateurs enregistrer etr qui ont 
+			une permission définis (rôle). 
+		<br> 
+		<h3>Comment ça marche</h3>
+
+			<p>Dans un premier temps vous avez accès à partir de la page home aux pages annoter, addGenome, Parser, Search, ainsi que les pages Login et Account.
+				Pour accéder aux fonctionnalités du site il est nécessaire de se connecter. Ainsi, selon le rôle qui vous est attribué, vous aurez un accès à des fonctionnalités.
+				<br>
+				Via les pages:
+
+				<li><h3>Login</h3></li>
+					Elle prend en entrée une adresse mail et un mot de passe.
+					Ces informations vont être soumises à la base de données et s'il y a concordence l'utilisateur peut se connecter et accéder à son rôle.
+
+				<li><h3>Sign in</h3></li>
+				Cette page permet de s'enregistrer,	
+				elle prend plusieurs champs comme l'email, le mot de passe, nom de famille, prénom et numéro de téléphone.
+				Ensuite un rôle leur sera attribué.
+				<br>
+					Les rôles sont les suivants:
+				<br>
+				<li>Lecteur (rôle par défaut)</li>
+				<li>Annotateur (rôle attribué par un autre Annotateur ou quelqu'un avec plus de libertés)</li>
+				<li>Validateur (rôle attribué par un autre Annotateur ou un administrateur) </li>
+
+			<br> 
+				Les autres pages accessibles sont :
+				<ul>
+					<li><h3>Annoter</h3></li>
+						Cette page a pour but l'annotation des génomes, elle se fait via l'utilisation d'un formulaire Annotation basé sur la structure de la classe annotation.
+						L'utilisateur doit sélectionner	l'id du génome sur lequel il va annoter, il peut mentionner un nom de gène
+						un gène biotype, un transcript biotype, le gène symbol, une bref desctiption (200 charactères)
+						le transcript. Il peut soumettre à validation son annotation via la requête "envoyer".
+					<li><h3>AddGenome</h3></li>
+						Concernant cette page (pour l'instant) elle fonctionne sur le principe de l'envoi de fichiers fasta, ou l'utilisateur doit mentionner l'id du génome dans un premier temps.
+						Il peut ensuite soumettre (déposer) un fichier fasta du génome, un fichier contenant une description de la séquence codante du génome, ainsi qu'une description du peptide qui en résulte.
+						<h4>"Evolution"</h4>
+						Nous pensons partir sur un type formulaire pour cette étape avec une possibilité de restructuration des données déposé et de la forme de dépôt des données.
+					<li><h3>Parser</h3></li>
+						La fonction Parse a pour but l'alignement de séquence d'une séquence saisie par l'utilsateur, en choisissant certains paramètres (à définir, en fonction de l'outil utilisé ; Blast etc).
+					<li><h3>Search</h3></li>
+						La fonction Seach a pour but la recherche d'un motif ou k-mer au sein de notre base de données. Elle prend en entrée plusieurs champs (qui ne sont pas obligatoires), comme le nom de la bactérie, le choix entre le type d'information (nucléique ou peptidique), la séquence, le nom du gène ou celui du transcrit.
+						Suite à cette recherche un ensemble de résultats qui correspondent à la recherche seront montrés (pour l'instant avec une limite de 50 résultats, qui sera potentiellement prolongée avec une option de menu déroulant par la suite). 
+				</ul>
+				<br>
+				
+				<img src="{% static 'bacterial_genome_annotation/schema_web.png' %}" alt="MSchema_web">
+				<h3>Partie fonctionnelle</h3>
+					Cette partie a pour but de résumer ce qui est fonctionnel pour l'instant, nous avons:
+					<ul>
+						<li>Lien entre les pages</li>
+							Le lien entre l'ensemble des pages lié à home est fonctionnel ( à l'exception de Parser.html)
+						<li>La structure des pages</li>
+							L'ensemble des pages ont une structures plus ou moins définis (aucune page vides, pour les pages mentionné ci-dessus ( à l'exception de Parser.html))
+						<li>La base de données</li>
+							La base de données à été remplie avec les séquences fournies pour le projet.
+						<li>Login</li>
+							La fonction Se Connecter fonctionne, vous pouvez ainsi vous connecter vos identifiants et mot de passe. 
+						<li>Search</li>
+							Cette fonctionnalité fonctionne, lorsqu'on sélectionne les champs (tout les champs ne sont pas nécessaire), on obtient une réponse de la base de données.
+						
+					</ul>
+				
+			</p>
+
+		
+
+
+		Ce projet est réalisé par Axel, Louis, Nouhayla et Djamel
+	des étudiants en M2 ALI2B.  </p>
+{% endblock %}

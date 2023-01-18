@@ -1,0 +1,20 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% block content %}
+
+    <h2> Adding of a genome</h2>
+            <!--Genome specie/strain names -->
+            <label for="id_genome"><b>id</b> </label>
+            <input type="text" id="id_genome" name="id_genome" placeholder="id" required><br>
+            <!-- User input of the 3 files : genome, CDS description, peptides description -->
+            <label for="genome_file">Please add the fasta file of the genome :</label><br>
+            <input type="file" id="genome_file" name="genome_file" accept=".fa, .fasta" required><br>
+            <label for="cds_file">Please add the cds description file for the genome :</label><br>
+            <input type="file" id="cds_file" name="cds_file" accept=".fa, .fasta " required><br>
+            <label for="pep_file">Please add the peptide description file for the genome :</label><br>
+            <input type="file" id="pep_file" name="pep_file" accept=".fa, .fasta" required><br>
+            <button type="submit" name="submit" class="big_submit_button">Add genome</button>
+
+            
+</body>
+
+{% endblock %}

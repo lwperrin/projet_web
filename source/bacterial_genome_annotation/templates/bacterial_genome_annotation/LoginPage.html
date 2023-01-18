@@ -1,0 +1,16 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% block content %}
+    <h2> Login </h2>
+        <label for="email"><b>Email</b></label><br>
+        <input type="text" placeholder="Enter email" name='email' id="email" required><br>
+        <label for="psw"><b>Password</b></label><br>
+        <input type="password" placeholder="Enter Password" name='psw' id="psw" required><br>
+        <button name="submit" class="big_submit_button" type="submit">Log in</button>
+
+        <div class="Sign up">
+            <span>Don't have an account ?</span>
+            <a href="Account.html"> Sign up </a>
+        
+        </div>
+
+{% endblock %}

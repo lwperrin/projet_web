@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base</title>
+    <link href="{% static 'bacterial_genome_annotation/style.css'%}" rel="stylesheet"/>
+</head>
+<header>
+    <h1><a href="{% url 'home' %}">LADN<a/></h1>
+</header>
+<body>
+<nav>
+	<div id="annot">
+		<p><a href="{% url 'annoter' %}">Annoter</a></p>
+	</div>
+
+	<div id ="addgenome"><p><a href="{% url 'AddGenome' %}">AddGenome</a></p>
+	</div>
+	<div id ="parser"><p><a href="{% url 'Parser' id='0' %}">Parser</a></p>
+	</div>
+	<div id ="search"><p><a href={% url 'search' %}>Search</a></p>
+	</div>
+</nav>	
+<div class = "connect">
+	<div>
+		<br>
+		{% if user.is_authenticated %}
+			<p>You are connected as {{ user.email }}</p>
+			<a href="{% url 'logout' %}">Log Out</a>
+		{% else %}
+			<p>Vous n'êtes pas connecté</p>
+			<a href="{% url 'login' %}">Sign In</a>
+			<a href="{% url 'signup' %}">Sign Up</a>
+		{% endif %}
+		<br>
+		<br>
+	</div>
+</div>
+
+	{% block content %} {%endblock %}
+</body>
+
+<footer>
+	<li><a href= "contact.html">Contact</a></li>
+	<br>
+	<li><a href= "qui_nous_sommes.html">Qui Sommes nous?</a></li>
+	<br>
+	<li><a href="aide.html">Aide</a></li>
+</footer>
+
+</html>

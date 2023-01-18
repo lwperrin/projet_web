@@ -1,0 +1,11 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% load mytags %}
+{% block content %}
+<!-- templates/registration/login.html -->
+    <h2>Log In</h2>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Log In</button>
+    </form>
+{% endblock %}
