@@ -1,52 +1,129 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Base</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>LADN</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
     <link href="{% static 'bacterial_genome_annotation/style.css'%}" rel="stylesheet"/>
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
-<header>
-    <h1><a href="{% url 'home' %}">LADN<a/></h1>
-</header>
+
 <body>
-<nav>
-	<div id="annot">
-		<p><a href="{% url 'annoter' %}">Annoter</a></p>
-	</div>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
 
-	<div id ="addgenome"><p><a href="{% url 'AddGenome' %}">AddGenome</a></p>
-	</div>
-	<div id ="parser"><p><a href="{% url 'Parser' id='0' %}">Parser</a></p>
-	</div>
-	<div id ="search"><p><a href={% url 'search' %}>Search</a></p>
-	</div>
-</nav>	
-<div class = "connect">
-	<div>
-		<br>
-		{% if user.is_authenticated %}
-			<p>You are connected as {{ user.email }}</p>
-			<a href="{% url 'logout' %}">Log Out</a>
-		{% else %}
-			<p>Vous n'êtes pas connecté</p>
-			<a href="{% url 'login' %}">Sign In</a>
-			<a href="{% url 'signup' %}">Sign Up</a>
-		{% endif %}
-		<br>
-		<br>
-	</div>
-</div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Features</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a class="nav-link" href="{% url 'annoter' %}">Annotate</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'AddGenome' %}">Add Genome</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'Parser' id='0' %}">Parse</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href={% url 'search' %}>Search</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Connexion</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#ContactSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">About us</a>
+                    <ul class="collapse list-unstyled" id="ContactSubmenu">
+                        <li>
+                            <li><a class="nav-link" href= "contact.html">Contact</a></li>
+                        </li>
+                        <li>
+                            <li><a class="nav-link" href= "qui_nous_sommes.html">Who are we?</a></li>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="nav-link" href="aide.html">Help</a>
+                </li>
+            </ul>
+        </nav>
 
-	{% block content %} {%endblock %}
+        <!-- Page Content  -->
+        <div id="content">
+            <h1 align="center">LADN</h1>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'annoter' %}">Annotate</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'AddGenome' %}">Add</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'Parser' id='0' %}">Parse</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href={% url 'search' %}>Search</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 </body>
-
-<footer>
-	<li><a href= "contact.html">Contact</a></li>
-	<br>
-	<li><a href= "qui_nous_sommes.html">Qui Sommes nous?</a></li>
-	<br>
-	<li><a href="aide.html">Aide</a></li>
-</footer>
 
 </html>
