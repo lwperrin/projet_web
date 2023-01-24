@@ -41,7 +41,7 @@
     - [ ] Comments
     - [ ] Scroll
     - [ ] Django-RQ to build tasks queues
-    - [ ] Regex to contains then regex
+    - [X] Regex to contains then regex
     - [ ] Search by validate
 
 - [ ] Other
