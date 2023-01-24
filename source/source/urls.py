@@ -19,21 +19,32 @@ from bacterial_genome_annotation import views
 from django.conf.urls.static import static
 from django.conf import settings
 
+# Admin url
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
+
+# Base url
+urlpatterns.extend([
     path('',views.home, name="home"),
     path('search/', views.Search, name="search"),
-    path('search/sequence/<str:id>', views.SequenceView, name='sequence'),
     path('annoter/',views.annoter, name='annoter'),
     path('AddGenome/',views.AddGenome, name="AddGenome"),
+])
+
+# From a sequence
+urlpatterns.extend([
+    path('search/sequence/<str:id>', views.SequenceView, name='sequence'),
     path('Parser/<str:id>/', views.Parser, name="Parser"),
-    path('Account/',views.Account, name = 'Account'),
-    #path('AddGenome.html/',views.LoginPage),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("signup/", views.SignUpView.as_view(), name="signup"),
+])
+
+# Registration and account management
+urlpatterns.extend([
+    path("login/", include("django.contrib.auth.urls"), name='login'),
+    path("register/", views.SignUpView.as_view(), name="register"),
     path('validate_email', views.validate_email, name='validate_email'),
     path('validate_password', views.validate_password, name='validate_password'),
-]
+])
 
 urlpatterns += static(settings.STATIC_URL,
  document_root=settings.STATIC_ROOT)
