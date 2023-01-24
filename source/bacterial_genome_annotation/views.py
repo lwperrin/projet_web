@@ -16,12 +16,10 @@ from django.contrib.auth.decorators import login_required
 def home(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/home.html')
 
-def Base(request: HttpRequest):
-    return render(request, 'bacterial_genome_annotation/Base.html')
-
 def AddGenome(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AddGenome.html')
 
+@login_required
 def Account(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/Account.html')
 
@@ -60,6 +58,7 @@ def annoter(request: HttpRequest):
             #    sequences = sequences.filter(sequence__regex='.*'+'.*'.join(seq.split('%'))+'.*')
     return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form, "description": description})#, "sequences": sequences})
 
+@login_required
 def Parser(request: HttpRequest, id):
     params = {"progression": "", "results": []}
     if id!='0':
@@ -201,7 +200,7 @@ class SignUpView(generic.CreateView):
     
 def validate_email(request: HttpRequest):
     """Check email availability"""
-    email = request.GET.get('email', '')
+    email = request.POST.get('email', '')
     response = {
         'is_empty': email=='',
         'is_taken': User.objects.filter(email__iexact=email).exists(),
@@ -210,8 +209,7 @@ def validate_email(request: HttpRequest):
     return JsonResponse(response)
 
 def validate_password(request: HttpRequest):
-    password = request.GET.get('password1', None)
-    # mettre en post
+    password = request.POST.get('password1', None)
     try:
         v_p(password)
         return JsonResponse({'is_valid': True, 'message': 'Password is valid', 'is_empty': password==''})

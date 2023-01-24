@@ -12,6 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
+        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+
         $(document).ready(function () {
             // catch the form's submit event
             $('#id_email').keyup(function () {
@@ -19,6 +21,8 @@
                 $.ajax({
                     data: $(this).serialize(), // get the form data
                     url: "{% url 'validate_email' %}",
+                    type: "POST",
+                    headers:{ "X-CSRFToken": csrftoken },
                     // on success
                     success: function (response) {
                         if (response.is_empty) {
@@ -51,6 +55,8 @@
                 $.ajax({
                     data: $(this).serialize(), // get the form data
                     url: "{% url 'validate_password' %}",
+                    type: "POST",
+                    headers:{ "X-CSRFToken": csrftoken },
                     // on success
                     success: function (response) {
                         if (response.is_empty) {

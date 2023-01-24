@@ -21,15 +21,15 @@ from django.conf import settings
 
 # Admin url
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
 ]
 
 # Base url
 urlpatterns.extend([
-    path('',views.home, name="home"),
+    path('', views.home, name="home"),
     path('search/', views.Search, name="search"),
-    path('annoter/',views.annoter, name='annoter'),
-    path('AddGenome/',views.AddGenome, name="AddGenome"),
+    path('annoter/', views.annoter, name='annoter'),
+    path('AddGenome/', views.AddGenome, name="AddGenome"),
 ])
 
 # From a sequence
@@ -41,7 +41,7 @@ urlpatterns.extend([
 # Registration and account management
 urlpatterns.extend([
     path("login/", include("django.contrib.auth.urls"), name='login'),
-    path("register/", views.SignUpView.as_view(), name="register"),
+    path("register/", views.SignUpView.as_view(), name="signup"),
     path('validate_email', views.validate_email, name='validate_email'),
     path('validate_password', views.validate_password, name='validate_password'),
 ])
