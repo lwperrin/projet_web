@@ -2,18 +2,18 @@
 # use the same template : on each line, mail then
 # password then group.
 
-firstReader@gmail.com
+firstreader@gmail.com
 bonjourreader
 Readers
 
-firsAnnotator@gmail.com
+firsannotator@gmail.com
 bonjourannotator
 Annotators
 
-firstValidator@gmail.com
-bonjourValidator
+firstvalidator@gmail.com
+bonjourvalidator
 Validators
 
-firstAdmin@gmail.com
-bonjourAdmin
+firstadmin@gmail.com
+bonjouradmin
 Admins

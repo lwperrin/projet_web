@@ -34,6 +34,8 @@ class AnnotForm(forms.Form):
     transcript = forms.CharField(max_length=200,required=False)
     isValidate = forms.BooleanField(required=False)
     
+class CommentForm(forms.Form):
+    comment = forms.CharField(max_length=500)
 
 #default=''    
     

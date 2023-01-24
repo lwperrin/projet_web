@@ -7,11 +7,11 @@ from django.utils.translation import gettext_lazy as _
 from .managers import UserManager
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), unique=True, primary_key=True, default='')
+    email = models.EmailField(_('email address'), unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
-    phone_no = models.CharField(max_length = 10, blank=True)
+    phone_no = models.CharField(max_length = 10, blank=True, null=True)
     first_name = models.CharField(_("first name"), max_length=150, blank=True)
     last_name = models.CharField(_("last name"), max_length=150, blank=True)
     role = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(3)])
@@ -23,29 +23,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-
-"""class User(AbstractUser):
-    username = models.EmailField(_('email address'), unique = True, primary_key=True)
-    native_name = models.CharField(max_length = 5)
-    phone_no = models.CharField(max_length = 10)
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
-    role = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(3)])
-    USERNAME_FIELD = 'username'
-    EMAIL_FIELD = 'username'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
-    def __str__(self):
-        return "{}".format(self.email)
-
-class User(models.Model):
-    
-    mail = models.CharField(max_length=100, primary_key=True)
-    password = models.CharField(max_length=100)
-    firstname = models.CharField(max_length=100)
-    lastname = models.CharField(max_length=100)
-    phoneNumber = PhoneField(blank=True, help_text='Contact phone number')
-    role = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(3)])
-    # 0: viewer | 1: annotator | 2: validator | 3: administrator"""
 
 class Genome(models.Model):
     id = models.CharField(max_length=50, primary_key=True)
@@ -89,3 +66,17 @@ class BlastHit(models.Model):
     len = models.IntegerField()
 
     blastResult = models.ForeignKey(BlastResult, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+    content = models.CharField(max_length=500, blank=False)
+    date = models.DateTimeField(auto_now=True)
+    likes = models.IntegerField(default=0)
+    isAnswer = models.BooleanField(default=False)
+    
+    annotation = models.ForeignKey(Annotation, on_delete=models.CASCADE, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    question = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=False)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import SearchForm, AnnotForm, UserCreationForm
+from .forms import *
 from .models import *
 from .utils import blastn, blastp
 from django.http import HttpRequest, JsonResponse
@@ -105,28 +105,86 @@ def Search(request: HttpRequest):
             # Querry
             sequences = Sequence.objects.all()
             if bacterial_name!='':
-                sequences = sequences.filter(genome__id__contains=bacterial_name)
+                sequences = sequences.filter(genome__id__icontains=bacterial_name)
             if isCds:
                 sequences = sequences.filter(isCds=isCds)
             if gene_name!='':
-                sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__gene__contains=gene_name)
+                sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__gene__icontains=gene_name)
             if transcript_name!='':
-                sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__transcript__contains=transcript_name)
+                sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__transcript__icontains=transcript_name)
             if description!='':
-                sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__description__contains=description)
+                sequences = sequences.filter(annotationQueryName__isValidate=True, annotationQueryName__description__icontains=description)
             if seq!='':
-                sequences = sequences.filter(sequence__regex='.*'+'.*'.join(seq.split('%'))+'.*')
+                seq = seq.upper()
+                splitSearch = seq.split('%')
+                for s in splitSearch:
+                    sequences = sequences.filter(sequence__contains=s)
+                sequences = sequences.filter(sequence__regex='.*'+'.*'.join(splitSearch)+'.*')
     return render(request, 'bacterial_genome_annotation/search.html', {"form": form, "description": description, "sequences": sequences})
 
 def SequenceView(request: HttpRequest, id):
+    
     sequence = Sequence.objects.get(id=id)
-    print(sequence.id)
     annotationsValidated = Annotation.objects.filter(sequence=sequence, isValidate=True)
     annotations = Annotation.objects.filter(sequence=sequence, isValidate=False)
+    form = CommentForm()
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid() and request.user.is_authenticated:
+            newComment = Comment()
+            newComment.annotation = annotationsValidated.first()
+            newComment.user = request.user
+            newComment.content = form.cleaned_data['comment']
+            newComment.save()
+    class annotForTheme:
+        def __init__(self, ann: Annotation, com: list):
+            self.annotation=ann
+            self.comments = com
+            
+    class commentForTheme:
+        def __init__(self, com: Comment, ans: list):
+            self.comment = com
+            self.answers = ans
+    
+    annotationsValidatedBetter = []
+    for a in annotationsValidated:
+        comments = Comment.objects.filter(annotation=a)
+        answers = comments.filter(isAnswer=True)
+        base = comments.filter(isAnswer = False).order_by('-likes')
+        commentsPretty = []
+        for c in base:
+            alist = []
+            current = c
+            nextAnswer = answers.filter(question=current).order_by('date')
+            while not (not nextAnswer):
+                alist.append(nextAnswer.first())
+                current = nextAnswer
+                nextAnswer = answers.filter(question=current)
+            commentsPretty.append(commentForTheme(c, alist))
+        annotationsValidatedBetter.append(annotForTheme(a, commentsPretty))
+        
+    annotationsBetter = []
+    for a in annotations:
+        comments = Comment.objects.filter(annotation=a)
+        answers = comments.filter(isAnswer=True)
+        base = comments.filter(isAnswer = False).order_by('-likes')
+        commentsPretty = []
+        for c in base:
+            alist = []
+            current = c
+            nextAnswer = answers.filter(question=current).order_by('date')
+            while not (not nextAnswer):
+                alist.append(nextAnswer.first())
+                current = nextAnswer
+                nextAnswer = answers.filter(question=current)
+            commentsPretty.append(commentForTheme(c, alist))
+        annotationsBetter.append(annotForTheme(a, commentsPretty))
+        
     params = {
         "seq":sequence,
-        "annotationsValidated":annotationsValidated,
-        "annotations":annotations
+        "annotationsValidated":annotationsValidatedBetter,
+        "annotations":annotationsBetter,
+        "form": form
     }
     return render(request, 'bacterial_genome_annotation/sequence.html', params)
 
