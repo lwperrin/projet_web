@@ -10,6 +10,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.password_validation import validate_password as v_p
 from django.core.exceptions import ValidationError
 import re
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request: HttpRequest):
