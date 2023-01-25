@@ -385,6 +385,10 @@ a.article:hover {
     }
 }
 
+
+/*-----------------------------------
+search page
+-------------------------------------*/
 .searchPage {
 	background-color: cadetblue;
 	text-align:center;
@@ -408,11 +412,12 @@ a.article:hover {
 	/*float:bottom;*/
 }
 #Sequence{
-	height:120px;
-	width:120px;
+	height:200px;
+	width:800px;
 	border:1px solid #ccc;
 	font:16px/26px Georgia, Garamond, Serif;
-	overflow:auto;
+	word-wrap: break-word;
+	/*overflow:auto;*/
 }
 
 
