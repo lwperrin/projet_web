@@ -1,20 +1,31 @@
 {% extends 'bacterial_genome_annotation/Base.html' %}
 {% load mytags %}
+{% load static %}
 {% block content %}
-    <div style = "max-width:470px;">
+<div class="searchPage">   
+<div class="container">
         <form action="" method="post" novalidate>
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Envoyer">
+            <input class="form-control" type="submit" value="Rechercher" id="Recherche">
         </form>
+        </div>
     </div>
-    <ul>
+    <table id="SearchQuery">
+        <thead>
+            <tr>
+                <th colspan="2">Query</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for seq in sequences|slice:":50" %}
-            <li>
-                <a href="{% url 'sequence' id=seq.id %}" > {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a>
-            </li>
+        <tr>
+                <td><a id= "Query" class="form-control"  href="{% url 'sequence' id=seq.id %}" > {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a></td>
+        </tr>
         {% empty %}
-            <li>No sequence found.</li>
+            <tr>No sequence found.</tr>
         {% endfor %}
-    </ul>
+    </tbody>
+    </table>>
+</div>    
 {% endblock %}

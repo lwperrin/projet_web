@@ -1,58 +1,32 @@
 {% extends 'bacterial_genome_annotation/Base.html' %}
 {% load mytags %}
 {% block content %}
-    <ul>
+<div id="Query">    
+<ul>
         <a>Sequence: {{seq.id}} - Position: {{seq.position}} - Genome {{seq.genome.id}}</a>
-
-        <a>{{seq.sequence}}</a>
-
+        <div id="Sequence">
+        <a >{{seq.sequence}}</a>
+</div>
         {% for a in annotationsValidated %}
-            <li>
-            <p>Gene: {{ a.annotation.gene }} - Gene biotype: {{ a.annotation.gene_biotype }} - Gene symbol: {{a.annotation.gene_symbol}} - Transcript {{a.annotation.transcript}} - Transcript biotype {{a.annotation.transcript_biotype}}</p>
+
+            <p>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</p>
         
-            <p>Description: {{a.annotation.description}}</p>
+            <p>Description: {{a.description}}</p>
             
-            <p>Annotation de {{a.annotation.annotator.first_name}} {{a.annotation.annotator.last_name}} and validated by {{a.annotation.validator.first_name}} {{a.annotation.validator.last_name}}</p>
-            <p>Commentaires</p>
-            <form action="" method="post" novalidate>
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Envoyer">
-            </form>
-            <ul>
-                {% for c in a.comments %}
-                    <li>
-                        <p>{{c.comment.content}}</p>
-                        <p>De {{c.comment.user.email}} le {{c.comment.date}} | Nombre de likes : {{c.comment.likes}}</p>
-                        <p>Réponses :</p>
-                        <ul>
-                            {%for a in c.answers%}
-                                <li>
-                                    <p>{{a.comment.content}}</p>
-                                    <p>De {{a.comment.user.email}} le {{a.comment.date}} | Nombre de likes : {{a.comment.likes}}</p>
-                                </li>
-                            {%endfor%}
-                        </ul>
-                    </li>
-                    <ul>
-                    
-                    </ul>
-                {% endfor %}
-            </ul>
-            
-            </li>
-            {% empty %}
+            <p>Annotation de {{a.annotator.first_name}} {{a.annotator.last_name}} and validated by {{a.validator.first_name}} {{a.validator.last_name}}</p>
+        {% empty %}
             <p>Not validated annotation yet !</p>
         {% endfor %}
             <p><a href="{% url 'Parser' id=seq.id %}" >BLAST</a></p>
         <a>Other annotations:</a>
         {% for a in annotations %}
             <li>
-                <a>Gene: {{ a.annotation.gene }} - Gene biotype: {{ a.annotation.gene_biotype }} - Gene symbol: {{a.annotation.gene_symbol}} - Transcript {{a.annotation.transcript}} - Transcript biotype {{a.annotation.transcript_biotype}}</a>
+                <a>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</a>
                 
 
-                <a>Description: {{a.annotation.description}}</a>
+                <a>Description: {{a.description}}</a>
             </li>
         {% endfor %}
     </ul>
+    </div>
 {% endblock %}
