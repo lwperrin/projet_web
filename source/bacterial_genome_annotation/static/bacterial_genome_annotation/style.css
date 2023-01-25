@@ -44,10 +44,7 @@ nav{
 footer{
 	float:bottom;
 }
-
-/*
-    DEMO STYLE
-*/
+/* Sidebar*/
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
@@ -92,11 +89,6 @@ a:focus {
     border-bottom: 1px dashed #ddd;
     margin: 40px 0;
 }
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-
 .wrapper {
     display: flex;
     width: 100%;
@@ -188,21 +180,12 @@ a.article:hover {
     color: #fff !important;
 }
 
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
 #content {
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
 }
-
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
@@ -215,9 +198,10 @@ a.article:hover {
     }
 }
 
-/*
-    DEMO STYLE
-*/
+.titleSite {
+    color : #c5c97f;
+    background-color : #7386D5;
+}
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
@@ -358,20 +342,12 @@ a.article:hover {
     color: #fff !important;
 }
 
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
 #content {
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
 }
-
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
 
 @media (max-width: 768px) {
     #sidebar {
@@ -390,13 +366,14 @@ a.article:hover {
 search page
 -------------------------------------*/
 .searchPage {
-	background-color: cadetblue;
+	background-color: rgb(255, 255, 255);
 	text-align:center;
 	width:100%;
 	
 }
 #SearchQuery{
-	background-color:beige;
+    color : #fff ;
+	background-color:#c5c97f;
 	width: 100%;
 	text-align: center;
 }

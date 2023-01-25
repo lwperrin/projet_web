@@ -18,11 +18,13 @@ class UserChangeForm(UserChangeForm):
 
 class SearchForm(forms.Form):
     bacterial_name = forms.CharField(max_length=100, required=False)
-    nucleic_or_peptidic = forms.ChoiceField(choices = ((True,'Nucleic'),(False,'Peptidic')), required=False)
     sequence = forms.CharField(max_length = 100, min_length=3, required=False)
     gene_name = forms.CharField(max_length = 100, required=False)
     transcript_name = forms.CharField(max_length = 100, required=False)
     description = forms.CharField(max_length = 100, required=False)
+    nucleic_or_peptidic = forms.ChoiceField(choices = ((True,'Nucleic'),(False,'Peptidic')), required=False)
+    # fields = ((forms.CharField(max_length=100, required=False),forms.ChoiceField(choices = ((True,'Nucleic'),(False,'Peptidic')), required=False)), forms.CharField(max_length = 100, min_length=3, required=False), forms.CharField(max_length = 100, required=False), forms.CharField(max_length = 100, required=False),forms.CharField(max_length = 100, required=False))
+    
 
 class AnnotForm(forms.Form):
     id = forms.CharField(max_length=50, required=False) # The same than the sequence but with '.X' with X a number to allow multipple annotation.
