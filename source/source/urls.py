@@ -30,6 +30,8 @@ urlpatterns.extend([
     path('search/', views.Search, name="search"),
     path('annoter/', views.annoter, name='annoter'),
     path('AddGenome/', views.AddGenome, name="AddGenome"),
+    path('AboutUs/',views.AboutUs, name="AboutUs"),
+    path('contact/',views.contact, name="contact"),
 ])
 
 # From a sequence
