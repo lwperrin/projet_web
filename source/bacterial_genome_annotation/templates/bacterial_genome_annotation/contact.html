@@ -1,0 +1,22 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% block content %}
+
+	<form>
+	<p> Your name : </p> <input type="text" name="name">
+	<p> Your email : </p> <input type="text" name="email">
+	<p> Objet :  </p>
+ 	<select> 
+  	<option value="1"> Information sur mon Compte </option>
+  	<option value="2"> Information Annotations </option>
+	<option value="3"> Information Validations </option>
+	<option value="4"> Information Base de données </option>
+	<option value="5"> Autres </option>
+	</select>
+	<p>Your message</p><textarea name="message" rows="10" cols="40"></textarea><br><br>
+	<input type="submit" value="Send">
+	<input type="reset" value="Clear">
+	</form>
+
+
+{% endblock %}  
+
