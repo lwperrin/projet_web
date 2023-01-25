@@ -215,3 +215,9 @@ def validate_password(request: HttpRequest):
         return JsonResponse({'is_valid': True, 'message': 'Password is valid', 'is_empty': password==''})
     except ValidationError as e:
         return JsonResponse({'is_valid': False, 'message': ' '.join(e.messages), 'is_empty': password==''})
+    
+def contact(request: HttpRequest):
+    return render(request, 'bacterial_genome_annotation/contact.html')
+
+def AboutUs(request: HttpRequest):
+    return render(request, 'bacterial_genome_annotation/AboutUs.html')
