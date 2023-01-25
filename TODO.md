@@ -10,7 +10,8 @@
         - [X] Login
         - [X] Account
         - [X] Search 
-        - [ ] AboutUs
+        - [X] AboutUs
+        - [X] contact
     - [ ] Link between pages
         - [X] Annot
         - [ ] Parser
@@ -19,6 +20,7 @@
         - [X] Account
         - [X] Search
         - [ ] AboutUs
+        - [ ] contact
     - [ ] Forum page
     - [ ] Annotation comment
     - [ ] Account page (different depending on the user group)
