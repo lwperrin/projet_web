@@ -3,14 +3,17 @@
 ## To be done
 
 - [ ] HTML structure
-    - [ ] Pages schemes
+    - [X] Pages schemes
         - [X] Annot
-        - [ ] Parser
+        - [X] Parser
         - [X] Add
         - [X] Login
         - [X] Account
-        - [X] Search 
-        - [ ] AboutUs
+        - [ ] Search
+            - [ ] Blast
+            - [ ] Annotation  
+        - [X] AboutUs
+        - [X] contact
     - [ ] Link between pages
         - [X] Annot
         - [ ] Parser
@@ -18,7 +21,10 @@
         - [X] Login
         - [X] Account
         - [X] Search
+            - [ ] Blast
+            - [ ] Annotation  
         - [ ] AboutUs
+        - [ ] contact
     - [ ] Forum page
     - [ ] Annotation comment
     - [ ] Account page (different depending on the user group)
@@ -27,6 +33,9 @@
 - [ ] Front
     - [X] Banner or floating menu or sidebar
     - [X] Create a sign up page
+    - [ ] Color
+    - [X] Visualization of query Search 
+    - [ ] Visualization Sequence of Query
     - [ ] Visualizing a particular pattern in a sequence
     - [X] Bootstrap 4
     - [X] front page: put a side-bar with a menu to access every feature

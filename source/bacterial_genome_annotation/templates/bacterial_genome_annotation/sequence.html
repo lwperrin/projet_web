@@ -1,32 +1,143 @@
 {% extends 'bacterial_genome_annotation/Base.html' %}
 {% load mytags %}
 {% block content %}
-<div id="Query">    
-<ul>
-        <a>Sequence: {{seq.id}} - Position: {{seq.position}} - Genome {{seq.genome.id}}</a>
-        <div id="Sequence">
-        <a >{{seq.sequence}}</a>
-</div>
-        {% for a in annotationsValidated %}
+<div id="QuerySequence">    
 
-            <p>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</p>
-        
-            <p>Description: {{a.description}}</p>
-            
-            <p>Annotation de {{a.annotator.first_name}} {{a.annotator.last_name}} and validated by {{a.validator.first_name}} {{a.validator.last_name}}</p>
+<table id="TableQuery">
+    <thead>
+        <tr>
+            <th colspan="2">Sequence ID: {{seq.id}}</th>
+        </tr>
+    </thead>
+    <tbody id="QuerySequence" class="form-control">
+        <tr>
+            <td class="col21">
+                Position: 
+            </td>  
+            <td class="col22">
+                {{seq.position}}
+            </td>
+        <tr>    
+            <td class="col21">
+                Genome:
+            </td>
+            <td class="col22">
+                {{seq.genome.id}}
+            </td>
+        </tr>
+        <!-- <tr>
+            <td> !!Option one 
+                Sequence:
+            </td> 
+            <td COLSPAN="2">
+                <div id="Sequence" class="form-control">
+                {{seq.sequence}}
+                </div>
+            </td>
+        </tr> !!Option two
+    -->
+    </tbody>
+
+</table>
+       <div id="Sequence" class="form-control">
+        <a >{{seq.sequence}}</a>
+</div>  <!-- Option three-->
+</table>
+        {% for a in annotationsValidated %}
+<table>
+        <thead>
+            <tr>
+                <th colspan="2">Gene: {{ a.gene }}</th>
+            </tr>
+        </thead>
+        <tbody id="QuerySequence" class="form-control">
+            <tr>
+                <td class="col21">
+                    Gene biotype:
+                </td>
+                <td class="col22">
+                    {{ a..gene_biotype }}
+                </td>
+            </tr>  
+            <tr>  
+                <td class="col21">
+                    Gene symbol: 
+                </td>
+                <td class="col22">
+                    {{a.gene_symbol}} 
+                </td>
+            </tr>    
+            <tr>
+                <td class="col21">
+                    Transcript:
+                </td>
+                <td class="col22">
+                    {{a.transcript}}
+                </td>
+            </tr>
+            <tr>    
+                <td class="col21">
+                    Transcript biotype:
+                </td>
+                <td class="col22">
+                    {{a.transcript_biotype}}
+                </td>
+            </tr>
+            <tr>
+                <td class="col21">
+                    Description: 
+                </td>
+                <td class="col22">
+                    {{a.description}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="Button">
+        <a href="{% url 'Parser' id=seq.id %}">BLAST</a>
+    </div>    
+    <table>  
+        <thead>
+            <tr>
+                <th colspan="2">Annotator and Validator</th>
+            </tr>
+        </thead>
+        <tbody id="QuerySequence" class="form-control">
+            <tr>    
+                <td class="col31">
+                    Annotator:
+                </td>
+                <td class="col32">
+                    {{a.annotator.first_name}}
+                </td>
+                <td class="col33">
+                    {{a.annotator.last_name}}
+                </td>
+            </tr>    
+            <tr>
+                <td class="col31">
+                    Validator:
+                </td>
+                <td class="col32">
+                    {{a.validator.first_name}}
+                </td>
+                <td class="col33">
+                    {{a.validator.last_name}}
+                </td>
+            </tr>
+        </tbody>
+    </table>        
         {% empty %}
             <p>Not validated annotation yet !</p>
         {% endfor %}
-            <p><a href="{% url 'Parser' id=seq.id %}" >BLAST</a></p>
-        <a>Other annotations:</a>
+            <a>Other annotations:</a>
         {% for a in annotations %}
-            <li>
+            
                 <a>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</a>
                 
 
                 <a>Description: {{a.description}}</a>
-            </li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
     </div>
 {% endblock %}
