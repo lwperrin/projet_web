@@ -54,11 +54,12 @@ footer{
 	width:100%;
 	
 }
+/*
 #SearchQuery{
 	background-color:beige;
 	width: 100%;
 	text-align: center;
-}
+}*/
 #QuerySequence{
 	background-color:azure;
 	border: solid rgba(0, 0, 0, .15);
@@ -104,6 +105,8 @@ td{
 	/*width: 100%;*/
 	/*float:bottom;*/
 }
+
+
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
