@@ -3,7 +3,7 @@
 {% block content %}
 <div id="QuerySequence">    
 
-<table id="TableQuery">
+<table>
     <thead>
         <tr>
             <th colspan="2">Sequence ID: {{seq.id}}</th>
@@ -94,9 +94,11 @@
         </tbody>
     </table>
 
-    <div class="Button">
-        <a href="{% url 'Parser' id=seq.id %}">BLAST</a>
-    </div>    
+    <div id="buttonBlast">
+        <button class="btn btn-secondary"><a href="{% url 'Parser' id=seq.id %}">BLAST</a></button>
+        
+    </div>   
+    
     <table>  
         <thead>
             <tr>

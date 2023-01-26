@@ -65,13 +65,17 @@ footer{
 	border: solid rgba(0, 0, 0, .15);
 	border-width: 1px 0;
 	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    text-align: center;
 }
 #Sequence{
-	height:120px;
-	width:800px;
+	height:100%;
+	width:900px;
 	border:1px solid #ccc;
 	font:16px/26px Georgia, Garamond, Serif;
+    word-wrap: break-word; 
 	/*overflow:auto;*/
+    margin-left: auto;
+    margin-right: auto; 
 }
 
 /*.container {
@@ -105,7 +109,26 @@ td{
 	/*width: 100%;*/
 	/*float:bottom;*/
 }
-
+.col21{
+    width: 800px; 
+    
+}
+.col22{
+    width: 800px;
+}
+.col31{
+    width: 500px;
+}
+.col32{
+    width: 700px;
+}
+.col33{
+    width: 700px;
+}
+#buttonBlast{
+    height: 50px;
+    margin-top: 10px;
+}
 
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
