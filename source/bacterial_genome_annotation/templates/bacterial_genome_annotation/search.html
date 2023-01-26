@@ -24,7 +24,8 @@
                 <td><a id= "QuerySequence" class="form-control"  href="{% url 'sequence' id=seq.id %}" > {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a></td>
         </tr>
         {% empty %}
-            <tr>No sequence found.</tr>
+            <tr>
+                <td>No sequence found.</td></tr>
         {% endfor %}
     </tbody>
     </table>
