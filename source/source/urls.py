@@ -38,6 +38,7 @@ urlpatterns.extend([
 urlpatterns.extend([
     path('search/sequence/<str:id>', views.SequenceView, name='sequence'),
     path('Parser/<str:id>/', views.Parser, name="Parser"),
+    path('annoter/<str:id>/', views.ANNOT, name="ANNOT"),
 ])
 
 # Registration and account management

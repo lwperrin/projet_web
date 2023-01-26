@@ -58,6 +58,27 @@ def annoter(request: HttpRequest):
             #    sequences = sequences.filter(sequence__regex='.*'+'.*'.join(seq.split('%'))+'.*')
     return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form, "description": description})#, "sequences": sequences})
 
+#
+#### ANNOT via la page sequence ref BLAST #####
+#
+def ANNOT(request: HttpRequest,id):
+    form = AnnotForm()
+    description = 'empty'
+    #sequences = []
+    if request.method == "POST":
+        form = AnnotForm(request.POST)
+        if form.is_valid():
+            id = form.cleaned_data['ID']
+            gene = form.cleaned_data['gene name']
+            gene_biotype = form.cleaned_data['gene_biotype']
+            transcript_biotype = form.cleaned_data['biotype transcript_name']
+            gene_symbol = form.cleaned_data['gene symbol']
+            description = form.cleaned_data['description']
+            transcript = form.cleaned_data['transcript']
+            isValidate = form.cleaned_data['isValidate']
+
+    return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form, "description": description})#, "sequences": sequences})
+
 @login_required
 def Parser(request: HttpRequest, id):
     params = {"progression": "", "results": []}
