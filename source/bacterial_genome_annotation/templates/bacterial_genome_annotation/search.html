@@ -11,7 +11,7 @@
         </form>
         </div>
     </div>
-    <table id="SearchQuery">
+    <table>
         <thead>
             <tr>
                 <th colspan="2">Query</th>
@@ -20,7 +20,7 @@
         <tbody>
         {% for seq in sequences|slice:":50" %}
         <tr>
-                <td><a id= "Query" class="form-control"  href="{% url 'sequence' id=seq.id %}" > {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a></td>
+                <td><a id= "QuerySequence" class="form-control"  href="{% url 'sequence' id=seq.id %}" > {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a></td>
         </tr>
         {% empty %}
             <tr>No sequence found.</tr>
