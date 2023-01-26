@@ -3,13 +3,14 @@
 {% load static %}
 {% block content %}
 <div class="searchPage">   
-<div class="container">
+<!--<div class="container">-->
         <form action="" method="post" novalidate>
             {% csrf_token %}
             {{ form.as_p }}
-            <input class="form-control" type="submit" value="Rechercher" id="Recherche">
+            <input class="btn btn-secondary" type="submit" value="Rechercher" id="Recherche">
         </form>
-        </div>
+    <!--    </div> -->
+    <br>
     </div>
     <table>
         <thead>
