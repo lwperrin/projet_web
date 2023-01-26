@@ -128,6 +128,7 @@ def SequenceView(request: HttpRequest, id):
     annotationsValidated = Annotation.objects.filter(sequence=sequence, isValidate=True)
     annotations = Annotation.objects.filter(sequence=sequence, isValidate=False)
     form = CommentForm()
+    """
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid() and request.user.is_authenticated:
@@ -178,12 +179,12 @@ def SequenceView(request: HttpRequest, id):
                 current = nextAnswer
                 nextAnswer = answers.filter(question=current)
             commentsPretty.append(commentForTheme(c, alist))
-        annotationsBetter.append(annotForTheme(a, commentsPretty))
+        annotationsBetter.append(annotForTheme(a, commentsPretty))"""
         
     params = {
         "seq":sequence,
-        "annotationsValidated":annotationsValidatedBetter,
-        "annotations":annotationsBetter,
+        "annotationsValidated":annotationsValidated,
+        "annotations":annotations,
         "form": form
     }
     return render(request, 'bacterial_genome_annotation/sequence.html', params)
