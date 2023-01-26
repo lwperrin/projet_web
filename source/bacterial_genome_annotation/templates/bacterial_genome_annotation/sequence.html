@@ -56,7 +56,7 @@
                     Gene biotype:
                 </td>
                 <td class="col22">
-                    {{ a..gene_biotype }}
+                    {{ a.gene_biotype }}
                 </td>
             </tr>  
             <tr>  
@@ -134,7 +134,7 @@
             <a>Other annotations:</a>
         {% for a in annotations %}
             
-                <a>Gene: {{ a.gene }} - Gene biotype: {{ a..gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</a>
+                <a>Gene: {{ a.gene }} - Gene biotype: {{ a.gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</a>
                 
 
                 <a>Description: {{a.description}}</a>
