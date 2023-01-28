@@ -214,9 +214,6 @@ def GenomeView(request: HttpRequest, id: str):
         newS.id = s.id
         b = i+1-s.position
         e = j-s.position-1
-        print(f'start at {s.position}')
-        print(f'b={b}')
-        print(f'e={e}')
         if s.direction:
             tmp = s.sequence
         else:
@@ -225,7 +222,6 @@ def GenomeView(request: HttpRequest, id: str):
         if e>b:
             seqList.append(sequenceAugmented(newS))
         i += len(newS.sequence)
-        print(i)
         if i>=j:
             break
     if i<j:
