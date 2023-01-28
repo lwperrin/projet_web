@@ -33,9 +33,9 @@ class Sequence(models.Model):
     sequence = models.TextField()
     position = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     isCds = models.BooleanField(default=True) # True: cds | False: peptidic
+    direction = models.BooleanField(default=True) # True: direct | False: undirect
 
     genome = models.ForeignKey(Genome, on_delete=models.CASCADE)
-
 
 class Annotation(models.Model):
     id = models.CharField(max_length=50, primary_key=True) # The same than the sequence but with '.X' with X a number to allow multipple annotation.

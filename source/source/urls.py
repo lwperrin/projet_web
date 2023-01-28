@@ -34,10 +34,11 @@ urlpatterns.extend([
     path('contact/',views.contact, name="contact"),
 ])
 
-# From a sequence
+# View data
 urlpatterns.extend([
     path('search/sequence/<str:id>', views.SequenceView, name='sequence'),
     path('Parser/<str:id>/', views.Parser, name="Parser"),
+    path('search/genome/<str:id>', views.GenomeView, name='genome'),
 ])
 
 # Registration and account management
