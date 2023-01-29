@@ -49,6 +49,11 @@ class Annotation(models.Model):
     
     sequence = models.ForeignKey(Sequence, on_delete=models.CASCADE, related_name='annotationForSequence', related_query_name='annotationQueryName')
     annotator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForAnnotator")
+
+
+    validator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")
+
+
     validator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")
 
 class BlastResult(models.Model):
@@ -65,6 +70,10 @@ class BlastHit(models.Model):
     accession = models.CharField(max_length=50)
     len = models.IntegerField()
 
+    value = models.IntegerField()
+    identitie = models.IntegerField()
+
+
     blastResult = models.ForeignKey(BlastResult, on_delete=models.CASCADE)
 
 class Comment(models.Model):
@@ -79,4 +88,8 @@ class Comment(models.Model):
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=False)
+
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=False)
+

@@ -26,6 +26,11 @@ def Account(request: HttpRequest):
 def LoginPage(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/LoginPage.html')
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 def annoter(request: HttpRequest):
     form = AnnotForm()
     description = 'empty'
@@ -107,7 +112,11 @@ def Parser(request: HttpRequest, id):
             else:
                 params['progression'] = 'Finished !'
                 params['results'] = list
+<<<<<<< Updated upstream
             
+=======
+                    
+>>>>>>> Stashed changes
     return render(request, 'bacterial_genome_annotation/Parser.html', params)
 
 def Search(request: HttpRequest):
@@ -240,6 +249,10 @@ def validate_password(request: HttpRequest):
     
 def contact(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/contact.html')
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 def AboutUs(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AboutUs.html')
