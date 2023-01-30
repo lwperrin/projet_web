@@ -34,7 +34,6 @@ def blastp(sequence: str):
     with open('results.xml', 'w') as save_file: 
         blast_results = result_handle.read() 
         save_file.write(blast_results)
-
 ## Sequence compressor
 
 def cds2compact(sequence: str)->str:

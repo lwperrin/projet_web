@@ -107,7 +107,6 @@ def Parser(request: HttpRequest, id):
             else:
                 params['progression'] = 'Finished !'
                 params['results'] = list
-            
     return render(request, 'bacterial_genome_annotation/Parser.html', params)
 
 def Search(request: HttpRequest):
@@ -240,7 +239,6 @@ def validate_password(request: HttpRequest):
     
 def contact(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/contact.html')
-
 
 def AboutUs(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AboutUs.html')
