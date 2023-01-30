@@ -70,9 +70,10 @@ class BlastHit(models.Model):
     accession = models.CharField(max_length=50)
     len = models.IntegerField()
 
-    value = models.IntegerField()
-    identitie = models.IntegerField()
-
+    value = models.IntegerField(null=True)
+    identitie = models.IntegerField(null=True)
+    #ident = models.IntegerField(null=True)
+    #lenn = models.IntegerField(null=True)
 
     blastResult = models.ForeignKey(BlastResult, on_delete=models.CASCADE)
 

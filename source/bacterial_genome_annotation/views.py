@@ -242,3 +242,6 @@ def contact(request: HttpRequest):
 
 def AboutUs(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AboutUs.html')
+
+def alignement(request: HttpRequest):
+    return render(request, 'bacterial_genome_annotation/alignement.html')

@@ -28,6 +28,7 @@ urlpatterns = [
 urlpatterns.extend([
     path('', views.home, name="home"),
     path('search/', views.Search, name="search"),
+    path('alignement/', views.alignement, name="alignement"),
     path('annoter/', views.annoter, name='annoter'),
     path('AddGenome/', views.AddGenome, name="AddGenome"),
     path('AboutUs/',views.AboutUs, name="AboutUs"),
