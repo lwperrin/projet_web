@@ -4,11 +4,6 @@ from .models import BlastHit, BlastResult
 
 # Usefull function and class are coded here.
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
 def blastn(blast: BlastResult):
     results = []
     result_handle = NCBIWWW.qblast("blastn", "nt", blast.sequence, hitlist_size=101)
@@ -26,12 +21,9 @@ def blastn(blast: BlastResult):
         hit.len=align.length
         hit.num=i
         hit.blastResult = blast
-<<<<<<< Updated upstream
-=======
         for hsp in align.hsps:
             hit.value = hsp.expect
             hit.identitie = ( hsp.identities / hsp.align_length ) *100
->>>>>>> Stashed changes
         hit.save()
         i+=1
     blast.isFinished=True
@@ -42,10 +34,6 @@ def blastp(sequence: str):
     with open('results.xml', 'w') as save_file: 
         blast_results = result_handle.read() 
         save_file.write(blast_results)
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 ## Sequence compressor
 
 def cds2compact(sequence: str)->str:
