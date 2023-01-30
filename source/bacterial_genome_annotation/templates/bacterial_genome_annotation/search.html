@@ -7,9 +7,10 @@
         <form action="" method="get" novalidate>
             {% csrf_token %}
             {{ form.as_p }}
-            <input class="form-control" type="submit" value="Rechercher" id="Recherche">
+            <input class="btn btn-secondary" type="submit" value="Rechercher" id="Recherche">
         </form>
-        </div>
+    <!--    </div> -->
+    <br>
     </div>
     <table>
         <thead>
@@ -24,7 +25,8 @@
         </tr>
         
         {% empty %}
-            <tr>No sequence found.</tr>
+            <tr>
+                <td>No sequence found.</td></tr>
         {% endfor %}
         
     </tbody>

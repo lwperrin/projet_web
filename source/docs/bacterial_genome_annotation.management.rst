@@ -5,14 +5,13 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 4
 
-   bacterial_genome_annotation.management.commands
+    bacterial_genome_annotation.management.commands
 
 Module contents
 ---------------
 
 .. automodule:: bacterial_genome_annotation.management
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:

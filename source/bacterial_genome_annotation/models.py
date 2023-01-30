@@ -33,9 +33,9 @@ class Sequence(models.Model):
     sequence = models.TextField()
     position = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     isCds = models.BooleanField(default=True) # True: cds | False: peptidic
-    direction = models.BooleanField(default=True) # True: direct | False: undirect
 
     genome = models.ForeignKey(Genome, on_delete=models.CASCADE)
+
 
 class Annotation(models.Model):
     id = models.CharField(max_length=50, primary_key=True) # The same than the sequence but with '.X' with X a number to allow multipple annotation.
@@ -49,6 +49,11 @@ class Annotation(models.Model):
     
     sequence = models.ForeignKey(Sequence, on_delete=models.CASCADE, related_name='annotationForSequence', related_query_name='annotationQueryName')
     annotator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForAnnotator")
+
+
+    validator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")
+
+
     validator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")
 
 class BlastResult(models.Model):
@@ -65,6 +70,11 @@ class BlastHit(models.Model):
     accession = models.CharField(max_length=50)
     len = models.IntegerField()
 
+    value = models.IntegerField(null=True)
+    identitie = models.IntegerField(null=True)
+    #ident = models.IntegerField(null=True)
+    #lenn = models.IntegerField(null=True)
+
     blastResult = models.ForeignKey(BlastResult, on_delete=models.CASCADE)
 
 class Comment(models.Model):
@@ -77,4 +87,8 @@ class Comment(models.Model):
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=False)
+
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=False)
+

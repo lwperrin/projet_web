@@ -1,13 +1,8 @@
 from Bio.Blast import NCBIWWW, NCBIXML
 from Bio import SeqIO
-try:
-    from .models import *
-except:
-    from models import *
+from .models import BlastHit, BlastResult
 
 # Usefull function and class are coded here.
-
-# Blast
 
 def blastn(blast: BlastResult):
     results = []
@@ -26,6 +21,11 @@ def blastn(blast: BlastResult):
         hit.len=align.length
         hit.num=i
         hit.blastResult = blast
+        for hsp in align.hsps:
+            hit.value = hsp.expect
+            hit.identitie = ( hsp.identities / hsp.align_length ) *100
+            #hit.ident = hsp.identities
+            #hit.lenn = hsp.align_length
         hit.save()
         i+=1
     blast.isFinished=True
@@ -36,7 +36,6 @@ def blastp(sequence: str):
     with open('results.xml', 'w') as save_file: 
         blast_results = result_handle.read() 
         save_file.write(blast_results)
-
 ## Sequence compressor
 
 def cds2compact(sequence: str)->str:
@@ -96,73 +95,3 @@ def compact2pep(sequence: str)->str:
         for i in range(3):
             result = result + number2letter[ord(char)//(24**i)%24]
     return result[prefix:]
-
-## Sequence reversor
-
-def reverseSequence(sequence: str)->str:
-    dico = {'A':'T','C':'G','G':'C','T':'A','R':'Y','Y':'R','S':'S','W':'W','K':'M','M':'K','B':'V','D':'H','H':'D','V':'B','N':'N'}
-    reverseSeq = ''
-    for c in sequence[::-1]:
-        reverseSeq = reverseSeq + dico[c]
-    return reverseSeq
-
-## Fasta parser (better than SeqIO)
-
-def fastaParser(fileName: str, genome: Genome, defaultAnnotator: User=None, defaultValidator: User=None):
-    with open(fileName) as file:
-        lines = file.readlines()
-    sequences = []
-    annotations = []
-    for line in lines:
-        if line.startswith('>'):
-            description = line[1:].split(' ')
-            s = Sequence()
-            s.sequence = ''
-            s.genome = genome
-            s.isCds = description[1]=='cds'
-            s.id = description[0]+('_cds' if s.isCds else '_pep')
-            splitDesc = description[2].split(':')
-            s.position = int(splitDesc[3])
-            try:
-                s.direction = splitDesc[5]=='1'
-            except:
-                s.direction = True
-            sequences.append(s)
-            j = 3
-            if len(description)>3:
-                annotations.append(Annotation())
-                annotations[-1].id = sequences[-1].id + '.0'
-                annotations[-1].sequence = sequences[-1] # Set the foreign key to link with the sequence
-                if defaultAnnotator != None:
-                    annotations[-1].annotator = defaultAnnotator
-                if defaultValidator != None:
-                    annotations[-1].validator = defaultValidator
-                
-                while len(description)>j:
-                    if description[j].startswith('gene:'):
-                        annotations[-1].gene = description[j].split(':')[1]
-                        j+=1
-                    elif description[j].startswith('gene_biotype:'):
-                        annotations[-1].gene_biotype = description[j].split(':')[1]
-                        j+=1
-                    elif description[j].startswith('transcript_biotype:'):
-                        annotations[-1].transcript_biotype = description[j].split(':')[1]
-                        j+=1
-                    elif description[j].startswith('gene_symbol:'):
-                        annotations[-1].gene_symbol = description[j].split(':')[1]
-                        j+=1
-                    elif description[j].startswith('description:'):
-                        annotations[-1].description = ' '.join(description[j:]).split(':')[1]
-                        j+=len(description)
-                    elif description[j].startswith('transcript:'):
-                        annotations[-1].transcript = description[j].split(':')[1]
-                        j+=1
-                    else:
-                        print(description[j])
-                        j+=1
-                    annotations[-1].isValidate = True
-        else:
-            if line.endswith('\n'):
-                line = line[:-1]
-            sequences[-1].sequence = sequences[-1].sequence + line
-    return sequences, annotations

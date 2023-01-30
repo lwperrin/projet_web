@@ -36,30 +36,75 @@ nav{
 	float:left;
 	background-color:cyan;
 	}		
-#search {
+/*
+    #search {
 	text-align:center;
 	width:25%;
 	float:left;
 	background-color:cyan;
 	}
-	
+*/	
 footer{
 	float:bottom;
 }
 
 .searchPage {
-	background-color: cadetblue;
+	background-color: azure;
 	text-align:center;
 	width:100%;
 	
 }
+/*
 #SearchQuery{
 	background-color:beige;
 	width: 100%;
 	text-align: center;
-}
-#Query{
+}*/
+#QuerySequence{
 	background-color:azure;
+	border: solid rgba(0, 0, 0, .15);
+	border-width: 1px 0;
+	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    text-align: center;
+}
+#Sequence{
+	height:100%;
+	width:900px;
+	border:1px solid #ccc;
+	font:16px/26px Georgia, Garamond, Serif;
+    word-wrap: break-word; 
+	/*overflow:auto;*/
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+/*.container {
+	text-align: center;
+	width: 400px;
+	clear: both;
+	display: inline-block;
+  }
+  */
+  /*
+.containerSearch input {
+	width: 100%;
+	clear: both;
+  }
+  */
+#thead_blast{
+    background-color: beige;
+    border: 1px solid #333;
+    text-align: center;
+    width: 100%;
+}
+table{
+    background-color: beige;
+    border: 1px solid #333;
+    text-align: center;
+    width: 100%;
+}
+td{
+    background-color:azure;
 	/*height: 3rem;*/
 	/*background-color: rgba(0, 0, 0, .1);*/
 	border: solid rgba(0, 0, 0, .15);
@@ -68,30 +113,30 @@ footer{
 	/*text-align:center;*/
 	/*width: 100%;*/
 	/*float:bottom;*/
+    
 }
-#Sequence{
-	height:120px;
-	width:800px;
-	border:1px solid #ccc;
-	font:16px/26px Georgia, Garamond, Serif;
-	/*overflow:auto;*/
+.col21{
+    width: 800px; 
+    
+}
+.col22{
+    width: 800px;
+}
+.col31{
+    width: 500px;
+}
+.col32{
+    width: 700px;
+}
+.col33{
+    width: 700px;
+}
+#buttonBlast{
+    height: 50px;
+    margin-top: 10px;
+
 }
 
-.container {
-	text-align: center;
-	width: 400px;
-	clear: both;
-	display: inline-block;
-  }
-  
-.containerSearch input {
-	width: 100%;
-	clear: both;
-  }
-  /*style = "max-width:470px;"*/
-
-
-/*sidebar*/
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {

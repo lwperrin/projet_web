@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import *
 from .models import *
-from .utils import blastn, blastp, reverseSequence
+from .utils import blastn, blastp
 from django.http import HttpRequest, JsonResponse
 import threading
 from django.views import generic
@@ -59,6 +59,27 @@ def annoter(request: HttpRequest):
             #    sequences = sequences.filter(sequence__regex='.*'+'.*'.join(seq.split('%'))+'.*')
     return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form, "description": description})#, "sequences": sequences})
 
+#
+#### ANNOT via la page sequence ref BLAST #####
+#
+def ANNOT(request: HttpRequest,id):
+    form = AnnotForm()
+    description = 'empty'
+    #sequences = []
+    if request.method == "POST":
+        form = AnnotForm(request.POST)
+        if form.is_valid():
+            id = form.cleaned_data['ID']
+            gene = form.cleaned_data['gene name']
+            gene_biotype = form.cleaned_data['gene_biotype']
+            transcript_biotype = form.cleaned_data['biotype transcript_name']
+            gene_symbol = form.cleaned_data['gene symbol']
+            description = form.cleaned_data['description']
+            transcript = form.cleaned_data['transcript']
+            isValidate = form.cleaned_data['isValidate']
+
+    return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form, "description": description})#, "sequences": sequences})
+
 @login_required
 def Parser(request: HttpRequest, id):
     params = {"progression": "", "results": []}
@@ -87,7 +108,6 @@ def Parser(request: HttpRequest, id):
             else:
                 params['progression'] = 'Finished !'
                 params['results'] = list
-            
     return render(request, 'bacterial_genome_annotation/Parser.html', params)
 
 def Search(request: HttpRequest):
@@ -132,7 +152,7 @@ def Search(request: HttpRequest):
         }
         
     return render(request, 'bacterial_genome_annotation/search.html', params)
-
+    
 def SequenceView(request: HttpRequest, id: str):
     
     sequence = Sequence.objects.get(id=id)
@@ -200,62 +220,6 @@ def SequenceView(request: HttpRequest, id: str):
     }
     return render(request, 'bacterial_genome_annotation/sequence.html', params)
 
-def GenomeView(request: HttpRequest, id: str):
-    page = int(request.GET.get('page', '1'))
-    genome = Genome.objects.get(id=id)
-    
-    class sequenceAugmented:
-        def __init__(self, seq):
-            self.seq = seq
-            if isinstance(self.seq, str):
-                self.isSeq = False
-            else:
-                self.isSeq = True
-    seqList = []
-    fullSeq = genome.fullSequence
-    i = (page-1)*10000
-    j=i+10000
-    sequences = Sequence.objects.filter(genome=genome, isCds=True, position__gt=i, position__lt=j).order_by('position')
-    for s in sequences:
-        if i<s.position:
-            seqList.append(sequenceAugmented(fullSeq[i:s.position-1]))
-            i = s.position-1
-        newS = Sequence()
-        newS.id = s.id
-        b = i+1-s.position
-        e = j-s.position-1
-        if s.direction:
-            tmp = s.sequence
-        else:
-            tmp = reverseSequence(s.sequence)
-        newS.sequence = tmp[b:e]
-        if e>b:
-            seqList.append(sequenceAugmented(newS))
-        i += len(newS.sequence)
-        if i>=j:
-            break
-    if i<j:
-        seqList.append(sequenceAugmented(fullSeq[i:j]))
-    class pageObj:
-        def __init__(self, page, first, last):
-            self.page = page
-            self.first = first
-            self.last = last
-            self.hasPrevious = self.page!=self.first
-            self.hasNext = self.page!=self.last
-            self.previous = self.page-1
-            self.next = self.page+1
-            
-            
-    params = {
-        'seqList': seqList,
-        'genome': genome,
-        'fullSequence': genome.fullSequence[(page-1)*10000:j],
-        'page': pageObj(page=page, first=1, last=len(genome.fullSequence)//10000),
-    }
-    
-    return render(request, 'bacterial_genome_annotation/genome.html', params)
-
 class SignUpView(generic.CreateView):
     template_name = 'bacterial_genome_annotation/signup.html'
     form_class = UserCreationForm
@@ -289,3 +253,6 @@ def contact(request: HttpRequest):
 
 def AboutUs(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AboutUs.html')
+
+def alignement(request: HttpRequest):
+    return render(request, 'bacterial_genome_annotation/alignement.html')
