@@ -71,11 +71,9 @@ class Comment(models.Model):
     content = models.CharField(max_length=500, blank=False)
     date = models.DateTimeField(auto_now=True)
     likes = models.IntegerField(default=0)
-    isAnswer = models.BooleanField(default=False)
     
     annotation = models.ForeignKey(Annotation, on_delete=models.CASCADE, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    question = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)

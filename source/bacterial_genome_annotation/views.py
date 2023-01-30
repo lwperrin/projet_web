@@ -11,7 +11,7 @@ from django.contrib.auth.password_validation import validate_password as v_p
 from django.core.exceptions import ValidationError
 import re
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request: HttpRequest):
@@ -91,11 +91,12 @@ def Parser(request: HttpRequest, id):
     return render(request, 'bacterial_genome_annotation/Parser.html', params)
 
 def Search(request: HttpRequest):
-    form = SearchForm()
+    page = int(request.GET.get('page', '1'))
     description = 'empty'
     sequences = []
-    if request.method == "POST":
-        form = SearchForm(request.POST)
+    form = SearchForm(request.GET)
+    
+    if request.method == "GET":
         if form.is_valid():
             bacterial_name = form.cleaned_data['bacterial_name']
             isCds = form.cleaned_data['nucleic_or_peptidic']
@@ -121,7 +122,16 @@ def Search(request: HttpRequest):
                 for s in splitSearch:
                     sequences = sequences.filter(sequence__contains=s)
                 sequences = sequences.filter(sequence__regex='.*'+'.*'.join(splitSearch)+'.*')
-    return render(request, 'bacterial_genome_annotation/search.html', {"form": form, "description": description, "sequences": sequences})
+    paginator = Paginator(sequences, 50)
+    pageObj = paginator.get_page(page)
+    params = {
+        "form": form,
+        "description": description,
+        "sequences": sequences,
+        "page_obj": pageObj,
+        }
+        
+    return render(request, 'bacterial_genome_annotation/search.html', params)
 
 def SequenceView(request: HttpRequest, id: str):
     
