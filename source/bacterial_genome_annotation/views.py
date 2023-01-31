@@ -225,12 +225,15 @@ def GenomeView(request: HttpRequest, id: str):
     genome = Genome.objects.get(id=id)
 
     class sequenceAugmented:
-        def __init__(self, seq):
+        def __init__(self, seq: Sequence):
             self.seq = seq
             if isinstance(self.seq, str):
                 self.isSeq = False
+                self.title=''
             else:
                 self.isSeq = True
+                self.title=''
+                self.title = f"ID : {seq.id}\nPosition : {seq.position}"
     seqList = []
     fullSeq = genome.fullSequence
     i = (page-1)*10000
@@ -242,6 +245,7 @@ def GenomeView(request: HttpRequest, id: str):
             i = s.position-1
         newS = Sequence()
         newS.id = s.id
+        newS.position=s.position
         b = i+1-s.position
         e = j-s.position-1
         if s.direction:
@@ -291,12 +295,10 @@ class LoginView(auth_views.LoginView):
     template_name = 'registration/login.html'
     def get_success_url(self):
         if 'next' in self.request.GET:
-            print('aa')
             messages.add_message(self.request, messages.INFO, 'You must be connected to do that !.')
         return '/'
     def get_initial(self):
         if 'next' in self.request.GET:
-            print('aa')
             messages.add_message(self.request, messages.INFO, 'You must be connected to do that !.')
         return self.initial.copy()
     
