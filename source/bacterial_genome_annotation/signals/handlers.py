@@ -4,13 +4,13 @@ from ..models import Annotation
 
 @receiver(post_save, sender=Annotation)
 def update_sequence_hasvalid(sender, instance, **kwargs):
-    if instance.isValidate and not instance.sequence.hasvalid:
+    if instance.isValidate and not instance.sequence.hasValid:
         instance.sequence.hasValid = True
         instance.sequence.save()
 
 @receiver(post_delete, sender=Annotation)
 def update_sequence_hasvalid_on_delete(sender, instance, **kwargs):
     annotations = Annotation.objects.filter(sequence=instance.sequence)
-    if not any(ann.isValid for ann in annotations):
+    if not any(ann.isValidate for ann in annotations):
         instance.sequence.hasValid = False
         instance.sequence.save()
