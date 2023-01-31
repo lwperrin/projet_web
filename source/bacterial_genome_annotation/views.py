@@ -10,9 +10,9 @@ from django.contrib.auth import login, authenticate, views as auth_views
 from django.contrib.auth.password_validation import validate_password as v_p
 from django.core.exceptions import ValidationError
 import re
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator
-from django.shortcuts import resolve_url
+from django.shortcuts import resolve_url, redirect
 from django.contrib import messages
 
 # Create your views here.
@@ -26,13 +26,14 @@ def AddGenome(request: HttpRequest):
 def Account(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/Account.html')
 
-
+@login_required
+@user_passes_test(lambda u: u.can_annotate)
 def annoter(request: HttpRequest):
-    form = AnnotForm()
+    form = AnnotFormById()
     description = 'empty'
     #sequences = []
     if request.method == "POST":
-        form = AnnotForm(request.POST)
+        form = AnnotFormById(request.POST)
         if form.is_valid():
             id = form.cleaned_data['ID']
             gene = form.cleaned_data['gene name']
@@ -62,23 +63,33 @@ def annoter(request: HttpRequest):
 #
 #### ANNOT via la page sequence ref BLAST #####
 #
-def ANNOT(request: HttpRequest,id):
-    form = AnnotForm()
+@user_passes_test(lambda u: u.is_staff)
+def ANNOT(request: HttpRequest, id):
+    sequence = Sequence.objects.get(id=id)
+    form = AnnotationFormBySearch
     description = 'empty'
     #sequences = []
     if request.method == "POST":
-        form = AnnotForm(request.POST)
+        form = AnnotationFormBySearch(request.POST)
         if form.is_valid():
-            id = form.cleaned_data['ID']
-            gene = form.cleaned_data['gene name']
+            gene = form.cleaned_data['gene']
             gene_biotype = form.cleaned_data['gene_biotype']
-            transcript_biotype = form.cleaned_data['biotype transcript_name']
-            gene_symbol = form.cleaned_data['gene symbol']
+            transcript_biotype = form.cleaned_data['transcript_biotype']
+            gene_symbol = form.cleaned_data['gene_symbol']
             description = form.cleaned_data['description']
             transcript = form.cleaned_data['transcript']
-            isValidate = form.cleaned_data['isValidate']
+            annotation = Annotation()
+            annotation.gene = gene
+            annotation.gene_biotype = gene_biotype
+            annotation.transcript_biotype = transcript_biotype
+            annotation.gene_symbol = gene_symbol
+            annotation.description = description
+            annotation.transcript = transcript
+            annotation.sequence = sequence
+            annotation.save()
+            return redirect('sequence', id=id)
 
-    return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form, "description": description})#, "sequences": sequences})
+    return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form})#, "sequences": sequences})
 
 @login_required
 def Parser(request: HttpRequest, id):
