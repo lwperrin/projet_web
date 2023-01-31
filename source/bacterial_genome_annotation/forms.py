@@ -27,7 +27,7 @@ class SearchForm(forms.Form):
         required=False
         )  
 
-class AnnotForm(forms.Form):
+class AnnotFormById(forms.Form):
     id = forms.CharField(max_length=50, required=False) # The same than the sequence but with '.X' with X a number to allow multipple annotation.
     gene = forms.CharField(max_length=10, required=False)
     gene_biotype = forms.CharField(max_length=50, required=False)
@@ -36,6 +36,14 @@ class AnnotForm(forms.Form):
     description = forms.CharField(max_length=200, required=False)
     transcript = forms.CharField(max_length=200,required=False)
     isValidate = forms.BooleanField(required=False)
+    
+class AnnotationFormBySearch(forms.Form):
+    gene = forms.CharField(max_length=10, required=False)
+    gene_biotype = forms.CharField(max_length=50, required=False)
+    transcript_biotype = forms.CharField(max_length=50, required=False)
+    gene_symbol = forms.CharField(max_length=10, required=False)
+    description = forms.CharField(max_length=200, required=False)
+    transcript = forms.CharField(max_length=200,required=False)
     
 class CommentForm(forms.Form):
     comment = forms.CharField(max_length=500)

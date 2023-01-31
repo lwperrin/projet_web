@@ -18,6 +18,9 @@ class Command(BaseCommand):
         # Import data from fasta files
         bacteriaNamesList = []
         relativePath = dirname(__file__) + '/../../../../data/'
+        allSequences = []
+        allAnnotations = []
+        
         for fileName in listdir(relativePath):
             # Find bacteria names from file names
             if (not fileName.endswith('s.fa')) and (not fileName.endswith('p.fa')) and fileName.endswith('.fa'):
@@ -34,12 +37,20 @@ class Command(BaseCommand):
                     genome.save()
                     break
             sequences, annotations = fastaParser(relativePath+bacteriaName+'_cds.fa', genome)
-            Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
-            Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+            allSequences.extend(sequences)
+            allAnnotations.extend(annotations)
+            #Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+            #Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
             sequences, annotations = fastaParser(relativePath+bacteriaName+'_pep.fa', genome)
-            Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
-            Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+            allSequences.extend(sequences)
+            allAnnotations.extend(annotations)
+            #Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+            #Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
             self.stdout.write(self.style.SUCCESS("Done !"))
+        self.stdout.write(self.style.SUCCESS("Saving to database..."), ending='') 
+        Sequence.objects.bulk_create(allSequences, ignore_conflicts=True)
+        Annotation.objects.bulk_create(allAnnotations, ignore_conflicts=True)
+        self.stdout.write(self.style.SUCCESS("Done !"))
             
     def handleOld(self, *args, **kwargs):
         # Import data from fasta files
