@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import *
 from .models import *
-from .utils import blastn, blastp
+from .utils import blastn, blastp, reverseSequence
 from django.http import HttpRequest, JsonResponse
 import threading
 from django.views import generic
@@ -220,6 +220,66 @@ def SequenceView(request: HttpRequest, id: str):
     }
     return render(request, 'bacterial_genome_annotation/sequence.html', params)
 
+def GenomeView(request: HttpRequest, id: str):
+    page = int(request.GET.get('page', '1'))
+    genome = Genome.objects.get(id=id)
+
+    class sequenceAugmented:
+        def __init__(self, seq: Sequence):
+            self.seq = seq
+            if isinstance(self.seq, str):
+                self.isSeq = False
+                self.title=''
+            else:
+                self.isSeq = True
+                self.title=''
+                self.title = f"ID : {seq.id}\nPosition : {seq.position}"
+    seqList = []
+    fullSeq = genome.fullSequence
+    i = (page-1)*10000
+    j=i+10000
+    sequences = Sequence.objects.filter(genome=genome, isCds=True, position__gt=i, position__lt=j).order_by('position')
+    for s in sequences:
+        if i<s.position:
+            seqList.append(sequenceAugmented(fullSeq[i:s.position-1]))
+            i = s.position-1
+        newS = Sequence()
+        newS.id = s.id
+        newS.position=s.position
+        b = i+1-s.position
+        e = j-s.position-1
+        if s.direction:
+            tmp = s.sequence
+        else:
+            tmp = reverseSequence(s.sequence)
+        newS.sequence = tmp[b:e]
+        if e>b:
+            seqList.append(sequenceAugmented(newS))
+        i += len(newS.sequence)
+        if i>=j:
+            break
+    if i<j:
+        seqList.append(sequenceAugmented(fullSeq[i:j]))
+    class pageObj:
+        def __init__(self, page, first, last):
+            self.page = page
+            self.first = first
+            self.last = last
+            self.hasPrevious = self.page!=self.first
+            self.hasNext = self.page!=self.last
+            self.previous = self.page-1
+            self.next = self.page+1
+
+
+    params = {
+        'seqList': seqList,
+        'genome': genome,
+        'fullSequence': genome.fullSequence[(page-1)*10000:j],
+        'page': pageObj(page=page, first=1, last=len(genome.fullSequence)//10000+1),
+    }
+
+    return render(request, 'bacterial_genome_annotation/genome.html', params)
+
 class SignUpView(generic.CreateView):
     template_name = 'bacterial_genome_annotation/signup.html'
     form_class = UserCreationForm
@@ -235,12 +295,10 @@ class LoginView(auth_views.LoginView):
     template_name = 'registration/login.html'
     def get_success_url(self):
         if 'next' in self.request.GET:
-            print('aa')
             messages.add_message(self.request, messages.INFO, 'You must be connected to do that !.')
         return '/'
     def get_initial(self):
         if 'next' in self.request.GET:
-            print('aa')
             messages.add_message(self.request, messages.INFO, 'You must be connected to do that !.')
         return self.initial.copy()
     

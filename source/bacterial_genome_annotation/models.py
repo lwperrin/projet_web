@@ -33,6 +33,7 @@ class Sequence(models.Model):
     sequence = models.TextField()
     position = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     isCds = models.BooleanField(default=True) # True: cds | False: peptidic
+    direction = models.BooleanField(default=True)
 
     genome = models.ForeignKey(Genome, on_delete=models.CASCADE)
 
