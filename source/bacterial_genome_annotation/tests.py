@@ -1,8 +1,6 @@
 from django.test import TestCase
 
 # Create your tests here.
-from Bio.Blast import NCBIWWW, NCBIXML
-from Bio import SeqIO
 
 from bacterial_genome_annotation.models import *
 
