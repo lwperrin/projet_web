@@ -11,7 +11,7 @@ pip install -r "requirements.txt"
 
 ## Run the server
 
-To run the server, be sure you have all the required packages installed (see [requirements.txt](requirements.txt)). Then jus run `python source/manage.py runserver`
+To run the server, be sure you have all the required packages installed (see [requirements.txt](requirements.txt)) and the data folder at the root. You can perform `python source/manage.py initialize-server` to initialize the database, and then just run the server with `python source/manage.py runserver`.
 
 ## How the site works
 
@@ -48,16 +48,12 @@ You can have acces to the html pages in [templates](source/bacterial_genome_anno
 
 ### Genomes
 
-You must put the data folder at the root of the project (where you find doc and source). Then, just run those two commands :
-```
-python source/manage.py migrate
-python source/manage.py import-my-data
-```
+You must put the data folder at the root of the project (where you find doc and source). You can run `python source/manage.py import-my-data` to import the genome and annotations.
 Note that it is also possible to compress the data using the functions in [utils.py](source/bacterial_genome_annotation/utils.py) to gain around 10 Mo.
 
 ### Users
 
-You can run `python source/manage.py create-users` to create a bunch of example users. Their logins and password are stored in [default_users.txt](source/bacterial_genome_annotation/assets/default_users.txt). You can change or add lines in this file to custom the creation of users. The admin is the *superuser* (different from firstAdmin@gmail.com) and you can login as him in [the admin site](http://127.0.0.1:8000/admin) by default with :
+You can run `python source/manage.py create-groups` and `python source/manage.py create-users` to create a bunch of example users, groups and permissions. Their logins and password are stored in [default_users.txt](source/bacterial_genome_annotation/assets/default_users.txt). You can change or add lines in this file to custom the creation of users. The admin is the *superuser* (different from firstAdmin@gmail.com) and you can login as him in [the admin site](http://127.0.0.1:8000/admin) by default with :
 
 login :     `admin@admin.com`
 password :  `Ac1net0bactErb@umannii`
