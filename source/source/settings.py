@@ -131,6 +131,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custome users
 
+LOGIN_URL = "/login/"
+
 AUTH_USER_MODEL = 'bacterial_genome_annotation.User'
 
 LOGIN_REDIRECT_URL = "/"

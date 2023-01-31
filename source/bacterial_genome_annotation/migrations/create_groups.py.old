@@ -1,0 +1,54 @@
+from django.db import models, migrations, transaction
+from django.contrib.contenttypes.models import ContentType
+
+def apply_migration(apps, schema_editor):
+    with transaction.atomic():
+        Group = apps.get_model('auth', 'Group')
+        Permission = apps.get_model('auth', 'Permission')
+        Content_Type= apps.get_model('contenttypes', 'ContentType')
+        
+        content_type = Content_Type.objects.filter(app_label='bacterial_genome_annotation').first()
+        permission = Permission.objects.create(
+            codename='can_annotate',
+            name='Can Annotate',
+            content_type=content_type,
+        )
+        permission.save()
+        
+        grps = [Group(name=n) for n in ['reader', 'annotator', 'validator', 'admin']]
+        
+        Group.objects.bulk_create(grps)
+        grps[1].permissions.add(permission)
+        grps[2].permissions.add(permission)
+        grps[3].permissions.add(permission)
+        for g in grps:
+            g.save()
+        
+
+
+def revert_migration(apps, schema_editor):
+    with transaction.atomic():
+        Group = apps.get_model('auth', 'Group')
+        Group.objects.filter(
+            name__in=[
+                'readers',
+                'annotators',
+                'validators',
+                'admins'
+            ]
+        ).delete()
+        Permission = apps.get_model('auth', 'Permission')
+        Permission.objects.filter(
+            codename__in=['can_annotate']
+        ).delete()
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('bacterial_genome_annotation', '0006_remove_blasthit_ident_remove_blasthit_lenn'),
+    ]
+
+    operations = [
+        migrations.RunPython(apply_migration, revert_migration)
+    ]

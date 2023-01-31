@@ -19,6 +19,8 @@ from bacterial_genome_annotation import views
 from django.conf.urls.static import static
 from django.conf import settings
 
+app_name = 'bacterial_genome_annotation'
+
 # Admin url
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -44,7 +46,8 @@ urlpatterns.extend([
 
 # Registration and account management
 urlpatterns.extend([
-    path("login/", include("django.contrib.auth.urls"), name='login'),
+    path("login/", views.LoginView.as_view(), name='login'),
+    path("logout/", views.LogoutView.as_view(), name='logout'),
     path("register/", views.SignUpView.as_view(), name="signup"),
     path('validate_email', views.validate_email, name='validate_email'),
     path('validate_password', views.validate_password, name='validate_password'),

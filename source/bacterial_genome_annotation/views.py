@@ -6,12 +6,14 @@ from django.http import HttpRequest, JsonResponse
 import threading
 from django.views import generic
 from django.urls import reverse_lazy
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, views as auth_views
 from django.contrib.auth.password_validation import validate_password as v_p
 from django.core.exceptions import ValidationError
 import re
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.shortcuts import resolve_url
+from django.contrib import messages
 
 # Create your views here.
 def home(request: HttpRequest):
@@ -24,8 +26,6 @@ def AddGenome(request: HttpRequest):
 def Account(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/Account.html')
 
-def LoginPage(request: HttpRequest):
-    return render(request, 'bacterial_genome_annotation/LoginPage.html')
 
 def annoter(request: HttpRequest):
     form = AnnotForm()
@@ -229,6 +229,23 @@ class SignUpView(generic.CreateView):
         valid = super().form_valid(form)
         login(self.request, self.object)
         return valid
+
+class LoginView(auth_views.LoginView):
+    
+    template_name = 'registration/login.html'
+    def get_success_url(self):
+        if 'next' in self.request.GET:
+            print('aa')
+            messages.add_message(self.request, messages.INFO, 'You must be connected to do that !.')
+        return '/'
+    def get_initial(self):
+        if 'next' in self.request.GET:
+            print('aa')
+            messages.add_message(self.request, messages.INFO, 'You must be connected to do that !.')
+        return self.initial.copy()
+    
+class LogoutView(auth_views.LogoutView):
+    template_name='accounts/logout.html'
     
 def validate_email(request: HttpRequest):
     """Check email availability"""
