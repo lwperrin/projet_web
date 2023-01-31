@@ -34,6 +34,7 @@ class Sequence(models.Model):
     position = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     isCds = models.BooleanField(default=True) # True: cds | False: peptidic
     direction = models.BooleanField(default=True)
+    hasValid = models.BooleanField(default=False)
 
     genome = models.ForeignKey(Genome, on_delete=models.CASCADE)
 
