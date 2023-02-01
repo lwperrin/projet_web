@@ -292,3 +292,9 @@ a.article:hover {
         display: none;
     }
 }
+
+.titleSite{
+    text-align:center;
+    font-size:50px;
+    font-family: Roboto;
+}
