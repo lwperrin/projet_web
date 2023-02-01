@@ -70,10 +70,10 @@
                     <a href="#ContactSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">About us</a>
                     <ul class="collapse list-unstyled" id="ContactSubmenu">
                         <li>
-                            <li><a class="nav-link" href= "contact.html">Contact</a></li>
+                            <li><a class="nav-link" href= "{% url 'contact' %}">Contact</a></li>
                         </li>
                         <li>
-                            <li><a class="nav-link" href= "qui_nous_sommes.html">Who are we?</a></li>
+                            <li><a class="nav-link" href= "{% url 'AboutUs' %}">Who are we?</a></li>
                         </li>
                     </ul>
                 </li>
@@ -135,12 +135,6 @@
     </script>
 </body>
 
-<footer>
-	<li><a href= "{% url 'contact' %}">contact</a></li>
-	<br>
-	<li><a href= "{% url 'AboutUs' %}">AboutUs</a></li>
-	<br>
-	<li><a href="aide.html">Aide</a></li>
-</footer>
+
 
 </html>
