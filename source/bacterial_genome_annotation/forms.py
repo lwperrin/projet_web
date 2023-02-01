@@ -48,6 +48,11 @@ class AnnotationFormBySearch(forms.Form):
 class CommentForm(forms.Form):
     comment = forms.CharField(max_length=500)
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=255)
+    email = forms.EmailField()
+    content = forms.CharField(widget=forms.Textarea)    
+    
 #default=''    
     
     
