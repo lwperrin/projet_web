@@ -14,6 +14,9 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator
 from django.shortcuts import resolve_url, redirect
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from .forms import ContactForm
 
 # Create your views here.
 def home(request: HttpRequest):
@@ -302,8 +305,30 @@ def validate_password(request: HttpRequest):
     except ValidationError as e:
         return JsonResponse({'is_valid': False, 'message': ' '.join(e.messages), 'is_empty': password==''})
     
-def contact(request: HttpRequest):
-    return render(request, 'bacterial_genome_annotation/contact.html')
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            content = form.cleaned_data['content']
+
+            html = render_to_string('bacterial_genome_annotation/contactForm.html', {
+                'name': name,
+                'email': email,
+                'content': content
+            })
+
+            send_mail('The contact form subject', 'This is the message', '', ['codewithtestein@gmail.com'], html_message=html)
+
+            return redirect('contact')
+    else:
+        form = ContactForm()
+
+    return render(request, 'bacterial_genome_annotation/contact.html', {
+        'form': form
+    })
 
 def AboutUs(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AboutUs.html')
