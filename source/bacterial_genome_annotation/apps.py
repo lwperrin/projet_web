@@ -5,3 +5,7 @@ class YourAppConfig(AppConfig):
 
     def ready(self):
         import bacterial_genome_annotation.signals.handlers
+       
+class ContactConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'contact'
