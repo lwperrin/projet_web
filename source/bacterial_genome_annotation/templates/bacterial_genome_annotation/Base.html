@@ -48,22 +48,34 @@
                             <a class="nav-link" href="{% url 'Parser' id='0' %}">Parse</a>
                         </li>
                         <li>
-                            <a class="nav-link" href={% url 'search' %}>Search</a>
+                            <a class="nav-link" href="{% url 'search' %}">Search</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'members' %}">Members</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Connexion</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a class="nav-link" href="{% url 'login' %}">Sign In</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                        </li>
+                        {% if user.is_authenticated %}
+                            <li>
+                                <a class="nav-link">Welcome {{user.email}} !</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'account' id='0' %}">Account</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </li>
                 <li>

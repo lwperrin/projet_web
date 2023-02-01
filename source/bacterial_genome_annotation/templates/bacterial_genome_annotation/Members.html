@@ -1,0 +1,67 @@
+{% extends 'bacterial_genome_annotation/Base.html' %} {% load mytags %} {% load
+static %} {% block content %}
+<div class="searchPage">
+  <div class="container">
+    <form action="" method="get" novalidate>
+      {% csrf_token %} {{ form.as_p }}
+      <input
+        class="btn btn-secondary"
+        type="submit"
+        value="Rechercher"
+        id="Recherche"
+      />
+    </form>
+    <!--    </div> -->
+    <br />
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Query</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in page_obj.object_list %}
+      <tr>
+        <td>
+          <a
+            id="QuerySequence"
+            class="form-control"
+            href="{% url 'account' id=user.id %}"
+          >
+            {{ user.first_name }} - {{ user.last_name }}</a
+          >
+        </td>
+      </tr>
+
+      {% empty %}
+      <tr>
+        <td>No user found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="pagination">
+    <span class="step-links">
+      <a>&laquo;</a>
+      {% if page_obj.has_previous %}
+      <a href="?{% param_replace page=1 %}">first</a>
+      <a href="?{% param_replace page=page_obj.previous_page_number %}"
+        >previous</a
+      >
+      {% endif %}
+
+      <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?{% param_replace page=page_obj.next_page_number %}">next</a>
+      <a href="?{% param_replace page=page_obj.paginator.num_pages %}">last</a>
+      {% endif %}
+      <a>&raquo;</a>
+    </span>
+  </div>
+</div>
+
+{% endblock %}

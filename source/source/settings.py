@@ -119,9 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'root')
 STATICFILES_DIRS = [
-os.path.join(BASE_DIR, 'boot'),
+    os.path.join(BASE_DIR, 'boot'),
 ]
 
 # Default primary key field type
@@ -137,3 +137,6 @@ AUTH_USER_MODEL = 'bacterial_genome_annotation.User'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
