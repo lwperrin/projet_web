@@ -27,6 +27,10 @@ SECRET_KEY = 'django-insecure-=xtkohgqv4lmgh%!+-yb--r&f3%u%*)bw^#e$uryh5tyl+2w7%
 DEBUG = True
 
 ALLOWED_HOSTS = []
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '62f6635f2c3368'
+EMAIL_HOST_PASSWORD = 'd34cd68d0a4900'
+EMAIL_PORT = '2525'
 
 
 # Application definition
@@ -119,9 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'root')
 STATICFILES_DIRS = [
-os.path.join(BASE_DIR, 'boot'),
+    os.path.join(BASE_DIR, 'boot'),
 ]
 
 # Default primary key field type
@@ -131,7 +135,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custome users
 
+LOGIN_URL = "/login/"
+
 AUTH_USER_MODEL = 'bacterial_genome_annotation.User'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

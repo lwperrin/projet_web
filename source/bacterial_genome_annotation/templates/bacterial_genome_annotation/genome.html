@@ -14,7 +14,7 @@
 <span style="display:inline; white-space: nowrap;">
     {% for s in seqList %}
         {% if s.isSeq %}
-            <a href="{% url 'sequence' id=s.seq.id %}">{{s.seq.sequence}}</a>
+            <a title="{{s.title}}" href="{% url 'sequence' id=s.seq.id %}">{{s.seq.sequence}}</a>
         {% else %}
             <a>{{s.seq}}</a>
         {% endif %}

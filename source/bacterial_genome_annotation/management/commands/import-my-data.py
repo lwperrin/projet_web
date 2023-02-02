@@ -3,6 +3,7 @@ from Bio import SeqIO
 from os import listdir
 from ...models import *
 from os.path import dirname
+from ...utils import fastaParser
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
@@ -17,6 +18,44 @@ class Command(BaseCommand):
         # Import data from fasta files
         bacteriaNamesList = []
         relativePath = dirname(__file__) + '/../../../../data/'
+        allSequences = []
+        allAnnotations = []
+        
+        for fileName in listdir(relativePath):
+            # Find bacteria names from file names
+            if (not fileName.endswith('s.fa')) and (not fileName.endswith('p.fa')) and fileName.endswith('.fa'):
+                bacteriaNamesList.append(fileName[:-3])
+
+        for bacteriaName in bacteriaNamesList:
+            self.stdout.write(self.style.SUCCESS("Creating sequences for"+bacteriaName+"..."), ending='')
+            with open(relativePath+bacteriaName+".fa") as file:
+                # Genome creation
+                for record in SeqIO.parse(file, "fasta"):
+                    genome = Genome()
+                    genome.id=bacteriaName
+                    genome.fullSequence = record.seq
+                    genome.save()
+                    break
+            sequences, annotations = fastaParser(relativePath+bacteriaName+'_cds.fa', genome)
+            allSequences.extend(sequences)
+            allAnnotations.extend(annotations)
+            #Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+            #Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+            sequences, annotations = fastaParser(relativePath+bacteriaName+'_pep.fa', genome)
+            allSequences.extend(sequences)
+            allAnnotations.extend(annotations)
+            #Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+            #Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+            self.stdout.write(self.style.SUCCESS("Done !"))
+        self.stdout.write(self.style.SUCCESS("Saving to database..."), ending='') 
+        Sequence.objects.bulk_create(allSequences, ignore_conflicts=True)
+        Annotation.objects.bulk_create(allAnnotations, ignore_conflicts=True)
+        self.stdout.write(self.style.SUCCESS("Done !"))
+            
+    def handleOld(self, *args, **kwargs):
+        # Import data from fasta files
+        bacteriaNamesList = []
+        relativePath = dirname(__file__) + '/../../../../data/'
         for fileName in listdir(relativePath):
             # Find bacteria names from file names
             if (not fileName.endswith('s.fa')) and (not fileName.endswith('p.fa')) and fileName.endswith('.fa'):
@@ -28,7 +67,7 @@ class Command(BaseCommand):
                 for record in SeqIO.parse(file, "fasta"):
                     genome = Genome()
                     genome.id=bacteriaName
-                    genome.fullsequence = record.seq
+                    genome.fullSequence = record.seq
                     genome.save()
                     break
 
@@ -52,6 +91,10 @@ class Command(BaseCommand):
                     # AAN78515 cds chromosome:ASM744v1:Chromosome:10716:11282:-1 gene:c0015 gene_biotype:protein_coding transcript_biotype:protein_coding gene_symbol:yaaH description:Hypothetical protein yaaH
                     desc = record.description.split(' ')
                     sequences[-1].position = int(desc[2].split(':')[3])
+                    if int(desc[2].split(':')[5]) == 1:
+                        sequences[-1].direction = True
+                    else:
+                        sequences[-1].direction = False
 
                     # Try to find an annotation
                     j = 3
@@ -147,5 +190,3 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS("saving2"))
                 annotationFields = [field.name for field in annotationFields if field.name != 'id']
                 Annotation.objects.bulk_create(annotations, update_conflicts=True, update_fields=['gene'], unique_fields=['id'])"""
-    
-

@@ -10,8 +10,9 @@
         - [X] Login
         - [X] Account
         - [ ] Search
-            - [ ] Blast
-            - [ ] Annotation  
+            - [X] Blast
+                - [ ] Alignement
+            - [X] Annotation  
         - [X] AboutUs
         - [X] contact
     - [ ] Link between pages
@@ -21,27 +22,29 @@
         - [X] Login
         - [X] Account
         - [X] Search
-            - [ ] Blast
-            - [ ] Annotation  
+            - [X] Blast
+                - [ ] Alignement
+            - [X] Annotation  
         - [ ] AboutUs
         - [ ] contact
     - [ ] Forum page
-    - [ ] Annotation comment
+    - [X] Annotation comment
+        - [ ] display
     - [ ] Account page (different depending on the user group)
     - [ ] Search in home
 
 - [ ] Front
     - [X] Banner or floating menu or sidebar
     - [X] Create a sign up page
-    - [ ] Color
+    - [X] Color
     - [X] Visualization of query Search 
-    - [ ] Visualization Sequence of Query
-    - [ ] Visualizing a particular pattern in a sequence
+    - [X] Visualization Sequence of Query
+    - [X] Visualizing a particular pattern in a sequence
     - [X] Bootstrap 4
     - [X] front page: put a side-bar with a menu to access every feature
-    - [ ] front page: separate into 4 different zones, each one explaining one feature (annotate, add, parse, search)
-    - [ ] search genome: displays the genomes found and brightens the searched pattern
-    - [ ] annotate: the annotator can search in a bank of unannotated sequences which one he wants to sequence.
+    - [ ] front page: home/search
+    - [X] search genome: displays the genomes found and brightens the searched pattern
+    - [X] annotate: the annotator can search in a bank of unannotated sequences which one he wants to sequence.
 
 - [ ] Database
     - [X] UML diagram
@@ -57,7 +60,7 @@
 
 - [ ] Other
     - [X] Use blast API
-    - [ ] Blast visualization
+    - [X] Blast visualization
 
 
 ## Report

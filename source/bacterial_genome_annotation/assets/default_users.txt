@@ -4,16 +4,16 @@
 
 firstreader@gmail.com
 bonjourreader
-Readers
+reader
 
 firsannotator@gmail.com
 bonjourannotator
-Annotators
+annotator
 
 firstvalidator@gmail.com
 bonjourvalidator
-Validators
+validator
 
 firstadmin@gmail.com
 bonjouradmin
-Admins
+admin

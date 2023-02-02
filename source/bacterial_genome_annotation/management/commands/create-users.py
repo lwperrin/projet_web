@@ -9,19 +9,20 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **kwargs):
-        readers, isCreate = Group.objects.get_or_create(name='Readers')
-        annotators, isCreate = Group.objects.get_or_create(name='Annotators')
-        validators, isCreate = Group.objects.get_or_create(name='Validators')
-        admins, isCreate = Group.objects.get_or_create(name='Admins')
-        User.objects.create_user(email='admin@admin.com',
-                                password='Ac1net0bactErb@umannii',
-                                is_staff=True,
-                                is_active=True,
-                                is_superuser=True)
+        grps = [Group.objects.get_or_create(name=n)[0] for n in ['reader', 'annotator', 'validator', 'admin']]
+        try:
+            User.objects.create_user(email='admin@admin.com',
+                                    password='Ac1net0bactErb@umannii',
+                                    is_staff=True,
+                                    is_active=True,
+                                    is_superuser=True)
+        except:
+            pass
         admin = User.objects.get(email='admin@admin.com')
-        admin.groups.add(annotators)
-        admin.groups.add(validators)
-        admin.groups.add(admins)
+        admin.groups.add(grps[0])
+        admin.groups.add(grps[1])
+        admin.groups.add(grps[2])
+        admin.groups.add(grps[3])
         
         with open(dirname(__file__) + '/../../assets/default_users.txt') as file:
             lines = file.readlines()
@@ -32,16 +33,27 @@ class Command(BaseCommand):
                 email = lines[0][:-1]
                 password = lines[1][:-1]
                 group = lines[2][:-1]
-                User.objects.create_user(email, password)
+                try:
+                    User.objects.create_user(email, password)
+                except:
+                    pass
                 u = User.objects.get(email=email)
-                if group=='Annotators':
-                    u.groups.add(annotators)
-                elif group=='Validators':
-                    u.groups.add(annotators)
-                    u.groups.add(validators)
-                elif group=='Admins':
-                    u.groups.add(annotators)
-                    u.groups.add(validators)
-                    u.groups.add(admins)
+                if group==grps[0]:
+                    u.groups.add(grps[0])
+                elif group==grps[1]:
+                    u.groups.add(grps[0])
+                    u.groups.add(grps[1])
+                elif group==grps[2]:
+                    u.groups.add(grps[0])
+                    u.groups.add(grps[1])
+                    u.groups.add(grps[2])
+                elif group==grps[3]:
+                    u.groups.add(grps[0])
+                    u.groups.add(grps[1])
+                    u.groups.add(grps[2])
+                    u.groups.add(grps[3])
                 lines = lines[4:]
+                u.save()
+        for g in grps:
+            g.save()
         

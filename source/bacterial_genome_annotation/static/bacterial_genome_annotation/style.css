@@ -292,3 +292,11 @@ a.article:hover {
         display: none;
     }
 }
+
+.titleSite{
+    text-align:center;
+    font-size:50px;
+    font-family: Roboto;
+    background-color: #6d7fcc;
+    color: white;
+}

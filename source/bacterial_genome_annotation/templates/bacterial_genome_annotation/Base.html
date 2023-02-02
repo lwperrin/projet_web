@@ -48,32 +48,44 @@
                             <a class="nav-link" href="{% url 'Parser' id='0' %}">Parse</a>
                         </li>
                         <li>
-                            <a class="nav-link" href={% url 'search' %}>Search</a>
+                            <a class="nav-link" href="{% url 'search' %}">Search</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'members' %}">Members</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Connexion</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a class="nav-link" href="{% url 'login' %}">Sign In</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                        </li>
+                        {% if user.is_authenticated %}
+                            <li>
+                                <a class="nav-link">Welcome {{user.email}} !</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'account' id='0' %}">Account</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </li>
                 <li>
                     <a href="#ContactSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">About us</a>
                     <ul class="collapse list-unstyled" id="ContactSubmenu">
                         <li>
-                            <li><a class="nav-link" href= "contact.html">Contact</a></li>
+                            <li><a class="nav-link" href= "{% url 'contact' %}">Contact</a></li>
                         </li>
                         <li>
-                            <li><a class="nav-link" href= "qui_nous_sommes.html">Who are we?</a></li>
+                            <li><a class="nav-link" href= "{% url 'AboutUs' %}">Who are we?</a></li>
                         </li>
                     </ul>
                 </li>
@@ -85,13 +97,13 @@
 
         <!-- Page Content  -->
         <div id="content">
-            <div class="titleSite"><h1 align="center">LADN</h1></div>
+            <div class="titleSite"><h1 align="center"><a class="nav-link" href={% url 'search' %}>LADN</a> </h1></div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
+                        <span>Menu</span>
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
@@ -135,12 +147,6 @@
     </script>
 </body>
 
-<footer>
-	<li><a href= "{% url 'contact' %}">contact</a></li>
-	<br>
-	<li><a href= "{% url 'AboutUs' %}">AboutUs</a></li>
-	<br>
-	<li><a href="aide.html">Aide</a></li>
-</footer>
+
 
 </html>
