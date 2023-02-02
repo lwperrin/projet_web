@@ -23,5 +23,6 @@
         "src": "/source/(.*)",
         "dest": "source/source/wsgi.py"
       }
-    ]
+    ],
+    "outputDirectory": "build"
   }
