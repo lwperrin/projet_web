@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=xtkohgqv4lmgh%!+-yb--r&f3%u%*)bw^#e$uryh5tyl+2w7%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
 EMAIL_HOST_USER = '62f6635f2c3368'
 EMAIL_HOST_PASSWORD = 'd34cd68d0a4900'
@@ -146,4 +146,3 @@ LOGOUT_REDIRECT_URL = "/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
