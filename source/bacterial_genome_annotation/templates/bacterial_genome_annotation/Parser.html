@@ -1,7 +1,9 @@
+
 {% extends 'bacterial_genome_annotation/Base.html' %}
+{% load static %}
 {% block content %}
 
-<body>
+<div>
 
  <!--Genome specie/strain names -->
     <label for="sequence"><b>Sequence</b> </label>
@@ -9,14 +11,69 @@
     <button type="submit" name="submit" class="big_submit_button">Align</button>
 
     <p>{{ progression }}</p>
-    <ul>
-        {% for hit in results %}
-            <li>Result number {{hit.num}} : {{hit.definition}} | accession : {{hit.accession}}</li>
+    <table>
+        <thead id="thead_blast">
+            <th colspan="4">
+                    Query
+            </th>            
+            <tr>
+                <td>
+                    <b>Name</b>
+                </td>
+                <td>
+                    <b>Accession</b>
+                </td>
+                <td>
+                    <b>Evalue</b>
+                </td>
+                <td>
+                    <b>identities</b>
+                </td>
+            <!-- <td>
+                identit
+            </td>
+            <td>
+                len
+            </td> -->
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for hit in results %}
+            <tr>
+
+                <td class = "link-primary">
+                    <a href="{% url 'alignement' %}" >{{hit.definition}}</a>
+                    <!--{{hit.definition}}-->
+                </td>
+                <td>
+                    {{hit.accession}}
+                </td>
+                <td>
+                    {{hit.value}}
+                </td>   
+                <td>
+                    {{hit.identitie}} %
+                </td>
+                <!-- <td>
+                    {{hit.ident}}
+                    
+                </td>
+                <td>
+                   {{hit.lenn}} 
+                </td> -->
+            </tr>    
         {% endfor %}
-    </ul>
+        </tbody>
+      
+    </table>
+        
+</div>
 
-</body>
-
-
+<script type="text/javascript">
+    setInterval(function(){
+        window.location.reload()
+    }, 5000)
+</script>
 
 {% endblock %}

@@ -1,34 +1,54 @@
-{% extends 'bacterial_genome_annotation/Base.html' %}
-{% block content %}
-<h2> Registration Form</h2>  
-      
-    <label for="email"><b>Email</b></label><br>
-    <input type="text" placeholder="Email" name="email" id="email" required><br>
-    <label for="psw"><b>Password</b></label><br>
-    <input type="password" placeholder="Password" name="psw" id="psw" required minlength="7"><br> <!-- Password must be at least 7 characters long-->
-    <label for="psw2"><b>Confirm Password</b></label><br>
-    <input type="password" placeholder="Confirm password" name="psw2" id="psw2" required minlength="7"><br>
-    <label for="first_name"><b>First Name</b></label><br>
-    <input type="text" placeholder="First Name" name="first_name" id="first_name" required><br>
-    <label for="last_name"><b>Last Name</b></label><br>
-    <input type="text" placeholder="Last Name" name="last_name" id="last_name" required><br>
-    <label for="tel"><b>Telephone Number</b></label><br>
-    <input type="text" placeholder="Telephone Number" name="tel" id="tel" required><br>
-    <div class="role_select">
-        <label for="role"> <b>Select role</b></label>
-        <select name="role" id="role">
-            <option value="Administrator">Administrator</option>
-            <option value="Annotator">Annotator</option>
-            <option value="Validator">Validator</option>
-        </select>
-    <button name ='submit' class="big_submit_button" type="submit">Register</button>
-        <div class="Log in">
-            <span>Already have an account ?</span>
-            <a href="LoginPage.html"> Login </a>
-        </div>
-    </div>
-  
-{% endblock %}  
- 
- 
- 
+{% extends 'bacterial_genome_annotation/Base.html' %} {% block content %}
+<h2>Your account</h2>
+<h3>General informations</h3>
+<table>
+  <tr>
+    <th>First name</th>
+    <th>{{user.first_name}}</th>
+  </tr>
+  <tr>
+    <th>Last name</th>
+    <th>{{user.last_name}}</th>
+  </tr>
+  <tr>
+    <th>Phone number</th>
+    <th>{{user.phone_no}}</th>
+  </tr>
+  <tr>
+    <th>Profile picture</th>
+    <th><img src="{{ user.picture.url }}" width="100" height="100" /></th>
+  </tr>
+</table>
+
+{% if own %}
+<button type="button">
+  <a href="{% url 'account_modification' %}">Modify</a>
+</button>
+{% else %}
+  {% if isFriend %}
+    <button type="button">
+      <a href="{% url 'remove_friend' user.id %}">Remove from favorites</a>
+    </button>
+  {% else %}
+    <button type="button">
+      <a href="{% url 'add_friend' user.id %}">Add to favorites</a>
+    </button>
+  {% endif %}
+{% endif %}
+<h3>Authentification</h3>
+  <table>
+    <tr>
+      <th>Registration date</th>
+      <th>{{user.date_joined}}</th>
+    </tr>
+    <tr>
+      <th>Role</th>
+      <th>{{role}}</th>
+    </tr>
+    <tr>
+      <th>Email address</th>
+      <th>{{user.email}}</th>
+    </tr>
+  </table>
+  {% endblock %}
+</button>

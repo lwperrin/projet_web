@@ -1,0 +1,47 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% load mytags %}
+{% block content %}
+<div id="QuerySequence">    
+
+<table id="TableQuery">
+    <thead>
+        <tr>
+            <th colspan="2">Genome ID: {{genome.id}}</th>
+        </tr>
+    </thead>
+
+</table>
+<span style="display:inline; white-space: nowrap;">
+    {% for s in seqList %}
+        {% if s.isSeq %}
+            <a title="{{s.title}}" href="{% url 'sequence' id=s.seq.id %}">{{s.seq.sequence}}</a>
+        {% else %}
+            <a>{{s.seq}}</a>
+        {% endif %}
+    {% endfor %}
+</span>
+
+<span><a>{{fullSequence}}</a></span>
+    
+<div class="pagination">
+    <span class="step-links">
+        <a>&laquo;</a>
+        {% if page.hasPrevious %}
+            <a href="?page={{ page.first }}">first</a>
+            <a href="?page={{ page.previous }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page.page }} of {{page.last}}.
+        </span>
+
+        {% if page.hasNext %}
+            <a href="?page={{ page.next }}">next</a>
+            <a href="?page={{ page.last }}">last</a>
+        {% endif %}
+        <a>&raquo;</a>
+    </span>
+</div>
+
+  
+{% endblock %}
