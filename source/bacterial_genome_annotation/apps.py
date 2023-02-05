@@ -1,11 +1,12 @@
 from django.apps import AppConfig
 
-class YourAppConfig(AppConfig):
+class MyAppConfig(AppConfig):
     name = 'bacterial_genome_annotation'
+    default_auto_field = 'django.db.models.BigAutoField'
 
     def ready(self):
         import bacterial_genome_annotation.signals.handlers
        
-class ContactConfig(AppConfig):
+"""class ContactConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'contact'
+    name = 'contact'"""

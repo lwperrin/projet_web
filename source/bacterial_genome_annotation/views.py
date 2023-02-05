@@ -42,11 +42,17 @@ def AccountView(request: HttpRequest, id: str):
         role = 'reader'
     else:
         role = 'no'
+    assignationsNew = Assignation.objects.filter(user=user, isRevision=False).order_by('date')
+    sequencesNew = [a.s for a in assignationsNew]
+    assignationsRevision = Assignation.objects.filter(user=user, isRevision=True).order_by('date')
+    sequencesRevision = [a.s for a in assignationsRevision]
     params = {
         'user': user,
         'role': role,
         'own': request.user.id == int(id),
         'isFriend': request.user.friends.filter(id=id).exists(),
+        'sequencesNew': sequencesNew,
+        'sequencesRevision': sequencesRevision,
     }
     return render(request, 'bacterial_genome_annotation/Account.html', params)
 

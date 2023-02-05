@@ -1,5 +1,9 @@
 {% extends 'bacterial_genome_annotation/Base.html' %} {% block content %}
+{% if own %}
 <h2>Your account</h2>
+{% else %}
+<h2>{{user.first_name}}'s account</h2>
+{% endif %}
 <h3>General informations</h3>
 <table>
   <tr>
@@ -50,5 +54,61 @@
       <th>{{user.email}}</th>
     </tr>
   </table>
+  <h3>Assigned sequences</h3>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">New annotation needed</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for seq in sequencesNew %}
+      <tr>
+        <td>
+          <a
+            id="QuerySequence"
+            class="form-control"
+            href="{% url 'sequence' id=seq.id %}"
+          >
+            {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a
+          >
+        </td>
+      </tr>
+
+      {% empty %}
+      <tr>
+        <td>No sequence found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Revision needed</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for seq in sequencesRevision %}
+      <tr>
+        <td>
+          <a
+            id="QuerySequence"
+            class="form-control"
+            href="{% url 'sequence' id=seq.id %}"
+          >
+            {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a
+          >
+        </td>
+      </tr>
+
+      {% empty %}
+      <tr>
+        <td>No sequence found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
   {% endblock %}
 </button>
