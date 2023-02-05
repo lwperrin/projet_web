@@ -8,13 +8,4 @@
             <input type="submit" value="Envoyer">
         </form>
     </div>
-    <ul>
-        {% for seq in sequences|slice:":50" %}
-            <li>
-                <a href="{% url 'sequence' id=seq.id %}" > {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a>
-            </li>
-        {% empty %}
-            <li>No sequence found.</li>
-        {% endfor %}
-    </ul>
 {% endblock %}

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .forms import *
 from .models import *
 from .utils import blastn, blastp, reverseSequence
@@ -12,11 +11,10 @@ from django.core.exceptions import ValidationError
 import re
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator
-from django.shortcuts import resolve_url, redirect
+from django.shortcuts import resolve_url, redirect, render
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from .forms import ContactForm
 
 # Create your views here.
 
@@ -189,7 +187,6 @@ def Search(request: HttpRequest):
     description = 'empty'
     sequences = []
     form = SearchForm(request.GET)
-
     if request.method == "GET":
         if form.is_valid():
             bacterial_name = form.cleaned_data['bacterial_name']
@@ -378,15 +375,20 @@ class LoginView(auth_views.LoginView):
     template_name = 'registration/login.html'
 
     def get_success_url(self):
+        list(messages.get_messages(self.request))
         if 'next' in self.request.GET:
-            messages.add_message(self.request, messages.INFO,
-                                 'You must be connected to do that !.')
+            return self.request.GET['next']
         return '/'
 
     def get_initial(self):
         if 'next' in self.request.GET:
-            messages.add_message(self.request, messages.INFO,
-                                 'You must be connected to do that !.')
+            if self.request.user.is_authenticated:
+                messages.warning(self.request,
+                                    'You don\'t have the authorization to do that !.')
+            else:
+                messages.warning(self.request,
+                                        'You must be connected to do that !.')
+            
         return self.initial.copy()
 
 
