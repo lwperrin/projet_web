@@ -42,17 +42,23 @@ def AccountView(request: HttpRequest, id: str):
         role = 'reader'
     else:
         role = 'no'
-    assignationsNew = Assignation.objects.filter(user=user, isRevision=False).order_by('date')
-    sequencesNew = [a.s for a in assignationsNew]
-    assignationsRevision = Assignation.objects.filter(user=user, isRevision=True).order_by('date')
-    sequencesRevision = [a.s for a in assignationsRevision]
+    validations = Assignation.objects.filter(validator=user, isValidated=False, isAnnotated=True).order_by('date')
+    validationsDone = Assignation.objects.filter(validator=user, isValidated=True).order_by('date')
+    assignationsNew = Assignation.objects.filter(annotator=user, isRevision=False, isValidated=False, isAnnotated=False).order_by('date')
+    assignationsRevision = Assignation.objects.filter(annotator=user, isRevision=True, isValidated=False, isAnnotated=False).order_by('date')
+    assignationsDone = Assignation.objects.filter(annotator=user, isAnnotated=True, isValidated=False).order_by('date')
+    assignationsValidated = Assignation.objects.filter(annotator=user, isAnnotated=True, isValidated=True).order_by('date')
     params = {
         'user': user,
         'role': role,
         'own': request.user.id == int(id),
         'isFriend': request.user.friends.filter(id=id).exists(),
-        'sequencesNew': sequencesNew,
-        'sequencesRevision': sequencesRevision,
+        'assignationsNew': assignationsNew,
+        'assignationsRevision': assignationsRevision,
+        'assignationsDone': assignationsDone,
+        'validations': validations,
+        'validationsDone': validationsDone,
+        'assignationsValidated': assignationsValidated
     }
     return render(request, 'bacterial_genome_annotation/Account.html', params)
 

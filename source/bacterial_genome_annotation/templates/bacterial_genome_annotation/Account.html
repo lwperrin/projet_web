@@ -1,4 +1,5 @@
 {% extends 'bacterial_genome_annotation/Base.html' %} {% block content %}
+{% load mytags %}
 {% if own %}
 <h2>Your account</h2>
 {% else %}
@@ -55,6 +56,7 @@
     </tr>
   </table>
   <h3>Assigned sequences</h3>
+  <!--New annotation needed-->
   <table>
     <thead>
       <tr>
@@ -62,26 +64,22 @@
       </tr>
     </thead>
     <tbody>
-      {% for seq in sequencesNew %}
+      {% for a in assignationsNew %}
       <tr>
         <td>
           <a
             id="QuerySequence"
             class="form-control"
-            href="{% url 'sequence' id=seq.id %}"
+            href="{% url 'sequence' id=a.seq.id %}"
           >
-            {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a
+            {{ a.seq.id }} - {{ a.seq.genome.id|replaceWithSpace:"_" }}</a
           >
         </td>
-      </tr>
-
-      {% empty %}
-      <tr>
-        <td>No sequence found.</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+  <!--Revision needed-->
   <table>
     <thead>
       <tr>
@@ -89,22 +87,109 @@
       </tr>
     </thead>
     <tbody>
-      {% for seq in sequencesRevision %}
+      {% for a in assignationsRevision %}
       <tr>
         <td>
           <a
             id="QuerySequence"
             class="form-control"
-            href="{% url 'sequence' id=seq.id %}"
+            href="{% url 'sequence' id=a.seq.id %}"
           >
-            {{ seq.id }} - {{ seq.genome.id|replaceWithSpace:"_" }}</a
+            {{ a.seq.id }} - {{ a.seq.genome.id|replaceWithSpace:"_" }}</a
           >
         </td>
       </tr>
-
-      {% empty %}
+      {% endfor %}
+    </tbody>
+  </table>
+  <!--Validation needed-->
+  <table>
+    <thead>
       <tr>
-        <td>No sequence found.</td>
+        <th colspan="2">Validation needed</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in validations %}
+      <tr>
+        <td>
+          <a
+            id="QuerySequence"
+            class="form-control"
+            href="{% url 'sequence' id=a.seq.id %}"
+          >
+            {{ a.seq.id }} - {{ a.seq.genome.id|replaceWithSpace:"_" }}</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!--Waiting for validation-->
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Waiting for validation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in assignationsDone %}
+      <tr>
+        <td>
+          <a
+            id="QuerySequence"
+            class="form-control"
+            href="{% url 'sequence' id=a.seq.id %}"
+          >
+            {{ a.seq.id }} - {{ a.seq.genome.id|replaceWithSpace:"_" }}</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!--My validated annotations-->
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">My validated annotations</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in assignationsValidated %}
+      <tr>
+        <td>
+          <a
+            id="QuerySequence"
+            class="form-control"
+            href="{% url 'sequence' id=a.seq.id %}"
+          >
+            {{ a.seq.id }} - {{ a.seq.genome.id|replaceWithSpace:"_" }}</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!--Annotations I validated-->
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Annotations I validated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in validationsDone %}
+      <tr>
+        <td>
+          <a
+            id="QuerySequence"
+            class="form-control"
+            href="{% url 'sequence' id=a.seq.id %}"
+          >
+            {{ a.seq.id }} - {{ a.seq.genome.id|replaceWithSpace:"_" }}</a
+          >
+        </td>
       </tr>
       {% endfor %}
     </tbody>

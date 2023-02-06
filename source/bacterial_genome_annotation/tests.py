@@ -9,10 +9,11 @@ class AnnotationSignalTestCase(TestCase):
     def setUp(self):
         g = Genome.objects.create(id='g1')
         s = Sequence.objects.create(id='s1', genome=g)
-        u = User.objects.create_user('test@gmail.com', 'bonjour')
+        u1 = User.objects.create_user('test1@gmail.com', 'bonjour')
+        u2 = User.objects.create_user('test2@gmail.com', 'bonjour')
         Annotation.objects.create(sequence=s)
         Annotation.objects.create(sequence=s)
-        Assignation.objects.create(user=u, sequence=s)
+        Assignation.objects.create(annotator=u1, validator=u2, sequence=s)
         
 
     def test_sequence_is_updated(self):
