@@ -5,7 +5,6 @@ from .models import User
 
 
 class UserCreationForm(UserCreationForm):
-
     class Meta:
         model = User
         fields = ('email',)
@@ -40,6 +39,13 @@ class SearchForm(forms.Form):
         choices=((True, 'Nucleic'), (False, 'Peptidic')),
         required=False
     )
+
+
+class AssignateForm(forms.Form):
+    def __init__(self, choices):
+        super().__init__()
+        self.fields['Annotator'].choices = choices
+    Annotator = forms.ChoiceField(choices=[('empty', 'No favorite')])
 
 
 class AnnotFormById(forms.Form):

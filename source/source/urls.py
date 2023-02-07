@@ -38,9 +38,10 @@ urlpatterns.extend([
 
 # From a sequence
 urlpatterns.extend([
-    path('search/sequence/<str:id>', views.SequenceView, name='sequence'),
-    path('Parser/<str:id>/', views.Parser, name="Parser"),
-    path('annoter/<str:id>/', views.ANNOT, name="annotate"),
+    path('search/sequence/<str:id>/', views.SequenceView, name='sequence'),
+    path('search/sequence/<str:id>/Parser/', views.Parser, name="Parser"),
+    path('search/sequence/<str:id>/annoter/', views.ANNOT, name="annotate"),
+    path('search/sequence/<str:id>/assign/', views.Assign, name='assign'),
     path('search/genome/<str:id>', views.GenomeView, name='genome'),
 ])
 
