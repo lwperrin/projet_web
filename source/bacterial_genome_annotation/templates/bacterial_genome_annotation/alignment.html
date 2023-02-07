@@ -2,21 +2,21 @@
 {% load mytags %}
 {% block content %}
 
-<table>
-    <thead>
+    <table>
+        <thead>
         <th colspan="4">
-                {{blast.accession}}    
+            {{ blast.accession }}
         </th>
-     </thead>
-     <tbody>
+        </thead>
+        <tbody>
         <tr>
             <td colspan="4">
-                {{blast.definition}}
+                {{ blast.definition }}
             </td>
         </tr>
         <tr>
             <td class="col41">
-                <b>sequence length :</b> 
+                <b>sequence length :</b>
             </td>
             <td class="col42">
                 <b>evalue : </b>
@@ -30,58 +30,57 @@
         </tr>
         <tr>
             <td>
-                {{blast.len}}
+                {{ blast.len }}
             </td>
             <td>
-                {{blast.value}}
+                {{ blast.value }}
             </td>
             <td>
-                {{blast.identitie}} % <!-- pourcentage d'identité-->
+                {{ blast.identitie }} % <!-- pourcentage d'identité-->
             </td>
             <td>
-                {{blast.align_length}} <!-- taulle de la séquence -->
+                {{ blast.align_length }} <!-- taulle de la séquence -->
             </td>
         </tr>
-     </tbody>  
-</table>        
-<br>
-<br>
-     
-<table>
-    <thead>
+        </tbody>
+    </table>
+    <br>
+    <br>
+
+    <table>
+        <thead>
         <th colspan="4">
             Sequence
         </th>
-    </thead>
-        
-    <tbody>
+        </thead>
+
+        <tbody>
         <tr>
             <td>
-                {{blast.query_start}}
+                {{ blast.query_start }}
             </td>
             <td>
-                {{blast.query_end}}
+                {{ blast.query_end }}
             </td>
         </tr>
-        <tr>    
+        <tr>
             <td>
-                <div id="Sequence">{{blast.full}}</div>
+
+                <div id="Sequence">
+                    {% for c in multiline %}
+                        <span style="writing-mode: vertical-lr; text-orientation: upright;">{{ c }}</span>
+                    {% endfor %}
+                </div>
             </td>
-           <!-- <td>
-                <div id="Sequence">{{blast.query}}</div>
-            </td>
-            <td>
-                {{blast.subject}}
-            </td>-->
-            
+
         </tr>
-    </tbody> 
-</table>
+        </tbody>
+    </table>
 
-{{blast.score}}
+    {{ blast.score }}
 
 
 
-<!---->
+    <!---->
 
 {% endblock %}

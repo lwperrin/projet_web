@@ -211,9 +211,11 @@ def Parser(request: HttpRequest, id):
                     params['progression'] = 'Something went wrong'
                 else:
                     params['progression'] = 'Still in progress'
+                params['isDone'] = False
             else:
                 params['progression'] = 'Finished !'
                 params['results'] = list
+                params['isDone'] = True
     return render(request, 'bacterial_genome_annotation/Parser.html', params)
 
 
@@ -294,8 +296,12 @@ def Search(request: HttpRequest):
 
 def alignment(request: HttpRequest, id: str):
     blast = BlastHit.objects.get(id=id)
+    multiline = []
+    for i in range(min([len(blast.query), len(blast.match), len(blast.subject)])):
+        multiline.append(f'{blast.query[i]}{blast.match[i]}{blast.subject[i]}')
     params = {
         "blast": blast,
+        "multiline": multiline
     }
     return render(request, 'bacterial_genome_annotation/alignment.html', params)
 
