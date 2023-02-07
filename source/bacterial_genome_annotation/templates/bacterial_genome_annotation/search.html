@@ -4,8 +4,7 @@
 {% block content %}
     <div class="searchPage">
         <div class="container">
-            <form action="" method="POST" novalidate>
-                {% csrf_token %}
+            <form action="" method="GET" novalidate>
                 {{ typeForm.as_p }}
             </form>
             <!--    </div> -->
@@ -32,7 +31,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for seq in page_obj.object_list %}
+            {% for seq in page_obj_sequences.object_list %}
                 <tr>
                     <td>
                         <a
@@ -44,12 +43,21 @@
                         >
                     </td>
                 </tr>
-
-                {% empty %}
+            {% endfor %}
+            {% for gen in page_obj_genomes.object_list %}
                 <tr>
-                    <td>No sequence found.</td>
+                    <td>
+                        <a
+                                id="QuerySequence"
+                                class="form-control"
+                                href="{% url 'genome' id=gen.id %}"
+                        >
+                            {{ gen.id|replaceWithSpace:"_" }}</a
+                        >
+                    </td>
                 </tr>
             {% endfor %}
+
             </tbody>
         </table>
         <div class="pagination">

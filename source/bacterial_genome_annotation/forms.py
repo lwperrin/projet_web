@@ -34,13 +34,17 @@ class SearchTypeForm(forms.Form):
     type = forms.ChoiceField(choices=MY_CHOICES, widget=forms.Select(attrs={'onchange': 'submit();'}))
 
 
-class SearchForm(forms.Form):
+class SequenceSearchForm(forms.Form):
     bacterial_name = forms.CharField(max_length=100, required=False)
     sequence = forms.CharField(max_length=100, min_length=3, required=False)
     gene_name = forms.CharField(max_length=100, required=False)
     transcript_name = forms.CharField(max_length=100, required=False)
     description = forms.CharField(max_length=100, required=False)
 
+
+class GenomeSearchForm(forms.Form):
+    bacterial_name = forms.CharField(max_length=100, required=False)
+    sequence = forms.CharField(max_length=100, min_length=3, required=False)
 
 class AssignateForm(forms.Form):
     def __init__(self, choices):

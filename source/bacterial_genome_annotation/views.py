@@ -221,22 +221,47 @@ def Search(request: HttpRequest):
     page = int(request.GET.get('page', '1'))
     description = 'empty'
     sequences = []
-    searchForm = SearchForm(request.GET)
+    genomes = []
     typeForm = SearchTypeForm(request.GET)
+    if request.GET['type'] == 'gen':
+        searchForm = GenomeSearchForm(request.POST)
+        if searchForm.is_valid():
+            bacterial_name = searchForm.cleaned_data['bacterial_name']
+            seq = searchForm.cleaned_data['sequence']
+            genomes = Genome.objects.all()
+            if bacterial_name != '':
+                genomes = genomes.filter(id__icontains=bacterial_name)
+            if seq != '':
+                seq = seq.upper()
+                splitSearch = seq.split('%')
+                for s in splitSearch:
+                    genomes = genomes.filter(fullSequence__contains=s)
+                genomes = genomes.filter(
+                    fullSequence__regex='.*' + '.*'.join(splitSearch) + '.*')
+        paginator = Paginator(genomes, 50)
+        pageObj = paginator.get_page(page)
+        params = {
+            "typeForm": typeForm,
+            "form": searchForm,
+            "description": description,
+            "genomes": genomes,
+            "page_obj_genomes": pageObj,
+        }
+        return render(request, 'bacterial_genome_annotation/search.html', params)
+
+    searchForm = SequenceSearchForm(request.POST)
     if request.method == "POST":
         if searchForm.is_valid():
             bacterial_name = searchForm.cleaned_data['bacterial_name']
-            isCds = typeForm['type'] == 'cds'
+            isCds = request.GET['type'] == 'cds'
             gene_name = searchForm.cleaned_data['gene_name']
             transcript_name = searchForm.cleaned_data['transcript_name']
             description = searchForm.cleaned_data['description']
             seq = searchForm.cleaned_data['sequence']
-            # Querry
-            sequences = Sequence.objects.all()
+            # Query
+            sequences = Sequence.objects.filter(isCds=isCds)
             if bacterial_name != '':
                 sequences = sequences.filter(genome__id__icontains=bacterial_name)
-            if isCds:
-                sequences = sequences.filter(isCds=isCds)
             if gene_name != '':
                 sequences = sequences.filter(
                     annotationQueryName__isValidate=True, annotationQueryName__gene__icontains=gene_name)
@@ -260,17 +285,19 @@ def Search(request: HttpRequest):
         "form": searchForm,
         "description": description,
         "sequences": sequences,
-        "page_obj": pageObj,
+        "page_obj_sequences": pageObj,
     }
 
     return render(request, 'bacterial_genome_annotation/search.html', params)
 
+
 def alignment(request: HttpRequest, id: str):
-    blast=BlastHit.objects.get(id=id)
+    blast = BlastHit.objects.get(id=id)
     params = {
         "blast": blast,
     }
     return render(request, 'bacterial_genome_annotation/alignment.html', params)
+
 
 def SequenceView(request: HttpRequest, id: str):
     sequence = Sequence.objects.get(id=id)
@@ -487,4 +514,3 @@ def contact(request):
 
 def AboutUs(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AboutUs.html')
-
