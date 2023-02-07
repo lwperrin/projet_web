@@ -66,6 +66,16 @@ class Annotation(models.Model):
         User, on_delete=models.SET_NULL, null=True, related_name="annotationForValidator")
 
 
+class Assignation(models.Model):
+    validator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="assignationForValidator")
+    annotator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="assignationForAnnotator")
+    sequence = models.ForeignKey(Sequence, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now)
+    isRevision = models.BooleanField(default=False)
+    isValidated = models.BooleanField(default=False)
+    isAnnotated = models.BooleanField(default=False)
+
+
 class BlastResult(models.Model):
     id = models.CharField(max_length=100, primary_key=True)
     isCds = models.BooleanField(default=True)

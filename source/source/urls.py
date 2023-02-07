@@ -31,6 +31,8 @@ urlpatterns.extend([
     #path('', views.home, name="home"),
     path('', views.Search, name="search"),
     path('annoter/', views.ANNOT, name='annoter'),
+    path('', views.home, name="home"),
+    path('alignement/', views.alignement, name="alignement"),
     path('AddGenome/', views.AddGenome, name="AddGenome"),
     path('AboutUs/', views.AboutUs, name="AboutUs"),
     path('contact/', views.contact, name="contact"),
@@ -39,10 +41,12 @@ urlpatterns.extend([
 # From a sequence
 urlpatterns.extend([
     path('alignment/<str:id>/', views.alignment, name="alignment"),
-    path('search/sequence/<str:id>', views.SequenceView, name='sequence'),
-    path('Parser/<str:id>/', views.Parser, name="Parser"),
     path('annoter/<str:id>/', views.ANNOT, name="ANNOT"),
-    path('search/genome/<str:id>', views.GenomeView, name='genome'),
+    path('sequence/<str:id>/', views.SequenceView, name='sequence'),
+    path('sequence/<str:id>/Parser/', views.Parser, name="Parser"),
+    path('sequence/<str:id>/annoter/', views.ANNOT, name="annotate"),
+    path('sequence/<str:id>/assign/', views.Assign, name='assign'),
+    path('genome/<str:id>', views.GenomeView, name='genome'),
 ])
 
 # Registration and account management

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .forms import *
 from .models import *
 from .utils import blastn, blastp, reverseSequence
@@ -12,11 +11,11 @@ from django.core.exceptions import ValidationError
 import re
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator
-from django.shortcuts import resolve_url, redirect
+from django.shortcuts import resolve_url, redirect, render
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from .forms import ContactForm
+
 
 # Create your views here.
 
@@ -44,11 +43,26 @@ def AccountView(request: HttpRequest, id: str):
         role = 'reader'
     else:
         role = 'no'
+    validations = Assignation.objects.filter(validator=user, isValidated=False, isAnnotated=True).order_by('date')
+    validationsDone = Assignation.objects.filter(validator=user, isValidated=True).order_by('date')
+    assignationsNew = Assignation.objects.filter(annotator=user, isRevision=False, isValidated=False,
+                                                 isAnnotated=False).order_by('date')
+    assignationsRevision = Assignation.objects.filter(annotator=user, isRevision=True, isValidated=False,
+                                                      isAnnotated=False).order_by('date')
+    assignationsDone = Assignation.objects.filter(annotator=user, isAnnotated=True, isValidated=False).order_by('date')
+    assignationsValidated = Assignation.objects.filter(annotator=user, isAnnotated=True, isValidated=True).order_by(
+        'date')
     params = {
         'user': user,
         'role': role,
         'own': request.user.id == int(id),
         'isFriend': request.user.friends.filter(id=id).exists(),
+        'assignationsNew': assignationsNew,
+        'assignationsRevision': assignationsRevision,
+        'assignationsDone': assignationsDone,
+        'validations': validations,
+        'validationsDone': validationsDone,
+        'assignationsValidated': assignationsValidated
     }
     return render(request, 'bacterial_genome_annotation/Account.html', params)
 
@@ -117,6 +131,7 @@ def MembersView(request: HttpRequest):
     }
     return render(request, 'bacterial_genome_annotation/Members.html', params)
 
+
 #
 #### ANNOT via la page sequence ref BLAST #####
 #
@@ -151,6 +166,24 @@ def ANNOT(request: HttpRequest, id):
 
     # , "sequences": sequences})
     return render(request, 'bacterial_genome_annotation/annoter.html', {"form": form})
+
+
+@login_required
+def Assign(request: HttpRequest, id: str):
+    sequence = Sequence.objects.get(id=id)
+    if request.method == "POST":
+        annotator = User.objects.get(id=request.POST['Annotator'])
+        assignation = Assignation(annotator=annotator, validator=request.user, sequence=sequence)
+        assignation.save()
+        return redirect('sequence', id=id)
+    favorites = request.user.friends.all()
+    if favorites.exists():
+        choices = [(u.id, u.email) for u in favorites]
+        print(choices)
+        form = AssignateForm(choices)
+    else:
+        form = AssignateForm([('empty', 'No favorite')])
+    return render(request, 'bacterial_genome_annotation/Assign.html', {"form": form})
 
 
 @login_required
@@ -189,7 +222,6 @@ def Search(request: HttpRequest):
     description = 'empty'
     sequences = []
     form = SearchForm(request.GET)
-
     if request.method == "GET":
         if form.is_valid():
             bacterial_name = form.cleaned_data['bacterial_name']
@@ -219,7 +251,7 @@ def Search(request: HttpRequest):
                 for s in splitSearch:
                     sequences = sequences.filter(sequence__contains=s)
                 sequences = sequences.filter(
-                    sequence__regex='.*'+'.*'.join(splitSearch)+'.*')
+                    sequence__regex='.*' + '.*'.join(splitSearch) + '.*')
     paginator = Paginator(sequences, 50)
     pageObj = paginator.get_page(page)
     params = {
@@ -239,7 +271,6 @@ def alignment(request: HttpRequest, id: str):
     return render(request, 'bacterial_genome_annotation/alignment.html', params)
 
 def SequenceView(request: HttpRequest, id: str):
-
     sequence = Sequence.objects.get(id=id)
     annotationsValidated = Annotation.objects.filter(sequence=sequence, isValidate=True)
     annotations = Annotation.objects.filter(sequence=sequence, isValidate=False)
@@ -320,21 +351,22 @@ def GenomeView(request: HttpRequest, id: str):
                 self.isSeq = True
                 self.title = ''
                 self.title = f"ID : {seq.id}\nPosition : {seq.position}"
+
     seqList = []
     fullSeq = genome.fullSequence
-    i = (page-1)*10000
-    j = i+10000
+    i = (page - 1) * 10000
+    j = i + 10000
     sequences = Sequence.objects.filter(
         genome=genome, isCds=True, position__gt=i, position__lt=j).order_by('position')
     for s in sequences:
         if i < s.position:
-            seqList.append(sequenceAugmented(fullSeq[i:s.position-1]))
-            i = s.position-1
+            seqList.append(sequenceAugmented(fullSeq[i:s.position - 1]))
+            i = s.position - 1
         newS = Sequence()
         newS.id = s.id
         newS.position = s.position
-        b = i+1-s.position
-        e = j-s.position-1
+        b = i + 1 - s.position
+        e = j - s.position - 1
         if s.direction:
             tmp = s.sequence
         else:
@@ -355,14 +387,14 @@ def GenomeView(request: HttpRequest, id: str):
             self.last = last
             self.hasPrevious = self.page != self.first
             self.hasNext = self.page != self.last
-            self.previous = self.page-1
-            self.next = self.page+1
+            self.previous = self.page - 1
+            self.next = self.page + 1
 
     params = {
         'seqList': seqList,
         'genome': genome,
-        'fullSequence': genome.fullSequence[(page-1)*10000:j],
-        'page': pageObj(page=page, first=1, last=len(genome.fullSequence)//10000+1),
+        'fullSequence': genome.fullSequence[(page - 1) * 10000:j],
+        'page': pageObj(page=page, first=1, last=len(genome.fullSequence) // 10000 + 1),
     }
 
     return render(request, 'bacterial_genome_annotation/genome.html', params)
@@ -380,19 +412,23 @@ class SignUpView(generic.CreateView):
 
 
 class LoginView(auth_views.LoginView):
-
     template_name = 'registration/login.html'
 
     def get_success_url(self):
+        list(messages.get_messages(self.request))
         if 'next' in self.request.GET:
-            messages.add_message(self.request, messages.INFO,
-                                 'You must be connected to do that !.')
+            return self.request.GET['next']
         return '/'
 
     def get_initial(self):
         if 'next' in self.request.GET:
-            messages.add_message(self.request, messages.INFO,
+            if self.request.user.is_authenticated:
+                messages.warning(self.request,
+                                 'You don\'t have the authorization to do that !.')
+            else:
+                messages.warning(self.request,
                                  'You must be connected to do that !.')
+
         return self.initial.copy()
 
 

@@ -2,7 +2,7 @@
 {% load mytags %}
 {% block content %}
     <div style = "max-width:470px;">
-        <form action="" method="post" novalidate>
+        <form action="" method="POST" novalidate>
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Envoyer">
