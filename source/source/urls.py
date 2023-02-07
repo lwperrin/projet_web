@@ -32,7 +32,7 @@ urlpatterns.extend([
     path('', views.Search, name="search"),
     path('annoter/', views.ANNOT, name='annoter'),
     path('', views.home, name="home"),
-    path('alignement/', views.alignement, name="alignement"),
+    path('alignment/', views.alignment, name="alignment"),
     path('AddGenome/', views.AddGenome, name="AddGenome"),
     path('AboutUs/', views.AboutUs, name="AboutUs"),
     path('contact/', views.contact, name="contact"),
