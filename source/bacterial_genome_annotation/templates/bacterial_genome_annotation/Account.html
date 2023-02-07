@@ -1,29 +1,37 @@
 {% extends 'bacterial_genome_annotation/Base.html' %} {% block content %}
-<h2>Your account</h2>
+<!--h2></h2>-->
 <h3>General informations</h3>
 <table>
+  <thead>
+    <th colspan="2">
+      Your account
+    </th>
+  </thead>
   <tr>
-    <th>First name</th>
-    <th>{{user.first_name}}</th>
+    <td>First name</td>
+    <td>{{user.first_name}}</td>
   </tr>
   <tr>
-    <th>Last name</th>
-    <th>{{user.last_name}}</th>
+    <td>Last name</td>
+    <td>{{user.last_name}}</td>
   </tr>
   <tr>
-    <th>Phone number</th>
-    <th>{{user.phone_no}}</th>
+    <td>Phone number</td>
+    <td>{{user.phone_no}}</td>
   </tr>
   <tr>
-    <th>Profile picture</th>
-    <th><img src="{{ user.picture.url }}" width="100" height="100" /></th>
+    <td>Profile picture</td>
+    <td><img src="{{ user.picture.url }}" width="100" height="100" /></td>
   </tr>
 </table>
 
 {% if own %}
-<button type="button">
+<br>
+<div class="d-flex justify-content-end">
+<button type="button" class="btn btn-secondary" >
   <a href="{% url 'account_modification' %}">Modify</a>
 </button>
+</div>
 {% else %}
   {% if isFriend %}
     <button type="button">
@@ -38,16 +46,16 @@
 <h3>Authentification</h3>
   <table>
     <tr>
-      <th>Registration date</th>
-      <th>{{user.date_joined}}</th>
+      <td>Registration date</td>
+      <td>{{user.date_joined}}</td>
     </tr>
     <tr>
-      <th>Role</th>
-      <th>{{role}}</th>
+      <td>Role</td>
+      <td>{{role}}</td>
     </tr>
     <tr>
-      <th>Email address</th>
-      <th>{{user.email}}</th>
+      <td>Email address</td>
+      <td>{{user.email}}</td>
     </tr>
   </table>
   {% endblock %}

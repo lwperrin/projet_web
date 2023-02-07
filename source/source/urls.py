@@ -28,9 +28,8 @@ urlpatterns = [
 
 # Base url
 urlpatterns.extend([
-    path('', views.home, name="home"),
-    path('search/', views.Search, name="search"),
-    path('alignement/', views.alignement, name="alignement"),
+    #path('', views.home, name="home"),
+    path('', views.Search, name="search"),
     path('annoter/', views.ANNOT, name='annoter'),
     path('AddGenome/', views.AddGenome, name="AddGenome"),
     path('AboutUs/', views.AboutUs, name="AboutUs"),
@@ -39,6 +38,7 @@ urlpatterns.extend([
 
 # From a sequence
 urlpatterns.extend([
+    path('alignment/<str:id>/', views.alignment, name="alignment"),
     path('search/sequence/<str:id>', views.SequenceView, name='sequence'),
     path('Parser/<str:id>/', views.Parser, name="Parser"),
     path('annoter/<str:id>/', views.ANNOT, name="ANNOT"),

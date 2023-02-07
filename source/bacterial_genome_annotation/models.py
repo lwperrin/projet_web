@@ -76,16 +76,23 @@ class BlastResult(models.Model):
 
 class BlastHit(models.Model):
     id = models.CharField(max_length=100, primary_key=True)
-    num = models.IntegerField()
+    num = models.IntegerField(default=0)
     definition = models.CharField(max_length=100)
     accession = models.CharField(max_length=50)
-    len = models.IntegerField()
-
+    len = models.IntegerField(default=0)
     value = models.IntegerField(null=True)
     identitie = models.IntegerField(null=True)
-    # ident = models.IntegerField(null=True)
-    # lenn = models.IntegerField(null=True)
-
+    full = models.TextField(null=True)
+    align_length = models.IntegerField(default=0)
+    query = models.TextField(null=True)
+    query_end = models.IntegerField(default=0)
+    query_start = models.IntegerField(default=0)
+    subject = models.TextField(null=True)
+    score = models.IntegerField(default=0)
+    gaps = models.IntegerField(default=0)
+    match = models.TextField(null=True)
+     
+    
     blastResult = models.ForeignKey(BlastResult, on_delete=models.CASCADE)
 
 

@@ -27,8 +27,16 @@ def blastn(blast: BlastResult):
         for hsp in align.hsps:
             hit.value = hsp.expect
             hit.identitie = ( hsp.identities / hsp.align_length ) *100
-            #hit.ident = hsp.identities
-            #hit.lenn = hsp.align_length
+            hit.align_length = hsp.align_length
+            hit.score = hsp.score
+            hit.query_end = hsp.query_end
+            hit.query_start = hsp.query_start
+            hit.query = hsp.query
+            hit.subject = hsp.sbjct
+            hit.gaps = hsp.gaps
+            hit.match = hsp.match
+            hit.full = hsp
+
         hit.save()
         i+=1
     blast.isFinished=True

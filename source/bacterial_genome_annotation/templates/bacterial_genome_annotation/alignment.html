@@ -1,0 +1,87 @@
+{% extends 'bacterial_genome_annotation/Base.html' %}
+{% load mytags %}
+{% block content %}
+
+<table>
+    <thead>
+        <th colspan="4">
+                {{blast.accession}}    
+        </th>
+     </thead>
+     <tbody>
+        <tr>
+            <td colspan="4">
+                {{blast.definition}}
+            </td>
+        </tr>
+        <tr>
+            <td class="col41">
+                <b>sequence length :</b> 
+            </td>
+            <td class="col42">
+                <b>evalue : </b>
+            </td>
+            <td class="col43">
+                <b>identitie:</b>
+            </td>
+            <td class="col44">
+                <b>align length</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{blast.len}}
+            </td>
+            <td>
+                {{blast.value}}
+            </td>
+            <td>
+                {{blast.identitie}} % <!-- pourcentage d'identité-->
+            </td>
+            <td>
+                {{blast.align_length}} <!-- taulle de la séquence -->
+            </td>
+        </tr>
+     </tbody>  
+</table>        
+<br>
+<br>
+     
+<table>
+    <thead>
+        <th colspan="4">
+            Sequence
+        </th>
+    </thead>
+        
+    <tbody>
+        <tr>
+            <td>
+                {{blast.query_start}}
+            </td>
+            <td>
+                {{blast.query_end}}
+            </td>
+        </tr>
+        <tr>    
+            <td>
+                <div id="Sequence">{{blast.full}}</div>
+            </td>
+           <!-- <td>
+                <div id="Sequence">{{blast.query}}</div>
+            </td>
+            <td>
+                {{blast.subject}}
+            </td>-->
+            
+        </tr>
+    </tbody> 
+</table>
+
+{{blast.score}}
+
+
+
+<!---->
+
+{% endblock %}

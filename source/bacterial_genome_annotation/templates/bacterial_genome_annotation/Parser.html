@@ -44,7 +44,8 @@
             <tr>
 
                 <td class = "link-primary">
-                    <a href="{% url 'alignement' %}" >{{hit.definition}}</a>
+                    
+                    <a href="{% url 'alignment' id=hit.id %}" >{{hit.definition}}</a>
                     <!--{{hit.definition}}-->
                 </td>
                 <td>
@@ -74,14 +75,7 @@
 <script type="text/javascript">
     setInterval(function(){
         window.location.reload()
-<<<<<<< HEAD
-    }, 30000)
-</script>
-
-{% endblock %}
-=======
     }, 5000)
 </script>
 
 {% endblock %}
->>>>>>> 8fdeafbe2771f333156ee34a83e9835b631f4433

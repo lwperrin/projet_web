@@ -231,6 +231,12 @@ def Search(request: HttpRequest):
 
     return render(request, 'bacterial_genome_annotation/search.html', params)
 
+def alignment(request: HttpRequest, id: str):
+    blast=BlastHit.objects.get(id=id)
+    params = {
+        "blast": blast,
+    }
+    return render(request, 'bacterial_genome_annotation/alignment.html', params)
 
 def SequenceView(request: HttpRequest, id: str):
 
@@ -444,6 +450,3 @@ def contact(request):
 def AboutUs(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AboutUs.html')
 
-
-def alignement(request: HttpRequest):
-    return render(request, 'bacterial_genome_annotation/alignement.html')
