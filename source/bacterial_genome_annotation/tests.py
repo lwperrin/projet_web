@@ -14,7 +14,7 @@ class AnnotationSignalTestCase(TestCase):
         Annotation.objects.create(sequence=s)
         Annotation.objects.create(sequence=s)
         Assignation.objects.create(annotator=u1, validator=u2, sequence=s)
-        
+
 
     def test_sequence_is_updated(self):
         """sequence.hasValid should be automatically updated"""

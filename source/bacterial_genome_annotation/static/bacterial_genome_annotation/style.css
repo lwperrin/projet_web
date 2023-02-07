@@ -77,7 +77,6 @@ footer{
     margin-left: auto;
     margin-right: auto; 
 }
-
 /*.container {
 	text-align: center;
 	width: 400px;
@@ -135,6 +134,18 @@ td{
     height: 50px;
     margin-top: 10px;
 
+}
+.col41{
+    width:100px;
+}
+.col42{
+    width:100px;
+}
+.col43{
+    width:100px;
+}
+.col44{
+    width:100px;
 }
 
 

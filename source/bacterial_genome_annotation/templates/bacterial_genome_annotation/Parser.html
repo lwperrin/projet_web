@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 
+    <!--<META HTTP-EQUIV="Refresh" CONTENT="30; URL=http://127.0.0.1:8000/Parser/">-->
 <div>
 
  <!--Genome specie/strain names -->
@@ -43,7 +44,8 @@
             <tr>
 
                 <td class = "link-primary">
-                    <a href="{% url 'alignement' %}" >{{hit.definition}}</a>
+                    
+                    <a href="{% url 'alignment' id=hit.id %}" >{{hit.definition}}</a>
                     <!--{{hit.definition}}-->
                 </td>
                 <td>
@@ -61,7 +63,7 @@
                 </td>
                 <td>
                    {{hit.lenn}} 
-                </td> -->
+                </td>  60000-->
             </tr>    
         {% endfor %}
         </tbody>
