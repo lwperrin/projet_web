@@ -31,7 +31,7 @@ class UserSearchForm(forms.Form):
 
 class SearchTypeForm(forms.Form):
     MY_CHOICES = [("cds", "nucleic"), ("pep", "peptidic"), ("gen", "genome")]
-    type = forms.ChoiceField(choices=MY_CHOICES, widget=forms.Select(attrs={'onchange': 'submit();'}))
+    type = forms.ChoiceField(choices=MY_CHOICES, widget=forms.Select(attrs={'onchange': 'submit();'}), required=False)
 
 
 class SequenceSearchForm(forms.Form):
@@ -45,6 +45,7 @@ class SequenceSearchForm(forms.Form):
 class GenomeSearchForm(forms.Form):
     bacterial_name = forms.CharField(max_length=100, required=False)
     sequence = forms.CharField(max_length=100, min_length=3, required=False)
+
 
 class AssignateForm(forms.Form):
     def __init__(self, choices):

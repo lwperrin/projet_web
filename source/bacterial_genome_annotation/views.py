@@ -223,7 +223,8 @@ def Search(request: HttpRequest):
     sequences = []
     genomes = []
     typeForm = SearchTypeForm(request.GET)
-    if request.GET['type'] == 'gen':
+    type = request.GET.get('type', 'csd')
+    if type == 'gen':
         searchForm = GenomeSearchForm(request.POST)
         if searchForm.is_valid():
             bacterial_name = searchForm.cleaned_data['bacterial_name']
@@ -253,7 +254,7 @@ def Search(request: HttpRequest):
     if request.method == "POST":
         if searchForm.is_valid():
             bacterial_name = searchForm.cleaned_data['bacterial_name']
-            isCds = request.GET['type'] == 'cds'
+            isCds = type == 'cds'
             gene_name = searchForm.cleaned_data['gene_name']
             transcript_name = searchForm.cleaned_data['transcript_name']
             description = searchForm.cleaned_data['description']
