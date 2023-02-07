@@ -29,22 +29,24 @@ class UserSearchForm(forms.Form):
     show_only_favorites = forms.BooleanField(required=False)
 
 
+class SearchTypeForm(forms.Form):
+    MY_CHOICES = [("cds", "nucleic"), ("pep", "peptidic"), ("gen", "genome")]
+    type = forms.ChoiceField(choices=MY_CHOICES, widget=forms.Select(attrs={'onchange': 'submit();'}))
+
+
 class SearchForm(forms.Form):
     bacterial_name = forms.CharField(max_length=100, required=False)
     sequence = forms.CharField(max_length=100, min_length=3, required=False)
     gene_name = forms.CharField(max_length=100, required=False)
     transcript_name = forms.CharField(max_length=100, required=False)
     description = forms.CharField(max_length=100, required=False)
-    nucleic_or_peptidic = forms.ChoiceField(
-        choices=((True, 'Nucleic'), (False, 'Peptidic')),
-        required=False
-    )
 
 
 class AssignateForm(forms.Form):
     def __init__(self, choices):
         super().__init__()
         self.fields['Annotator'].choices = choices
+
     Annotator = forms.ChoiceField(choices=[('empty', 'No favorite')])
 
 

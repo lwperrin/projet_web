@@ -221,15 +221,16 @@ def Search(request: HttpRequest):
     page = int(request.GET.get('page', '1'))
     description = 'empty'
     sequences = []
-    form = SearchForm(request.GET)
-    if request.method == "GET":
-        if form.is_valid():
-            bacterial_name = form.cleaned_data['bacterial_name']
-            isCds = form.cleaned_data['nucleic_or_peptidic']
-            gene_name = form.cleaned_data['gene_name']
-            transcript_name = form.cleaned_data['transcript_name']
-            description = form.cleaned_data['description']
-            seq = form.cleaned_data['sequence']
+    searchForm = SearchForm(request.GET)
+    typeForm = SearchTypeForm(request.GET)
+    if request.method == "POST":
+        if searchForm.is_valid():
+            bacterial_name = searchForm.cleaned_data['bacterial_name']
+            isCds = typeForm['type'] == 'cds'
+            gene_name = searchForm.cleaned_data['gene_name']
+            transcript_name = searchForm.cleaned_data['transcript_name']
+            description = searchForm.cleaned_data['description']
+            seq = searchForm.cleaned_data['sequence']
             # Querry
             sequences = Sequence.objects.all()
             if bacterial_name != '':
@@ -255,7 +256,8 @@ def Search(request: HttpRequest):
     paginator = Paginator(sequences, 50)
     pageObj = paginator.get_page(page)
     params = {
-        "form": form,
+        "typeForm": typeForm,
+        "form": searchForm,
         "description": description,
         "sequences": sequences,
         "page_obj": pageObj,
