@@ -1,4 +1,4 @@
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 from ..models import Annotation, Assignation
 
@@ -36,3 +36,10 @@ def update_sequence_hasvalid_on_delete(sender, instance: Annotation, **kwargs):
         for a in assignationsDifferent:
             a.isRevision = False
             a.save()
+
+@receiver(pre_save, sender=Assignation)
+def onsave(sender, instance: Assignation, **kwargs):
+    if instance.sequence.hasValid:
+        instance.isRevision = True
+    else:
+        instance.isRevision = False
