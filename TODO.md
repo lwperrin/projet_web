@@ -2,7 +2,7 @@
 
 ## To be done
 
-- [ ] HTML structure
+- [X] HTML structure
     - [X] Pages schemes
         - [X] Annot
         - [X] Parser
@@ -11,27 +11,27 @@
         - [X] Account
         - [ ] Search
             - [X] Blast
-                - [ ] Alignement
+                - [X] Alignement
             - [X] Annotation  
         - [X] AboutUs
         - [X] contact
     - [ ] Link between pages
         - [X] Annot
-        - [ ] Parser
+        - [X] Parser
         - [X] Add
         - [X] Login
         - [X] Account
         - [X] Search
             - [X] Blast
-                - [ ] Alignement
+                - [X] Alignement
             - [X] Annotation  
-        - [ ] AboutUs
+        - [X] AboutUs
         - [ ] contact
     - [ ] Forum page
     - [X] Annotation comment
         - [ ] display
     - [ ] Account page (different depending on the user group)
-    - [ ] Search in home
+    - [X] Search in home
 
 - [ ] Front
     - [X] Banner or floating menu or sidebar
