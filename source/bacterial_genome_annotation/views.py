@@ -172,6 +172,24 @@ def ANNOT(request: HttpRequest, id):
 
 
 @login_required
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_validate'))
+def Valid_Annotation(request: HttpRequest, id: str):
+    annotation = Annotation.objects.get(id=id)
+    annotation.isValidate = True
+    annotation.save()
+    return redirect('sequence', id=annotation.sequence.id)
+
+
+@login_required
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_validate'))
+def Delete_Annotation(request: HttpRequest, id: str):
+    annotation = Annotation.objects.get(id=id)
+    sequence = annotation.sequence
+    annotation.delete()
+    return redirect('sequence', id=sequence.id)
+
+
+@login_required
 @user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_assign'))
 def Assign(request: HttpRequest, id: str):
     sequence = Sequence.objects.get(id=id)
