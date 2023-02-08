@@ -2,28 +2,32 @@
 {% block content %}
 {% load static %}
 		<div class="sectionTitle">LADN</div>
-		<div class="helpContent">LADN est le résultat d'un projet web visant à mettre 
-			en place un outils qui vise à ajouter, modifier et annoter
-			des génomes par des utilisateurs enregistrer etr qui ont 
-			une permission définis (rôle). 
+		<div class="helpContent">LADN is a website project designed to let users add, modify and annotate genomes or sequences depending on their permissions. Another goal of this website is to be able to blast a sequence against our database.
 			<br>
 		</div>
-		<div class="sectionTitle">Comment ça marche</div>
+		<div class="sectionTitle">How it works</div>
 
-			<div class="helpContent">Dans un premier temps vous avez accès à partir de la page home aux pages annoter, addGenome, Parser, Search, ainsi que les pages Login et Account.
-				Pour accéder aux fonctionnalités du site il est nécessaire de se connecter. Ainsi, selon le rôle qui vous est attribué, vous aurez un accès à des fonctionnalités.
-				<br>
-			</div>
-			<div class="sectionTitle">Les pages</div>
 			<div class="helpContent">
-
+				When you access our website, you first land on our search page, because most of the actions that a random user would need usually require a sequence or a genome. You can notice a sidebar on the left side of the screen, which displays different menus: 
+				<p>
+					<li>The "Features" menu</li>
+					<li>The "Connexion" menu</li>
+					<li>The "About us" menu</li>
+					<li>The "Help" menu</li>
+				</p>
+				<br>
+				The "Features" menu displays all the possible actions for a user, but clicking on some actions such as "Annotate" requires to be logged in and to have the permissions to access the page (you have to at least be an annotator). The connexion menu displays two options if you are not logged: "Sign in" and "Sign up". If you are logged in, it gives you the possibility to either log out or access your account information.
+				The "About us" menu gives you the possibility to either contact us if you have a message for us (weather it's a bug or a suggestion, we'd gladly take any message from you!) or to learn more about the developpment team. Finally, the "Help" menu gives you access to this user guide and to an FAQ if you have any question regarding the use of this website. 
+			</div>
+			<div class="sectionTitle">Pages</div>
+			<div class="helpContent">
+				<br>
 				<div class="row">
 					<div class="col-md-4">
 					  <div class="card" style="width: 25rem;">
 						  <div class="card-body">
 							<h5 class="card-title">Sign in</h5>
-							<p class="card-text">Elle prend en entrée une adresse mail et un mot de passe.
-								Ces informations vont être soumises à la base de données et s'il y a concordence l'utilisateur peut se connecter et accéder à son rôle.</p>
+							<p class="card-text">The sign in page takes requires you to enter your email address and your password. If you entered the correct information, you will be granted access to every feature relevent to your role. <br><br><br><br><br><br><br><br><br><br><br><br></p>
 							<a href="{% url 'login' %}" class="btn btn-primary">Sign in</a>
 						  </div>
 						</div>
@@ -32,9 +36,9 @@
 						<div class="card" style="width: 25rem;">
 							<div class="card-body">
 							  <h5 class="card-title">Sign up</h5>
-							  <p class="card-text">Cette page permet de s'enregistrer,	
-								elle prend plusieurs champs comme l'email, le mot de passe, nom de famille, prénom et numéro de téléphone.
-								Ensuite un rôle leur sera attribué.</p>
+							  <p class="card-text">The sign up page requires you to enter the following information: your email address, password (which has to be strong enough), your name, surname and phone number. All these information will be stored in our database and accessible by the other members of our website. The default role you will be attributed is reader, and can be upgraded by any user with a higher status. This means that
+								an annotator can pass you from reader to annotator, then a validator can make you validator and finally, you'll be able to get the admin rank if a root user makes you admin.  
+							  </p>
 							  <a href="{% url 'signup' %}" class="btn btn-primary">Sign up</a>
 							</div>
 						  </div>
@@ -42,11 +46,10 @@
 					  <div class="col-md-4">
 						<div class="card" style="width: 25rem;">
 							<div class="card-body">
-							  <h5 class="card-title">Annoter</h5>
-							  <p class="card-text">Cette page a pour but l'annotation des génomes, elle se fait via l'utilisation d'un formulaire Annotation basé sur la structure de la classe annotation.
-								L'utilisateur doit sélectionner	l'id du génome sur lequel il va annoter, il peut mentionner un nom de gène
-								un gène biotype, un transcript biotype, le gène symbol, une bref desctiption (200 charactères)
-								le transcript. Il peut soumettre à validation son annotation via la requête "envoyer".</p>
+							  <h5 class="card-title">Annotate</h5>
+							  <p class="card-text">The annotate page is a page that's only accessible to annotators or higher ranked users. The goal of this page for the user is to give him the opportunity to annotate genomes thanks to a basic form we implemented.
+								In order to do that, the user has to select the ID of the genome he will annotate, and can then input the gene's name, biotype, transcript biotype and symbol. Finally, he can input a brief description (200 caracters) of the gene's information. 
+								Once all the information are given, a reviewer will check the annotation before publishing it on the website.<br><br></p>
 							  <a href="{% url 'annotate' id='0' %}" class="btn btn-primary">Annotate</a>
 							</div>
 						  </div>
@@ -54,11 +57,8 @@
 					  <div class="col-md-4">
 						<div class="card" style="width: 25rem;">
 							<div class="card-body">
-							  <h5 class="card-title">AddGenome</h5>
-							  <p class="card-text">Concernant cette page (pour l'instant) elle fonctionne sur le principe de l'envoi de fichiers fasta, ou l'utilisateur doit mentionner l'id du génome dans un premier temps.
-								Il peut ensuite soumettre (déposer) un fichier fasta du génome, un fichier contenant une description de la séquence codante du génome, ainsi qu'une description du peptide qui en résulte.
-								<h4>"Evolution"</h4>
-								Nous pensons partir sur un type formulaire pour cette étape avec une possibilité de restructuration des données déposé et de la forme de dépôt des données.</p>
+							  <h5 class="card-title">Add genome</h5>
+							  <p class="card-text">This page is meant to send fasta files inputed by the user with the genome ID, a description file of the coding sequence of the genome and a description file of the resulting peptide.<br><br><br><br><br></p>
 							  <a href="{% url 'AddGenome' %}" class="btn btn-primary">Add genome</a>
 							</div>
 						  </div>
@@ -66,8 +66,8 @@
 					  <div class="col-md-4">
 						<div class="card" style="width: 25rem;">
 							<div class="card-body">
-							  <h5 class="card-title">Parser</h5>
-							  <p class="card-text">La fonction Parse a pour but l'alignement de séquence d'une séquence saisie par l'utilsateur, en choisissant certains paramètres (à définir, en fonction de l'outil utilisé ; Blast etc).</p>
+							  <h5 class="card-title">Parse</h5>
+							  <p class="card-text">The goal of the parse page is to align an input sequence given by the user on our database. It returns all the genomes containing the query given by the user.<br><br><br><br><br><br></p>
 							  <a href="{% url 'Parser' id='0' %}" class="btn btn-primary">Parse</a>
 							</div>
 						  </div>
@@ -76,8 +76,7 @@
 						<div class="card" style="width: 25rem;">
 							<div class="card-body">
 							  <h5 class="card-title">Search</h5>
-							  <p class="card-text">La fonction Seach a pour but la recherche d'un motif ou k-mer au sein de notre base de données. Elle prend en entrée plusieurs champs (qui ne sont pas obligatoires), comme le nom de la bactérie, le choix entre le type d'information (nucléique ou peptidique), la séquence, le nom du gène ou celui du transcrit.
-								Suite à cette recherche un ensemble de résultats qui correspondent à la recherche seront montrés (pour l'instant avec une limite de 50 résultats, qui sera potentiellement prolongée avec une option de menu déroulant par la suite). </p>
+							  <p class="card-text">The search function looks for a k-mer or a motif in our database. It takes multiple entries that are all optional. After the research is done, our website will display a result page containing all the sequences matching or search. We can then click on a genome that we find interesting and check the information about it.</p>
 							  <a href="{% url 'search' %}" class="btn btn-primary">Search</a>
 							</div>
 						  </div>
@@ -110,17 +109,20 @@
 						  </div>
 					  </div>
 				</div>
+				<br>
 			</div>
 			<div class="sectionTitle">Roles</div>
 			<div class="helpContent">
 				<br>
-				<li>Lecteur (rôle par défaut)</li>
-				<li>Annotateur (rôle attribué par un autre Annotateur ou quelqu'un avec plus de libertés)</li>
-				<li>Validateur (rôle attribué par un autre Annotateur ou un administrateur) </li>
-				
+				<li>Reader (default role)</li>
+				<li>Annotator (role assigned by another annotator or someone with a higher rank)</li>
+				<li>Validateur (rôle assigned by another validator or an administrator) </li>
+			</div>
+			<div class="sectionTitle">Visual representation of our website</div>
+			<div class="helpContent">	
 				<img src="{% static 'bacterial_genome_annotation/schema_web.png' %}" alt="MSchema_web">
 			</div>
-			<div class="sectionTitle">Prochaines mises à jour</div>
+			<div class="sectionTitle">Next upgrades</div>
 			<div class="helpContent">
 				Cette partie a pour but de résumer ce qui est fonctionnel pour l'instant, nous avons:
 				<ul>
