@@ -141,7 +141,9 @@ def fastaParser(fileName: str, genome: Genome, defaultAnnotator: User=None, defa
             sequences.append(s)
             j = 3
             if len(description)>3:
+                sequences[-1].hasValid = True
                 annotations.append(Annotation())
+                annotations[-1].isValidate = True
                 #annotations[-1].id = sequences[-1].id + '.0'
                 annotations[-1].sequence = sequences[-1] # Set the foreign key to link with the sequence
                 if defaultAnnotator != None:
