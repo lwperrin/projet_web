@@ -48,9 +48,23 @@ footer{
 	float:bottom;
 }
 
+.backgroundPage {
+    background-color: azure;
+    width: 100%;
+}
+
+.searchAlign {
+    background-color: azure;
+    margin-right: 40%;
+    margin-left: 20%;
+	width:40%;
+    text-align: center;
+}
+
 .searchPage {
 	background-color: azure;
-	text-align:center;
+	text-align:right;
+    display: flexbox;
 	width:100%;
 	
 }
