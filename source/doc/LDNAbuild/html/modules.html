@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>source &mdash; LDNA 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>source &mdash; LADN 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,7 +31,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            LDNA
+            LADN
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -39,7 +41,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">source</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html">bacterial_genome_annotation package</a></li>
@@ -55,7 +57,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">LDNA</a>
+          <a href="index.html">LADN</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -73,8 +75,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="source">
-<h1>source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h1>
+  <section id="source">
+<h1>source<a class="headerlink" href="#source" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bacterial_genome_annotation.html">bacterial_genome_annotation package</a><ul>
@@ -107,7 +109,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html#bacterial-genome-annotation-admin-module">bacterial_genome_annotation.admin module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html#module-bacterial_genome_annotation.apps">bacterial_genome_annotation.apps module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html#module-bacterial_genome_annotation.apps">bacterial_genome_annotation.apps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bacterial_genome_annotation.html#bacterial_genome_annotation.apps.MyAppConfig"><code class="docutils literal notranslate"><span class="pre">MyAppConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bacterial_genome_annotation.html#bacterial_genome_annotation.apps.MyAppConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">MyAppConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bacterial_genome_annotation.html#bacterial_genome_annotation.apps.MyAppConfig.name"><code class="docutils literal notranslate"><span class="pre">MyAppConfig.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bacterial_genome_annotation.html#bacterial_genome_annotation.apps.MyAppConfig.ready"><code class="docutils literal notranslate"><span class="pre">MyAppConfig.ready()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html#bacterial-genome-annotation-forms-module">bacterial_genome_annotation.forms module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html#bacterial-genome-annotation-managers-module">bacterial_genome_annotation.managers module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html#bacterial-genome-annotation-models-module">bacterial_genome_annotation.models module</a></li>
@@ -117,7 +127,10 @@
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.html#module-bacterial_genome_annotation">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">manage module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#manage.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="source.html">source package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="source.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source.html#module-source.asgi">source.asgi module</a></li>
@@ -129,7 +142,7 @@
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>
@@ -142,7 +155,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, LDNA.</p>
+    <p>&#169; Copyright 2023, LADN.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

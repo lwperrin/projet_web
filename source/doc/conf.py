@@ -19,9 +19,9 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'LDNA'
-copyright = '2023, LDNA'
-author = 'LDNA'
+project = 'LADN'
+copyright = '2023, LADN'
+author = 'LADN Corporation'
 
 # The short X.Y version
 version = ''
@@ -42,7 +42,7 @@ extensions = ["sphinx.ext.todo","sphinx.ext.viewcode","sphinx.ext.autodoc"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['LDNAtemplates']
+templates_path = ['LADNtemplates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -63,7 +63,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['LDNAbuild', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['LADNbuild', 'Thumbs.db', '.DS_Store']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = None
@@ -85,7 +85,7 @@ html_theme = 'sphinx_rtd_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['LDNAstatic']
+html_static_path = ['LADNstatic']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -101,7 +101,7 @@ html_static_path = ['LDNAstatic']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'LDNAdoc'
+htmlhelp_basename = 'LADNdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -128,8 +128,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'LDNA.tex', 'LDNA Documentation',
-     'LDNA', 'manual'),
+    (master_doc, 'LADN.tex', 'LADN Documentation',
+     'LADN', 'manual'),
 ]
 
 
@@ -138,7 +138,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ldna', 'LDNA Documentation',
+    (master_doc, 'LADN', 'LADN Documentation',
      [author], 1)
 ]
 
@@ -149,8 +149,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'LDNA', 'LDNA Documentation',
-     author, 'LDNA', 'One line description of project.',
+    (master_doc, 'LADN', 'LADN Documentation',
+     author, 'LADN', 'One line description of project.',
      'Miscellaneous'),
 ]
 

@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bacterial_genome_annotation package &mdash; LDNA 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>bacterial_genome_annotation package &mdash; LADN 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,7 +31,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            LDNA
+            LADN
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -39,7 +41,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">source</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">bacterial_genome_annotation package</a><ul>
@@ -52,7 +54,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bacterial-genome-annotation-admin-module">bacterial_genome_annotation.admin module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-bacterial_genome_annotation.apps">bacterial_genome_annotation.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-bacterial_genome_annotation.apps">bacterial_genome_annotation.apps module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.apps.MyAppConfig"><code class="docutils literal notranslate"><span class="pre">MyAppConfig</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#bacterial-genome-annotation-forms-module">bacterial_genome_annotation.forms module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bacterial-genome-annotation-managers-module">bacterial_genome_annotation.managers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bacterial-genome-annotation-models-module">bacterial_genome_annotation.models module</a></li>
@@ -74,7 +79,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">LDNA</a>
+          <a href="index.html">LADN</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -93,10 +98,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="bacterial-genome-annotation-package">
-<h1>bacterial_genome_annotation package<a class="headerlink" href="#bacterial-genome-annotation-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+  <section id="bacterial-genome-annotation-package">
+<h1>bacterial_genome_annotation package<a class="headerlink" href="#bacterial-genome-annotation-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bacterial_genome_annotation.management.html">bacterial_genome_annotation.management package</a><ul>
@@ -118,7 +123,14 @@
 <li class="toctree-l1"><a class="reference internal" href="bacterial_genome_annotation.migrations.html">bacterial_genome_annotation.migrations package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.migrations.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.migrations.html#bacterial-genome-annotation-migrations-0001-initial-module">bacterial_genome_annotation.migrations.0001_initial module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.migrations.html#module-bacterial_genome_annotation.migrations.0002_blasthit_subject_end_blasthit_subject_start">bacterial_genome_annotation.migrations.0002_blasthit_subject_end_blasthit_subject_start module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.migrations.html#module-bacterial_genome_annotation.migrations.0002_blasthit_subject_end_blasthit_subject_start">bacterial_genome_annotation.migrations.0002_blasthit_subject_end_blasthit_subject_start module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bacterial_genome_annotation.migrations.html#bacterial_genome_annotation.migrations.0002_blasthit_subject_end_blasthit_subject_start.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bacterial_genome_annotation.migrations.html#bacterial_genome_annotation.migrations.0002_blasthit_subject_end_blasthit_subject_start.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bacterial_genome_annotation.migrations.html#bacterial_genome_annotation.migrations.0002_blasthit_subject_end_blasthit_subject_start.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.migrations.html#module-bacterial_genome_annotation.migrations">Module contents</a></li>
 </ul>
 </li>
@@ -130,66 +142,72 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html">bacterial_genome_annotation.templatetags package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html#module-bacterial_genome_annotation.templatetags.mytags">bacterial_genome_annotation.templatetags.mytags module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html#module-bacterial_genome_annotation.templatetags.mytags">bacterial_genome_annotation.templatetags.mytags module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html#bacterial_genome_annotation.templatetags.mytags.capsAfterSpace"><code class="docutils literal notranslate"><span class="pre">capsAfterSpace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html#bacterial_genome_annotation.templatetags.mytags.param_replace"><code class="docutils literal notranslate"><span class="pre">param_replace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html#bacterial_genome_annotation.templatetags.mytags.replaceHyphens"><code class="docutils literal notranslate"><span class="pre">replaceHyphens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html#bacterial_genome_annotation.templatetags.mytags.replaceWithSpace"><code class="docutils literal notranslate"><span class="pre">replaceWithSpace()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="bacterial_genome_annotation.templatetags.html#module-bacterial_genome_annotation.templatetags">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="bacterial-genome-annotation-admin-module">
-<h2>bacterial_genome_annotation.admin module<a class="headerlink" href="#bacterial-genome-annotation-admin-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-bacterial_genome_annotation.apps">
-<span id="bacterial-genome-annotation-apps-module"></span><h2>bacterial_genome_annotation.apps module<a class="headerlink" href="#module-bacterial_genome_annotation.apps" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="bacterial_genome_annotation.apps.MyAppConfig">
-<em class="property">class </em><code class="descclassname">bacterial_genome_annotation.apps.</code><code class="descname">MyAppConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/apps.html#MyAppConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
-<dl class="attribute">
-<dt id="bacterial_genome_annotation.apps.MyAppConfig.default_auto_field">
-<code class="descname">default_auto_field</code><em class="property"> = 'django.db.models.BigAutoField'</em><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig.default_auto_field" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="bacterial-genome-annotation-admin-module">
+<h2>bacterial_genome_annotation.admin module<a class="headerlink" href="#bacterial-genome-annotation-admin-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-bacterial_genome_annotation.apps">
+<span id="bacterial-genome-annotation-apps-module"></span><h2>bacterial_genome_annotation.apps module<a class="headerlink" href="#module-bacterial_genome_annotation.apps" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.apps.MyAppConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.apps.</span></span><span class="sig-name descname"><span class="pre">MyAppConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/apps.html#MyAppConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.apps.MyAppConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig.default_auto_field" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="bacterial_genome_annotation.apps.MyAppConfig.name">
-<code class="descname">name</code><em class="property"> = 'bacterial_genome_annotation'</em><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig.name" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.apps.MyAppConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'bacterial_genome_annotation'</span></em><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig.name" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="bacterial_genome_annotation.apps.MyAppConfig.ready">
-<code class="descname">ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/apps.html#MyAppConfig.ready"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig.ready" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.apps.MyAppConfig.ready">
+<span class="sig-name descname"><span class="pre">ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/apps.html#MyAppConfig.ready"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig.ready" title="Permalink to this definition"></a></dt>
 <dd><p>Override this method in subclasses to run code when Django starts.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="bacterial-genome-annotation-forms-module">
-<h2>bacterial_genome_annotation.forms module<a class="headerlink" href="#bacterial-genome-annotation-forms-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="bacterial-genome-annotation-managers-module">
-<h2>bacterial_genome_annotation.managers module<a class="headerlink" href="#bacterial-genome-annotation-managers-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="bacterial-genome-annotation-models-module">
-<h2>bacterial_genome_annotation.models module<a class="headerlink" href="#bacterial-genome-annotation-models-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="bacterial-genome-annotation-tests-module">
-<h2>bacterial_genome_annotation.tests module<a class="headerlink" href="#bacterial-genome-annotation-tests-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="bacterial-genome-annotation-utils-module">
-<h2>bacterial_genome_annotation.utils module<a class="headerlink" href="#bacterial-genome-annotation-utils-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="bacterial-genome-annotation-views-module">
-<h2>bacterial_genome_annotation.views module<a class="headerlink" href="#bacterial-genome-annotation-views-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-bacterial_genome_annotation">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bacterial_genome_annotation" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="bacterial-genome-annotation-forms-module">
+<h2>bacterial_genome_annotation.forms module<a class="headerlink" href="#bacterial-genome-annotation-forms-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="bacterial-genome-annotation-managers-module">
+<h2>bacterial_genome_annotation.managers module<a class="headerlink" href="#bacterial-genome-annotation-managers-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="bacterial-genome-annotation-models-module">
+<h2>bacterial_genome_annotation.models module<a class="headerlink" href="#bacterial-genome-annotation-models-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="bacterial-genome-annotation-tests-module">
+<h2>bacterial_genome_annotation.tests module<a class="headerlink" href="#bacterial-genome-annotation-tests-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="bacterial-genome-annotation-utils-module">
+<h2>bacterial_genome_annotation.utils module<a class="headerlink" href="#bacterial-genome-annotation-utils-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="bacterial-genome-annotation-views-module">
+<h2>bacterial_genome_annotation.views module<a class="headerlink" href="#bacterial-genome-annotation-views-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-bacterial_genome_annotation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bacterial_genome_annotation" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>
@@ -202,7 +220,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, LDNA.</p>
+    <p>&#169; Copyright 2023, LADN.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
