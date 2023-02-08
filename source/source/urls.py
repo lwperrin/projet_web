@@ -46,6 +46,8 @@ urlpatterns.extend([
     path('sequence/<str:id>/', views.SequenceView, name='sequence'),
     path('sequence/<str:id>/Parser/', views.Parser, name="Parser"),
     path('sequence/<str:id>/annoter/', views.ANNOT, name="annotate"),
+    path('annotation/<str:id>/valid/', views.Valid_Annotation, name="valid_annotation"),
+    path('annotation/<str:id>/delete/', views.Delete_Annotation, name="delete_annotation"),
     path('sequence/<str:id>/assign/', views.Assign, name='assign'),
     path('genome/<str:id>', views.GenomeView, name='genome'),
 ])

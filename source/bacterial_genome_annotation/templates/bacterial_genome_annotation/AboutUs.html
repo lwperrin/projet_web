@@ -1,50 +1,56 @@
 {% extends 'bacterial_genome_annotation/Base.html' %}
 {% block content %}
+{% load static %}
     <title>A propos de nous</title>
-
-    <div id="header"> <br>
-  		<h> LADN </h> <br><br>
-  	</div>
-
     <body>
       <h1>A propos de l'équipe</h1>
           <p>Nous sommes un équipe de quatres étudiants de Master 2 AMI2B de l'Université Paris Saclay </p>
-          <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Axel Levy</h5>
-                <p class="card-text">Database Manager and  back-end developper</p>
-                <p class="card-text">axel.levy.x19@polytechnique.edu </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card" style="width: 25rem;">
+                  <img src="{% static 'bacterial_genome_annotation/AxelL.jpeg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Axel Levy</h5>
+                    <p class="card-text">Database Manager and  back-end developper</p>
+                    <p class="card-text">axel.levy.x19@polytechnique.edu </p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card" style="width: 25rem;">
+                <img src="{% static 'bacterial_genome_annotation/LouisP.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Louis Perrin</h5>
+                  <p class="card-text">Front-end developper</p>
+                  <p class="card-text">louis.perrin@ens-rennes.fr </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
-              <img src="media/profile_pic/LouisP.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Louis Perrin</h5>
-                <p class="card-text">Front-end developper</p>
-                <p class="card-text">louis.perrin@ens-rennes.fr </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-sm-6">
+              <div class="card" style="width: 25rem;">
+                <img src="{% static 'bacterial_genome_annotation/DjamelB.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Djamel Boubred</h5>
+                  <p class="card-text">Front-end developper</p>
+                  <p class="card-text">djamel.boubred@universite-paris-saclay.fr </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Djamel Boubred</h5>
-                <p class="card-text">Front-end developper</p>
-                <p class="card-text">djamel.boubred@universite-paris-saclay.fr </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-sm-6">
+              <div class="card" style="width: 25rem;">
+                <img src="{% static 'bacterial_genome_annotation/Nouhayla.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nouhayla Er-raysy</h5>
+                  <p class="card-text">Front-end developper</p>
+                  <p class="card-text">nouhayla.er-raysy@universite-paris-saclay.fr </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Nouhayla Er-raysy</h5>
-                <p class="card-text">Front-end developper</p>
-                <p class="card-text">nouhayla.er-raysy@universite-paris-saclay.fr </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
+          </div>
             
     </body>
 
