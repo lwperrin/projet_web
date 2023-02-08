@@ -24,7 +24,7 @@
 							<h5 class="card-title">Sign in</h5>
 							<p class="card-text">Elle prend en entrée une adresse mail et un mot de passe.
 								Ces informations vont être soumises à la base de données et s'il y a concordence l'utilisateur peut se connecter et accéder à son rôle.</p>
-							<a href="#" class="btn btn-primary">Go somewhere</a>
+							<a href="{% url 'login' %}" class="btn btn-primary">Sign in</a>
 						  </div>
 						</div>
 					</div>
@@ -35,7 +35,7 @@
 							  <p class="card-text">Cette page permet de s'enregistrer,	
 								elle prend plusieurs champs comme l'email, le mot de passe, nom de famille, prénom et numéro de téléphone.
 								Ensuite un rôle leur sera attribué.</p>
-							  <a href="#" class="btn btn-primary">Go somewhere</a>
+							  <a href="{% url 'signup' %}" class="btn btn-primary">Sign up</a>
 							</div>
 						  </div>
 					  </div>
@@ -47,7 +47,7 @@
 								L'utilisateur doit sélectionner	l'id du génome sur lequel il va annoter, il peut mentionner un nom de gène
 								un gène biotype, un transcript biotype, le gène symbol, une bref desctiption (200 charactères)
 								le transcript. Il peut soumettre à validation son annotation via la requête "envoyer".</p>
-							  <a href="#" class="btn btn-primary">Go somewhere</a>
+							  <a href="{% url 'annotate' id='0' %}" class="btn btn-primary">Annotate</a>
 							</div>
 						  </div>
 					  </div>
@@ -59,7 +59,7 @@
 								Il peut ensuite soumettre (déposer) un fichier fasta du génome, un fichier contenant une description de la séquence codante du génome, ainsi qu'une description du peptide qui en résulte.
 								<h4>"Evolution"</h4>
 								Nous pensons partir sur un type formulaire pour cette étape avec une possibilité de restructuration des données déposé et de la forme de dépôt des données.</p>
-							  <a href="#" class="btn btn-primary">Go somewhere</a>
+							  <a href="{% url 'AddGenome' %}" class="btn btn-primary">Add genome</a>
 							</div>
 						  </div>
 					  </div>
@@ -68,7 +68,7 @@
 							<div class="card-body">
 							  <h5 class="card-title">Parser</h5>
 							  <p class="card-text">La fonction Parse a pour but l'alignement de séquence d'une séquence saisie par l'utilsateur, en choisissant certains paramètres (à définir, en fonction de l'outil utilisé ; Blast etc).</p>
-							  <a href="#" class="btn btn-primary">Go somewhere</a>
+							  <a href="{% url 'Parser' id='0' %}" class="btn btn-primary">Parse</a>
 							</div>
 						  </div>
 					  </div>
@@ -78,14 +78,41 @@
 							  <h5 class="card-title">Search</h5>
 							  <p class="card-text">La fonction Seach a pour but la recherche d'un motif ou k-mer au sein de notre base de données. Elle prend en entrée plusieurs champs (qui ne sont pas obligatoires), comme le nom de la bactérie, le choix entre le type d'information (nucléique ou peptidique), la séquence, le nom du gène ou celui du transcrit.
 								Suite à cette recherche un ensemble de résultats qui correspondent à la recherche seront montrés (pour l'instant avec une limite de 50 résultats, qui sera potentiellement prolongée avec une option de menu déroulant par la suite). </p>
-							  <a href="#" class="btn btn-primary">Go somewhere</a>
+							  <a href="{% url 'search' %}" class="btn btn-primary">Search</a>
+							</div>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						<div class="card" style="width: 25rem;">
+							<div class="card-body">
+							  <h5 class="card-title">Members</h5>
+							  <p class="card-text"></p>
+							  <a href="{% url 'members' %}" class="btn btn-primary">Members</a>
+							</div>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						<div class="card" style="width: 25rem;">
+							<div class="card-body">
+							  <h5 class="card-title">FAQ</h5>
+							  <p class="card-text"></p>
+							  <a href="{% url 'FAQ' %}" class="btn btn-primary">FAQ</a>
+							</div>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						<div class="card" style="width: 25rem;">
+							<div class="card-body">
+							  <h5 class="card-title">Contact</h5>
+							  <p class="card-text"></p>
+							  <a href="{% url 'contact' %}" class="btn btn-primary">Contact</a>
 							</div>
 						  </div>
 					  </div>
 				</div>
 			</div>
 			<div class="sectionTitle">Roles</div>
-			<div class="helpContent"
+			<div class="helpContent">
 				<br>
 				<li>Lecteur (rôle par défaut)</li>
 				<li>Annotateur (rôle attribué par un autre Annotateur ou quelqu'un avec plus de libertés)</li>
