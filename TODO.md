@@ -89,4 +89,5 @@
 - [ ] Color the searched pattern
 - [X] launch blast in background
 - [X] Validate email and password in live (ajax)
+- [ ] fix assignation of the annotations
 
