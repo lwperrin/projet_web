@@ -15,6 +15,8 @@ from django.shortcuts import resolve_url, redirect, render
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.db.models import Q
+from django.contrib.auth.models import Group, Permission
 
 
 # Create your views here.
@@ -62,7 +64,7 @@ def AccountView(request: HttpRequest, id: str):
         'assignationsDone': assignationsDone,
         'validations': validations,
         'validationsDone': validationsDone,
-        'assignationsValidated': assignationsValidated
+        'assignationsValidated': assignationsValidated,
     }
     return render(request, 'bacterial_genome_annotation/Account.html', params)
 
@@ -138,7 +140,7 @@ def MembersView(request: HttpRequest):
 
 
 @login_required
-@user_passes_test(lambda u: u.is_staff)
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_annotate'))
 def ANNOT(request: HttpRequest, id):
     sequence = Sequence.objects.get(id=id)
     form = AnnotationFormBySearch
@@ -161,6 +163,7 @@ def ANNOT(request: HttpRequest, id):
             annotation.description = description
             annotation.transcript = transcript
             annotation.sequence = sequence
+            annotation.annotator = request.user
             annotation.save()
             return redirect('sequence', id=id)
 
@@ -169,6 +172,7 @@ def ANNOT(request: HttpRequest, id):
 
 
 @login_required
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_assign'))
 def Assign(request: HttpRequest, id: str):
     sequence = Sequence.objects.get(id=id)
     if request.method == "POST":
@@ -176,7 +180,8 @@ def Assign(request: HttpRequest, id: str):
         assignation = Assignation(annotator=annotator, validator=request.user, sequence=sequence)
         assignation.save()
         return redirect('sequence', id=id)
-    favorites = request.user.friends.all()
+    perm = Permission.objects.get(codename='can_annotate')
+    favorites = request.user.friends.filter(Q(groups__permissions=perm) | Q(user_permissions=perm)).distinct()
     if favorites.exists():
         choices = [(u.id, u.email) for u in favorites]
         print(choices)
@@ -225,7 +230,7 @@ def Search(request: HttpRequest):
     sequences = []
     genomes = []
     typeForm = SearchTypeForm(request.GET)
-    type = request.GET.get('type', 'csd')
+    type = request.GET.get('type', 'cds')
     if type == 'gen':
         searchForm = GenomeSearchForm(request.POST)
         if searchForm.is_valid():

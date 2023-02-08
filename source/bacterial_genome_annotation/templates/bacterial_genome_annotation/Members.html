@@ -29,7 +29,7 @@ static %} {% block content %}
             class="form-control"
             href="{% url 'account' id=user.id %}"
           >
-            {{ user.first_name }} - {{ user.last_name }}</a
+            {{ user.first_name }} - {{ user.last_name }} - {{ user.email }}</a
           >
         </td>
       </tr>
