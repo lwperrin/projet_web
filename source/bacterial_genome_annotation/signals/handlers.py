@@ -23,6 +23,15 @@ def update_sequence_hasvalid(sender, instance: Annotation, **kwargs):
 
 @receiver(post_delete, sender=Annotation)
 def update_sequence_hasvalid_on_delete(sender, instance: Annotation, **kwargs):
+    """
+    The update_sequence_hasvalid_on_delete function is called when an annotation is deleted.
+    It checks if there are any other valid annotations for the sequence, and if not, it sets the hasValid field of that sequence to False.
+
+    :param sender: Identify the model that triggers this signal
+    :param instance:Annotation: Get the annotation instance that is being deleted
+    :param **kwargs: Catch extra keyword arguments that are passed to the function
+    :return: The list of all the annotations in a sequence
+    """
     annotations = Annotation.objects.filter(sequence=instance.sequence)
     assignations = Assignation.objects.filter(sequence=instance.sequence, annotator=instance.annotator)
     for a in assignations:
