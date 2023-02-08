@@ -42,8 +42,16 @@
        <div id="Sequence" class="form-control">
         <a >{{seq.sequence}}</a>
 </div>  <!-- Option three-->
+
 </table>
-        {% for a in annotationsValidated %}
+<br>
+<div id="buttonBlast">
+    <button class="btn btn-secondary"><a href="{% url 'Parser' id=seq.id %}">BLAST</a></button>
+    <button class="btn btn-secondary"><a href="{% url 'annotate' id=seq.id %}">ANNOT</a></button>
+    <button class="btn btn-secondary"><a href="{% url 'assign' id=seq.id %}">ASSIGN</a></button>
+</div>
+<br>
+    {% for a in annotationsValidated %}
 <table>
         <thead>
             <tr>
@@ -130,20 +138,66 @@
             <p>Not validated annotation yet !</p>
         {% endfor %}
 
-    <div id="buttonBlast">
-        <button class="btn btn-secondary"><a href="{% url 'Parser' id=seq.id %}">BLAST</a></button>
-        <button class="btn btn-secondary"><a href="{% url 'annotate' id=seq.id %}">ANNOT</a></button>
-        <button class="btn btn-secondary"><a href="{% url 'assign' id=seq.id %}">ASSIGN</a></button>
-    </div>  
-            <a>Other annotations:</a>
-        {% for a in annotations %}
-            
-                <a>Gene: {{ a.gene }} - Gene biotype: {{ a.gene_biotype }} - Gene symbol: {{a.gene_symbol}} - Transcript {{a.transcript}} - Transcript biotype {{a.transcript_biotype}}</a>
-                
+        {% for a in annotations %}  
+            <table>
+                <thead>
+                    <th>Other annotations:</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col21">
+                            Gene:
+                        </td>
+                        <td class="col22">
+                            {{ a.gene }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col21">
+                            Gene biotype:
+                        </td>
+                        <td class="col22">
+                            {{ a.gene_biotype }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col21">
+                            Gene symbol:
+                        </td>
+                        <td class="col22">
+                            {{a.gene_symbol}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col21">
+                            Transcript:
+                        </td>
+                        <td class="col22">
+                            {{a.transcript}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col21">
+                            Transcript biotype
+                        </td>
+                        <td class="col22">
+                            {{a.transcript_biotype}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col21">
+                            Description:
+                        </td>
+                        <td class="col22">
+                            {{a.description}}
+                        </td>
+                    </tr>
 
-                <a>Description: {{a.description}}</a>
-                <button class="btn btn-secondary"><a href="{% url 'valid_annotation' id=a.id %}">VALID</a></button>
-                <button class="btn btn-secondary"><a href="{% url 'delete_annotation' id=a.id %}">DELETE</a></button>
+                </tbody>
+            
+            </table>
+                <button class="btn btn-success"><a href="{% url 'valid_annotation' id=a.id %}">VALID</a></button>
+                <button class="btn btn-danger"><a href="{% url 'delete_annotation' id=a.id %}">DELETE</a></button>
             {% endfor %}
     </div>
 {% endblock %}
