@@ -25,6 +25,9 @@ from django.contrib.auth.models import Group, Permission
 def home(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/home.html')
 
+def help(request: HttpRequest):
+    return render(request, 'bacterial_genome_annotation/Help.html')
+
 
 def AddGenome(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/AddGenome.html')
