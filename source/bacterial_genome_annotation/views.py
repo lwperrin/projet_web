@@ -305,7 +305,9 @@ def alignment(request: HttpRequest, id: str):
     }
     return render(request, 'bacterial_genome_annotation/alignment.html', params)
 
-
+def FAQ(request:HttpRequest):
+    return render(request, 'bacterial_genome_annotation/FAQ.html')
+    
 def SequenceView(request: HttpRequest, id: str):
     sequence = Sequence.objects.get(id=id)
     annotationsValidated = Annotation.objects.filter(sequence=sequence, isValidate=True)

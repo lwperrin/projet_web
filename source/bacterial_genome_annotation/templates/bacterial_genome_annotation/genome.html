@@ -11,17 +11,20 @@
     </thead>
 
 </table>
-<span style="display:inline; white-space: nowrap;">
+<!--<span style="display:inline; white-space: nowrap;">-->
+<div class="seq">
     {% for s in seqList %}
         {% if s.isSeq %}
-            <a title="{{s.title}}" href="{% url 'sequence' id=s.seq.id %}">{{s.seq.sequence}}</a>
+            <b><a title="{{s.title}}" href="{% url 'sequence' id=s.seq.id %}">{{s.seq.sequence}}</a></b>
+            
         {% else %}
-            <a>{{s.seq}}</a>
+            {{s.seq}}
         {% endif %}
     {% endfor %}
-</span>
+</div>
+<!--</span>-->
 
-<span><a>{{fullSequence}}</a></span>
+<!--<span><a>{{fullSequence}}</a></span>-->
     
 <div class="pagination">
     <span class="step-links">

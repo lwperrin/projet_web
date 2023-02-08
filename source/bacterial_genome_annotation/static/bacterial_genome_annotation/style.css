@@ -77,6 +77,15 @@ footer{
     margin-left: auto;
     margin-right: auto; 
 }
+.seq{
+    height:100%;
+	width:700px;
+	border:1px solid #ccc;
+	font:16px/26px Georgia, Garamond, Serif;
+    word-wrap: break-word;
+    margin-left: auto;
+    margin-right: auto; 
+}
 /*.container {
 	text-align: center;
 	width: 400px;
@@ -145,6 +154,12 @@ td{
     width:100px;
 }
 .col44{
+    width:100px;
+}
+.col45{
+    width:100px;
+}
+.col46{
     width:100px;
 }
 

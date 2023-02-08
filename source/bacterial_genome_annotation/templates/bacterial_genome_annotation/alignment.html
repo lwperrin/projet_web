@@ -4,13 +4,13 @@
 
     <table>
         <thead>
-        <th colspan="4">
+        <th colspan="6">
             {{ blast.accession }}
         </th>
         </thead>
         <tbody>
         <tr>
-            <td colspan="4">
+            <td colspan="6">
                 {{ blast.definition }}
             </td>
         </tr>
@@ -27,6 +27,12 @@
             <td class="col44">
                 <b>align length</b>
             </td>
+            <td class="col45">
+                <b>score</b>
+            </td>
+            <td class="col46">
+                <b>gaps</b>
+            </td>
         </tr>
         <tr>
             <td>
@@ -40,6 +46,12 @@
             </td>
             <td>
                 {{ blast.align_length }} <!-- taulle de la séquence -->
+            </td>
+            <td>
+                {{ blast.score}}
+            </td>
+            <td>
+                {{ blast.gaps}}
             </td>
         </tr>
         </tbody>
@@ -55,6 +67,15 @@
         </thead>
 
         <tbody>
+        
+        <tr>
+            <td>
+                <b>Query Start</b>
+            </td>
+            <td>
+                <b>Query End</b>
+            </td>
+        </tr>
         <tr>
             <td>
                 {{ blast.query_start }}
@@ -64,7 +85,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td colspan="2">
 
                 <div id="Sequence">
                     {% for c in multiline %}
@@ -74,11 +95,22 @@
             </td>
 
         </tr>
+        <tr>
+            <td>
+                <b>Subject Start</b>
+            </td>
+            <td>
+                <b>Subject End</b>
+            </td>
+        </tr>
+            <td>
+                {{ blast.subject_start}}
+            </td>
+            <td>
+                {{ blast.subject_end}}
+            </td>
         </tbody>
     </table>
-
-    {{ blast.score }}
-
 
 
     <!---->

@@ -101,7 +101,8 @@ class BlastHit(models.Model):
     score = models.IntegerField(default=0)
     gaps = models.IntegerField(default=0)
     match = models.TextField(null=True)
-     
+    subject_start = models.IntegerField(default=0)
+    subject_end = models.IntegerField(default=0)
     
     blastResult = models.ForeignKey(BlastResult, on_delete=models.CASCADE)
 

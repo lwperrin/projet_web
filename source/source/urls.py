@@ -36,6 +36,7 @@ urlpatterns.extend([
     path('AddGenome/', views.AddGenome, name="AddGenome"),
     path('AboutUs/', views.AboutUs, name="AboutUs"),
     path('contact/', views.contact, name="contact"),
+    path('FAQ/', views.FAQ , name='FAQ'),
 ])
 
 # From a sequence

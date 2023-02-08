@@ -89,10 +89,18 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a class="nav-link" href="aide.html">Help</a>
-                </li>
             </ul>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#HelpSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Help</a>
+                    <ul class="collapse list-unstyled" id="HelpSubmenu">
+                        <li>
+                            <a class="nav-link" href="aide.html">Guide</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'FAQ' %}">FAQ</a>
+                        </li>
+                    </ul>
         </nav>
 
         <!-- Page Content  -->
