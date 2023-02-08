@@ -30,6 +30,7 @@ urlpatterns = [
 urlpatterns.extend([
     #path('', views.home, name="home"),
     path('', views.Search, name="search"),
+    path('Help/', views.help, name="Help"),
     path('annoter/', views.ANNOT, name='annoter'),
     path('', views.home, name="home"),
     path('alignment/', views.alignment, name="alignment"),
