@@ -60,6 +60,13 @@ footer{
 	width:40%;
     text-align: center;
 }
+.addAlign {
+    background-color: azure;
+    margin-right: 40%;
+    margin-left: 40%;
+	width:40%;
+    text-align: left;
+}
 
 .searchPage {
 	background-color: azure;
