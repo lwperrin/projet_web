@@ -1,0 +1,10 @@
+source
+======
+
+.. toctree::
+   :maxdepth: 4
+
+   main
+   bacterial_genome_annotation
+   manage
+   source
