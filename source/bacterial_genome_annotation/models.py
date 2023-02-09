@@ -1,3 +1,7 @@
+"""
+This is the models file. It contains the models as they are implemented in the database.
+"""
+
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone

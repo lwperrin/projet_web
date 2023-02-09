@@ -1,4 +1,7 @@
-# from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+"""
+This is the forms file. It contains all forms to prompt data to the user.
+"""
+
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField
 from django import forms
 from .models import User

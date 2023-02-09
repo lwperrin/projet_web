@@ -1,3 +1,8 @@
+"""
+This file contains the signals that are launched when some objects are saved or deleted, in order to keep the database
+sense-full.
+"""
+
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 from ..models import Annotation, Assignation

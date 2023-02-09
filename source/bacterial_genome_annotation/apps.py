@@ -1,3 +1,7 @@
+"""
+This file defines the AppConfig. It is usefully to link the signals to the application.
+"""
+
 from django.apps import AppConfig
 
 class MyAppConfig(AppConfig):

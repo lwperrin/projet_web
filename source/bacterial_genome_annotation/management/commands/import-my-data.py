@@ -1,3 +1,7 @@
+"""
+This is the command to import the data from the fasta files in data folder.
+"""
+
 from django.core.management.base import BaseCommand
 from Bio import SeqIO
 from os import listdir

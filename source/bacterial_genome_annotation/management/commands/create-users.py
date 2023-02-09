@@ -1,3 +1,7 @@
+"""
+This is the command to create a bunch of users based on the file default_users.txt.
+"""
+
 from django.core.management.base import BaseCommand
 from ...models import User
 from django.contrib.auth.models import Group

@@ -1,3 +1,7 @@
+"""
+This file contains tests, mainly to know if signals work fine.
+"""
+
 from django.test import TestCase
 
 # Create your tests here.

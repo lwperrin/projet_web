@@ -1,5 +1,8 @@
+"""
+This file contains usefully functions that are used in many functions, such as blast or fasta parser.
+"""
+
 from Bio.Blast import NCBIWWW, NCBIXML
-from Bio import SeqIO
 
 try:
     from .models import *

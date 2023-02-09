@@ -1,3 +1,8 @@
+"""
+This is the views file. It contains all the views used by the website. You can find here the interface between front
+and back.
+"""
+
 from .forms import *
 from .models import *
 from .models import Sequence
