@@ -1,11 +1,19 @@
 {% extends 'bacterial_genome_annotation/Base.html' %}
 {% load mytags %}
 {% block content %}
-    <div style = "max-width:470px;">
-        <form action="" method="post" novalidate>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Envoyer">
-        </form>
+<div class="backgroundPage">
+    <div class="searchAlign">    
+        <div class="searchPage">
+            <div class="container">
+                <div style = "max-width:470px;">
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                            <input class="btn btn-secondary" type="submit" value="Envoyer">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}
