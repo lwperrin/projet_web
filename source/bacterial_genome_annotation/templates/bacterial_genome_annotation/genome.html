@@ -14,9 +14,10 @@
 <!--<span style="display:inline; white-space: nowrap;">-->
 <div class="seq">
     {% for s in seqList %}
+        
         {% if s.isSeq %}
-            <b><a title="{{s.title}}" href="{% url 'sequence' id=s.seq.id %}">{{s.seq.sequence}}</a></b>
-            
+            <div id="genome"><a title="{{s.title}}" href="{% url 'sequence' id=s.seq.id %}">{{s.seq.sequence}}</a></div>
+           
         {% else %}
             {{s.seq}}
         {% endif %}

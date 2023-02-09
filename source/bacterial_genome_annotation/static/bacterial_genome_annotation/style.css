@@ -186,6 +186,9 @@ td{
 #FAQ_text{
     background-color: azure;
 }
+#genome{
+    color: blue;
+}
 #FAQ_h2 {
     font-family: Arial, Verdana;
     font-weight: 800;
