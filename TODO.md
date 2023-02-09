@@ -9,13 +9,13 @@
         - [X] Add
         - [X] Login
         - [X] Account
-        - [ ] Search
+        - [X] Search
             - [X] Blast
                 - [X] Alignement
             - [X] Annotation  
         - [X] AboutUs
         - [X] contact
-    - [ ] Link between pages
+    - [X] Link between pages
         - [X] Annot
         - [X] Parser
         - [X] Add
@@ -26,7 +26,7 @@
                 - [X] Alignement
             - [X] Annotation  
         - [X] AboutUs
-        - [ ] contact
+        - [X] contact
     - [ ] Forum page
     - [X] Annotation comment
         - [ ] display
