@@ -30,6 +30,34 @@
             </div>
             <br>
         {% endif %}
+        {% if role == 'reader' %}
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary">
+                    <a href="{% url 'promote_to_annotator' user.id %}">Promote to annotator</a>
+                </button>
+            </div>
+            <br>
+        {% elif role == 'annotator' %}
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary">
+                    <a href="{% url 'promote_to_validator' user.id %}">Promote to validator</a>
+                </button>
+            </div>
+            <br>
+        {% elif role == 'validator' %}
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary">
+                    <a href="{% url 'promote_to_admin' user.id %}">Promote to admin</a>
+                </button>
+            </div>
+            <br>
+        {% endif %}
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary">
+                <a href="{% url 'downgrade' user.id %}">Downgrade</a>
+            </button>
+        </div>
+        <br>
     {% endif %}
 
     <table>

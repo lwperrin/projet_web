@@ -137,6 +137,106 @@ def RemoveFromFavorites(request: HttpRequest, id: str):
 
 
 @login_required
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_promote_annotator'))
+def PromoteToAnnotator(request: HttpRequest, id: str):
+    """
+    The PromoteToAnnotator function is used to promote a user to the annotator group.
+    It takes in an id and checks if the user is already an annotator, if not it promotes them.
+    
+    :param request: HttpRequest: Get the current user
+    :param id: str: Get the user id from the url
+    :return: Redirect to the account view
+    """
+    futureAnnotator = User.objects.get(id=id)
+    if futureAnnotator.groups.filter(name='annotator').exists():
+        messages.info(request, 'This user is already an annotator !')
+    else:
+        g = Group.objects.get(name='annotator')
+        futureAnnotator.groups.add(g)
+        futureAnnotator.save()
+        g.save()
+    return redirect('account', id=id)
+
+
+@login_required
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_promote_validator'))
+def PromoteToValidator(request: HttpRequest, id: str):
+    """
+    The PromoteToAdmin function is used to promote a user to validator.
+    It takes in an id and checks if the user is already a validator, if not it adds them to the group of validators.
+    
+    :param request: HttpRequest: Get the user's id
+    :param id: str: Get the id of the user we want to promote
+    :return: Redirect to the account view
+    :doc-author: Trelent
+    """
+    futureValidator = User.objects.get(id=id)
+    if futureValidator.groups.filter(name='validator').exists():
+        messages.info(request, 'This user is already a validator !')
+    else:
+        g = Group.objects.get(name='validator')
+        futureValidator.groups.add(g)
+        futureValidator.save()
+        g.save()
+    return redirect('account', id=id)
+
+
+@login_required
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_promote_admin'))
+def PromoteToAdmin(request: HttpRequest, id: str):
+    """
+    The PromoteToAdmin function is used to promote a user to admin.
+    It takes in an id and checks if the user is already an admin, if not it adds them to the group of admins.
+    
+    :param request: HttpRequest: Get the user's id
+    :param id: str: Get the id of the user we want to promote
+    :return: Redirect to the account view
+    """
+    futureAdmin = User.objects.get(id=id)
+    if futureAdmin.groups.filter(name='admin').exists():
+        messages.info(request, 'This user is already an admin !')
+    else:
+        g = Group.objects.get(name='admin')
+        futureAdmin.groups.add(g)
+        futureAdmin.save()
+        g.save()
+    return redirect('account', id=id)
+
+
+@login_required
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_downgrade'))
+def Downgrade(request: HttpRequest, id: str):
+    """
+    The Downgrade function is used to downgrade a user of one group.
+    It takes in an id and removes their highest group.
+
+    :param request: HttpRequest: Get the user's id
+    :param id: str: Get the id of the user we want to promote
+    :return: Redirect to the account view
+    """
+    futureNoob = User.objects.get(id=id)
+    if futureNoob.groups.filter(name='admin').exists():
+        g = Group.objects.get(name='admin')
+        futureNoob.groups.remove(g)
+        futureNoob.save()
+        g.save()
+        return redirect('account', id=id)
+    if futureNoob.groups.filter(name='validator').exists():
+        g = Group.objects.get(name='validator')
+        futureNoob.groups.remove(g)
+        futureNoob.save()
+        g.save()
+        return redirect('account', id=id)
+    if futureNoob.groups.filter(name='annotator').exists():
+        g = Group.objects.get(name='annotator')
+        futureNoob.groups.remove(g)
+        futureNoob.save()
+        g.save()
+        return redirect('account', id=id)
+    return redirect('account', id=id)
+
+
+@login_required
 def AccountModificationView(request: HttpRequest):
     """
     The AccountModificationView function is used to modify the user's account information.
@@ -595,7 +695,6 @@ class SignUpView(generic.CreateView):
 class LoginView(auth_views.LoginView):
     template_name = 'registration/login.html'
 
-    @property
     def get_success_url(self):
         """
         The get_success_url function is used to redirect the user back to the page they were on before making a change. 
@@ -678,7 +777,7 @@ def contact(request):
     :param request: Get the data from the form
     :return: A render of the contact
     """
-    
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
 
