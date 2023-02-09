@@ -95,8 +95,8 @@
 ## CheckList Error
 
 - [ ] Permissions for Add genome Page (acces same no sign in)
-- [ ] Copy of Annotations identic in Sequence Page
-- [ ] Annotate link in Nav Bar it's incorect (connect with annotate account/link with sequence page it's okay)
+- [X] Copy of Annotations identic in Sequence Page
+- [X] Annotate link in Nav Bar it's incorect (connect with annotate account/link with sequence page it's okay)
 - [ ] Assign a sequence for members (not visible ( no favorites) however i add members ( annotator) in favorities list).
 - [ ] valid/delete Button for the new annotations visible (all users).
 - [ ] 
