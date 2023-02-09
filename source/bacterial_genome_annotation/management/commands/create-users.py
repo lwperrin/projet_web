@@ -10,6 +10,14 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **kwargs):
+        """
+        The handle function creates a default admin user and adds the default users to the database.
+        It also assigns each user to their respective group.
+
+        :param self: Access the attributes and methods of the class in python
+        :param *args: Pass a non-keyworded, variable-length argument list to the function
+        :param **kwargs: Pass in any additional keyword arguments (**kwargs) to the function
+        """
         grps = [Group.objects.get_or_create(name=n)[0] for n in ['reader', 'annotator', 'validator', 'admin']]
         try:
             User.objects.create_user(email='admin@admin.com',

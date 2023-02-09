@@ -5,6 +5,14 @@ from django.core.management import call_command
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
+        """
+        The handle function is the entry point to this management command.
+        This is an all-in-one command that calls each other command to initialize the server database.
+
+        :param self: Access the attributes and methods of the class
+        :param *args: Allow the function to take any number of arguments
+        :param **options: Specify the optional arguments of the handle function
+        """
         self.stdout.write(self.style.SUCCESS("***Making migrations***"))
         call_command('makemigrations')
         self.stdout.write(self.style.SUCCESS("***Performing migrations***"))
