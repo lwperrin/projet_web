@@ -45,8 +45,8 @@ def blastn(blast: BlastResult):
             hit.subject = hsp.sbjct
             hit.gaps = hsp.gaps
             hit.match = hsp.match
-            hit.subject_start = hsp.sbject_start
-            hit.subject = hsp.sbject_end
+            hit.subject_start = hsp.sbjct_start
+            hit.subject_end = hsp.sbjct_end
         hit.save()
         i += 1
     blast.isFinished = True
