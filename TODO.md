@@ -42,9 +42,10 @@
     - [X] Visualizing a particular pattern in a sequence
     - [X] Bootstrap 4
     - [X] front page: put a side-bar with a menu to access every feature
-    - [ ] front page: home/search
+    - [X] front page: home/search
     - [X] search genome: displays the genomes found and brightens the searched pattern
     - [X] annotate: the annotator can search in a bank of unannotated sequences which one he wants to sequence.
+    - [ ] Help page
 
 - [ ] Database
     - [X] UML diagram
