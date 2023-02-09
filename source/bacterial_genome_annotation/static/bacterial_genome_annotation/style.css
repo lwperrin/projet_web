@@ -385,3 +385,14 @@ a.article:hover {
     background-color: #6d7fcc;
     color: white;
 }
+
+.sectionTitle {
+    background-color: beige;
+    text-align: center;
+    font-size: 30px;
+}
+
+.helpContent {
+    text-align: left;
+    background-color: azure;
+}
