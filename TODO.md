@@ -45,7 +45,7 @@
     - [X] front page: home/search
     - [X] search genome: displays the genomes found and brightens the searched pattern
     - [X] annotate: the annotator can search in a bank of unannotated sequences which one he wants to sequence.
-    - [ ] Help page
+    - [X] Help page
 
 - [ ] Database
     - [X] UML diagram
@@ -66,7 +66,7 @@
 
 ## Report
 
-- [ ] Justify why there can be multiple annotations for one sequence
+- [X] Justify why there can be multiple annotations for one sequence
 
 ## Optional features
 
