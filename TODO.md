@@ -70,7 +70,7 @@
 ## Optional features
 
 - [ ] Chat help
-- [ ] FAQ
+- [X] FAQ
 
 ### Front
 
@@ -91,3 +91,12 @@
 - [X] Validate email and password in live (ajax)
 - [ ] fix assignation of the annotations
 
+## CheckList Error
+
+- [ ] Permissions for Add genome Page (acces same no sign in)
+- [ ] Copy of Annotations identic in Sequence Page
+
+## Verify Points
+
+- [ ] IGV visualization (Annotation)
+- [ ] 
