@@ -29,7 +29,7 @@ Permissions are granted according to roles (Readers, Annotators, Validators, Adm
 
 ### Pages
 
-You can have acces to the html pages in [templates](source/bacterial_genome_annotation/templates/). From the [home page](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/home.html) you have acces to :
+You can have acces to the html pages in [templates](source/bacterial_genome_annotation/templates/). From the [home page](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/Base.html) you have acces to :
 
 - [**login**](source/bacterial_genome_annotation/templates/registration/login.html), which is simply the login page.
 - **register** where you can sign in. Page not functional for the moment.
