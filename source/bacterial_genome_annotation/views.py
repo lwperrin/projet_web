@@ -65,25 +65,28 @@ def AddGenome(request: HttpRequest):
     if request.method == 'POST':
         form = AddGenomeForm(request.POST, request.FILES)
         if form.is_valid():
-            fileCds = io.TextIOWrapper(request.FILES['cds_file'])
-            filePep = io.TextIOWrapper(request.FILES['pep_file'])
-            fileGen = io.TextIOWrapper(request.FILES['fasta_file'])
-            for record in SeqIO.parse(fileGen, "fasta"):
+            try:
+                fileCds = io.TextIOWrapper(request.FILES['cds_file'])
+                filePep = io.TextIOWrapper(request.FILES['pep_file'])
+                fileGen = io.TextIOWrapper(request.FILES['fasta_file'])
                 genome = Genome()
-                genome.id = request.POST['ID']
-                genome.fullSequence = record.seq
+                for record in SeqIO.parse(fileGen, "fasta"):
+                    genome.id = request.POST['ID']
+                    genome.fullSequence = record.seq
+                    genome.save()
+                    break
+                sequences, annotations = fastaParser(fileCds.readlines(), genome)
+                s, a = fastaParser(filePep.readlines(), genome)
+                sequences.extend(s)
+                annotations.extend(a)
+                for i in range(len(annotations)):
+                    annotations[i].annotator = request.user
+                    annotations[i].validator = request.user
                 genome.save()
-                break
-            genome = Genome.objects.get(id=request.POST['ID'])
-            sequences, annotations = fastaParser(fileCds.readlines(), genome)
-            s, a = fastaParser(filePep.readlines(), genome)
-            sequences.extend(s)
-            annotations.extend(a)
-            for i in range(len(annotations)):
-                annotations[i].annotator = request.user
-                annotations[i].validator = request.user
-            Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
-            Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+                Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+                Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+            except:
+                messages.error(request, 'At least one file is not a fasta file !')
     else:
         form = AddGenomeForm()
     return render(request, 'bacterial_genome_annotation/AddGenome.html', {'form':form})
