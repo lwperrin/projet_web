@@ -62,5 +62,5 @@ password :  `Ac1net0bactErb@umannii`
 
 Here is the UML class diagram, obtained directly from [django-extensions](https://django-extensions.readthedocs.io/en/latest/graph_models.html?highlight=graph).
 
-![diagram image](source/bacterial_genome_annotation/static/bacterial_genome_annotation/diagram.png "UML Class Diagram")
+![diagram image](source/bacterial_genome_annotation/static/diagram.png "UML Class Diagram")
 
