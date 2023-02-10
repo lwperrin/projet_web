@@ -6,7 +6,7 @@ and back.
 from .forms import *
 from .models import *
 from .models import Sequence
-from .utils import blastn, blastp, reverseSequence
+from .utils import blastn, blastp, reverseSequence, fastaParser
 from django.http import HttpRequest, JsonResponse
 import threading
 from django.views import generic
@@ -23,6 +23,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.db.models import Q
 from django.contrib.auth.models import Group, Permission
+from Bio import SeqIO
 
 
 # Create your views here.
@@ -58,7 +59,29 @@ def AddGenome(request: HttpRequest):
     :param request: HttpRequest: Get the data from the form
     :return: A page that has a form for adding a new genome
     """
-    return render(request, 'bacterial_genome_annotation/AddGenome.html')
+    form = AddGenomeForm()
+    if request.method == 'POST':
+        form = AddGenomeForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                fileCds = request.FILES['cds_file']
+                filePep = request.FILES['pep_file']
+                fileGen = request.FILES['fasta_file']
+                for record in SeqIO.parse(fileGen, "fasta"):
+                    genome = Genome()
+                    genome.id = request.POST['ID']
+                    genome.fullSequence = record.seq
+                    genome.save()
+                    break
+                sequences, annotations = fastaParser(fileCds.readlines(), genome)
+                s, a = fastaParser(filePep.readlines(), genome)
+                sequences.extend(s)
+                annotations.extend(a)
+                Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+                Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+            except:
+                messages.error(request, 'At least one of the file is not well formatted...')
+    return render(request, 'bacterial_genome_annotation/AddGenome.html', {'form':form})
 
 
 @login_required

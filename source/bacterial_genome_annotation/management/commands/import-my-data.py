@@ -44,10 +44,14 @@ class Command(BaseCommand):
                     genome.fullSequence = record.seq
                     genome.save()
                     break
-            sequences, annotations = fastaParser(relativePath + bacteriaName + '_cds.fa', genome)
+            with open(relativePath + bacteriaName + '_cds.fa', 'r') as file:
+                lines = file.readlines()
+            sequences, annotations = fastaParser(lines, genome)
             allSequences.extend(sequences)
             allAnnotations.extend(annotations)
-            sequences, annotations = fastaParser(relativePath + bacteriaName + '_pep.fa', genome)
+            with open(relativePath + bacteriaName + '_pep.fa', 'r') as file:
+                lines = file.readlines()
+            sequences, annotations = fastaParser(lines, genome)
             allSequences.extend(sequences)
             allAnnotations.extend(annotations)
             self.stdout.write(self.style.SUCCESS("Done !"))
