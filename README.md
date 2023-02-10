@@ -67,7 +67,7 @@ Here is the UML class diagram, obtained directly from [django-extensions](https:
 To recreate it, just run the two commands bellow:
 
 ```
-python source/manage.py graph_models -g --dot -o doc/uml/diagram.dot bacterial_genome_annotation
+python source/manage.py graph_models -g --dot -o source/bacterial_genome_annotation/static/bacterial_genome_annotation/diagram.dot
 
-dot -Tpng doc/uml/diagram.dot -o doc/uml/diagram.png
+dot -Tpng source/bacterial_genome_annotation/static/bacterial_genome_annotation/diagram.dot -o source bacterial_genome_annotation/static/diagram.png
 ```
