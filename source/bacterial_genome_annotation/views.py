@@ -554,8 +554,12 @@ def alignment(request: HttpRequest, id: str):
     """
     blast = BlastHit.objects.get(id=id)
     multiline = []
+    vide = ' '
     for i in range(min([len(blast.query), len(blast.match), len(blast.subject)])):
-        multiline.append(f'{blast.query[i]}{blast.match[i]}{blast.subject[i]}')
+        if blast.match[0] != 'M':
+            multiline.append(f'{blast.query[i]}{blast.match[i]}{blast.subject[i]}')
+        else:
+            multiline.append(f'{blast.query[i]}{blast.subject[i]}')    
     params = {
         "blast": blast,
         "multiline": multiline

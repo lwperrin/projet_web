@@ -55,8 +55,8 @@ def blastn(blast: BlastResult):
     blast.isFinished = True
     blast.save()
 
+def blastp(blast: BlastResult):
 
-def blastp(sequence: str):
     """
     The blastp function takes a sequence as input and returns the results of a blastp search of that sequence against
     the NCBI nr database. The function also saves the results to an xml file called 'results.xml'
@@ -64,12 +64,73 @@ def blastp(sequence: str):
     :param sequence:str: Input the sequence that is to be searched
     :return: The result of a blastp search
     """
-    result_handle = NCBIWWW.qblast("blastp", "nr", sequence)
-    with open('results.xml', 'w') as save_file:
-        blast_results = result_handle.read()
-        save_file.write(blast_results)
-
-
+    results = []
+    result_handle = NCBIWWW.qblast("blastp", "nr", blast.sequence, hitlist_size=101)
+    print(f'blasting : {blast.sequence}')
+    blast_results = result_handle.read()
+    with open('results.xml', 'w') as file:
+        file.write(blast_results)
+        record = NCBIXML.read(open('results.xml'), )
+    i = 0
+    for align in record.alignments:
+        hit = BlastHit()
+        hit.id = align.hit_id
+        hit.accession = align.accession
+        hit.definition = align.hit_def
+        hit.len = align.length
+        hit.num = i
+        hit.blastResult = blast
+        for hsp in align.hsps:
+            hit.value = hsp.expect
+            hit.identitie = (hsp.identities / hsp.align_length) * 100
+            hit.align_length = hsp.align_length
+            hit.score = hsp.score
+            hit.query_end = hsp.query_end
+            hit.query_start = hsp.query_start
+            hit.query = hsp.query
+            hit.subject = hsp.sbjct
+            hit.gaps = hsp.gaps
+            hit.match = hsp.match
+            hit.subject_start = hsp.sbjct_start
+            hit.subject_end = hsp.sbjct_end
+        hit.save()
+        i += 1
+    blast.isFinished = True
+    blast.save()
+ 
+    
+    
+""" 
+    with open('results.xml', 'w') as file:
+        
+    
+    i = 0
+    for align in record.alignments:
+        hit = BlastHit()
+        hit.id = align.hit_id
+        hit.accession = align.accession
+        hit.definition = align.hit_def
+        hit.len = align.length
+        hit.num = i
+        hit.blastResult = blast
+        for hsp in align.hsps:
+            hit.value = hsp.expect
+            hit.identitie = (hsp.identities / hsp.align_length) * 100
+            hit.align_length = hsp.align_length
+            hit.score = hsp.score
+            hit.query_end = hsp.query_end
+            hit.query_start = hsp.query_start
+            hit.query = hsp.query
+            hit.subject = hsp.sbjct
+            hit.gaps = hsp.gaps
+            hit.match = hsp.match
+            hit.subject_start = hsp.sbjct_start
+            hit.subject_end = hsp.sbjct_end
+        hit.save()
+        i += 1
+    blast.isFinished = True
+    blast.save()
+"""
 # Sequence compressor
 
 def cds2compact(sequence: str) -> str:

@@ -1,41 +1,56 @@
-"""
-This file contains tests, mainly to know if signals work fine.
-"""
-
 from django.test import TestCase
 
-# Create your tests here.
-
-from bacterial_genome_annotation.models import *
-
-class AnnotationSignalTestCase(TestCase):
-    """Test the signals"""
-    def setUp(self):
-        g = Genome.objects.create(id='g1')
-        s = Sequence.objects.create(id='s1', genome=g)
-        u1 = User.objects.create_user('test1@gmail.com', 'bonjour')
-        u2 = User.objects.create_user('test2@gmail.com', 'bonjour')
-        Annotation.objects.create(sequence=s)
-        Annotation.objects.create(sequence=s)
-        Assignation.objects.create(annotator=u1, validator=u2, sequence=s)
+from Bio.Blast import NCBIWWW, NCBIXML
+from Bio import SeqIO
 
 
-    def test_sequence_is_updated(self):
-        """sequence.hasValid should be automatically updated"""
-        s = Sequence.objects.get(id='s1')
-        ass = Assignation.objects.get(sequence=s)
-        self.assertTrue((not s.hasValid) and (not ass.isRevision))
-        a = Annotation.objects.filter(sequence=s).first()
-        a.isValidate=True
-        a.save()
-        s = Sequence.objects.get(id='s1')
-        ass = Assignation.objects.get(sequence=s)
-        self.assertTrue(s.hasValid and ass.isRevision)
-        a.delete()
-        s = Sequence.objects.get(id='s1')
-        ass = Assignation.objects.get(sequence=s)
-        self.assertTrue((not s.hasValid ) and (not ass.isRevision))
-        a2 = Annotation.objects.create(sequence=s, isValidate=True)
-        s = Sequence.objects.get(id='s1')
-        ass = Assignation.objects.get(sequence=s)
-        self.assertTrue(s.hasValid and ass.isRevision)
+#def blastn(blast: BlastResult):
+    #results = []
+    #result_handle = NCBIWWW.qblast("blastn", "nt", blast.sequence, hitlist_size=101)
+    #blast_results = result_handle.read()
+#with open('results.xml', 'w') as file:
+     #   file.write(blast_results)     
+record = NCBIXML.read(open('results.xml'), )
+i=0
+#print(dir(record))
+#print(dir(record.alignments))
+
+
+for align in record.alignments:
+    #print(dir(align.hsps))
+    #print(align.hsps.score)
+    for hsp in align.hsps:
+        #print(dir(hsp))
+        #
+        #['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', 
+        # '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__',
+        #  '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+        #  '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__'
+        # , 'align_length', 'bits', 'expect', 'frame', 'gaps', 'identities', 'match', 'num_alignments'
+        # , 'positives', 'query', 'query_end', 'query_start', 'sbjct', 'sbjct_end', 'sbjct_start', 'score', 'strand']
+       
+       
+        #['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', 
+        # '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', 
+        # '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', 
+        # '__str__', '__subclasshook__', '__weakref__', 'align_length', 'bits', 'expect', 'frame', 'gaps', 'identities', 'match',
+        #  'num_alignments', 'positives', 'query', 'query_end', 'query_start', 'sbjct', 'sbjct_end', 'sbjct_start', 'score', 'strand']
+        #print(hsp.match) For peptidique is not good
+       # print(hsp.bits) # 1683.83 PAS LUI
+        #print(hsp.subclasshook) ERROR
+        #print(hsp.expect) #0.0  evalue
+        #print(hsp.frame) CADRE DE LECTURE
+        #print(hsp.match) #Match 
+        #print(hsp.strand) PLUS MINUS 
+        #print(hsp.gaps)
+        #print(hsp.num_alignments) none
+        #print(hsp.positives)
+        #print(hsp.strand)
+        #print(hsp.identities) #933 Nombre de nucléotide identiques
+
+        #print(hsp.align_length) # taille de l'alignement
+        #print(dir(hsp))
+        #
+        # for test in hsp.bits:
+
+    
