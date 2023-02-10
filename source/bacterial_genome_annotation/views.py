@@ -74,15 +74,16 @@ def AddGenome(request: HttpRequest):
                 genome.fullSequence = record.seq
                 genome.save()
                 break
+            genome = Genome.objects.get(id=request.POST['ID'])
             sequences, annotations = fastaParser(fileCds.readlines(), genome)
             s, a = fastaParser(filePep.readlines(), genome)
             sequences.extend(s)
             annotations.extend(a)
-            Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
-            for i in range(len(allAnnotations)):
+            for i in range(len(annotations)):
                 annotations[i].annotator = request.user
                 annotations[i].validator = request.user
             Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+            Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
     else:
         form = AddGenomeForm()
     return render(request, 'bacterial_genome_annotation/AddGenome.html', {'form':form})
