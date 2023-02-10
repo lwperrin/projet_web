@@ -33,7 +33,7 @@ class UserSearchForm(forms.Form):
     show_only_favorites = forms.BooleanField(required=False)
 
 
-class SearchForm(forms.Form):
+class SearchTypeForm(forms.Form):
     MY_CHOICES = [("cds", "nucleic"), ("pep", "peptidic"), ("gen", "genome")]
     type = forms.ChoiceField(choices=MY_CHOICES, widget=forms.Select(attrs={'onchange': 'submit();'}), required=False)
 
