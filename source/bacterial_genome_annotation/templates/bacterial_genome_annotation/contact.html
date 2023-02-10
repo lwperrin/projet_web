@@ -1,10 +1,10 @@
 {% extends 'bacterial_genome_annotation/Base.html' %}
 {% block content %}
 
-<!DOCTYPE html>
-
-<html>
-    <body>
+<div class="backgroundPage">
+    <div class="searchAlign">    
+        <div class="searchPage">
+            <div class="container">
         <h1>Contact</h1>
 
         <form method="post" action=".">
@@ -12,8 +12,10 @@
 
             {{ form.as_p }}
 
-            <button>Submit</button>
+            <button class="btn btn-secondary">Submit</button>
         </form>
-    </body>
-</html>
+        <br>
+        </div>
+    </div>
+</div>
 {% endblock %}  

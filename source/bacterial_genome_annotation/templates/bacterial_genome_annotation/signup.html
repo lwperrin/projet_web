@@ -2,13 +2,24 @@
 {% load mytags %}
 {% block content %}
 <!-- templates/registration/login.html -->
-    <h2>Sign Up</h2>
+<div class="backgroundPage">
+  
+  
+            
+    <div class="container">    
+<h2>Sign Up</h2>
     <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Sign Up</button>
+    <button class="btn btn-secondary" type="submit">Sign Up</button>
     </form>
+    <br>
+    </div>
+ 
+
+    </div>
     {% block javascript %}
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
