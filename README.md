@@ -32,8 +32,8 @@ Permissions are granted according to roles (Readers, Annotators, Validators, Adm
 You can have acces to the html pages in [templates](source/bacterial_genome_annotation/templates/). From the [home page](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/Base.html) you have acces to :
 
 - [**login**](source/bacterial_genome_annotation/templates/registration/login.html), which is simply the login page.
-- **register** where you can sign in. Page not functional for the moment.
-- [**acount**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/Account.html), where you can manage your account.
+- [**register**](source/bacterial_genome_annotation/templates/registration/signup.html),where you can sign in.
+- [**account**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/Account.html), where you can manage your account.
 - [**annotate**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/annoter.html), where you can annotate a sequence. 
 - [**addgenome**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/AddGenome.html) where you can upload a genome. Page not functional for the moment.
 - [**parser**](source/bacterial_genome_annotation/templates/bacterial_genome_annotation/Parser.html) where you can blast a sequence against the ncbi database. The blast is implemented but not the visualisation.
