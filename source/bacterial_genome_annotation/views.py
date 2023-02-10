@@ -662,7 +662,14 @@ def GenomeView(request: HttpRequest, id: str):
             else:
                 self.isSeq = True
                 self.title = ''
-                self.title = f"ID : {seq.id}\nPosition : {seq.position}"
+                annotationQuery = Annotation.objects.filter(sequence=seq, isValidate=True)
+                if annotationQuery.exists():
+                    annotation = annotationQuery.first()
+                    suffix = f"\nGene : {annotation.gene}\nGene biotype : {annotation.gene_biotype}\nGene symbol : {annotation.gene_symbol}\nTranscript : {annotation.transcript}\nTranscript biotype : {annotation.transcript_biotype}"
+                else:
+                    suffix = ""
+
+                self.title = f"ID : {seq.id}\nPosition : {seq.position}"+suffix
 
     seqList = []
     fullSeq = genome.fullSequence
