@@ -88,4 +88,10 @@ class ContactForm(forms.Form):
     email = forms.EmailField()
     content = forms.CharField(widget=forms.Textarea)
 
+class AddGenomeForm(forms.Form):
+    ID = forms.CharField(max_length=100,required=True)
+    fasta_file = forms.FileField(required=True)
+    cds_file = forms.FileField(required=True)
+    pep_file = forms.FileField(required=True)
+
 # default=''
