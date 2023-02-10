@@ -14,36 +14,9 @@
         <input type="file" id="cds_file" name="cds_file" accept=".fa, .fasta " required><br>
         <label for="pep_file">Please add the peptide description file for the genome :</label><br>
         <input type="file" id="pep_file" name="pep_file" accept=".fa, .fasta" required><br><br>
-        <button type="submit" name="submit" class="big_submit_button btn btn-secondary">Add genome</button>
-        
+        <button type="submit" name="submit" class="big_submit_button">Add genome</button>
     </div>
 </div>
-
-<div class="backgroundPage">
-    <div class="searchAlign">    
-        <div class="searchPage">
-            <div class="container">
-                <form action="" method="GET" novalidate>
-                    {{ typeForm.as_p }}
-                </form>
-                <!--    </div> -->
-                <br/>
-            </div>
-            <div class="container">
-                <form action="" method="POST" novalidate>
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input
-                        class="big_submit_button"
-                        type="submit"
-                        value="submit"
-                        id="submit"
-                    />
-                </form>
-            <br/>
-            </div>
-        </div>
-    </div>
             
 </body>
 
