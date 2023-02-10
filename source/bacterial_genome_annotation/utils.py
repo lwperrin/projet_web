@@ -223,18 +223,16 @@ def reverseSequence(sequence: str) -> str:
 
 ## Fasta parser (better than SeqIO)
 
-def fastaParser(fileName: str, genome: Genome, defaultAnnotator: User = None, defaultValidator: User = None):
+def fastaParser(lines: list, genome: Genome, defaultAnnotator: User = None, defaultValidator: User = None):
     """
     The fastaParser function parses a fasta file to extract sequence and annotations. It is better than the biopython
     parser because it deals with the read direction.
-    :param fileName:str: The fasta file
+    :param lines:list: The fasta file lines
     :param genome:Genome: The genome the fasta file is coding for
     :param defaultAnnotator:User: The annotator who annotated each annotation in this file
     :param defaultValidator:User: The validator who validated each annotation in this fil
     :return: Tuple of sequences, annotations
     """
-    with open(fileName) as file:
-        lines = file.readlines()
     sequences = []
     annotations = []
     for line in lines:
