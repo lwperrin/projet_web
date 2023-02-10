@@ -24,6 +24,7 @@ from django.template.loader import render_to_string
 from django.db.models import Q
 from django.contrib.auth.models import Group, Permission
 from Bio import SeqIO
+import io
 
 
 # Create your views here.
@@ -51,6 +52,8 @@ def help(request: HttpRequest):
     return render(request, 'bacterial_genome_annotation/Help.html')
 
 
+@login_required
+@user_passes_test(lambda u: u.has_perm('bacterial_genome_annotation.can_validate'))
 def AddGenome(request: HttpRequest):
     """
     The AddGenome function is used to add a new genome to the database.
@@ -59,28 +62,29 @@ def AddGenome(request: HttpRequest):
     :param request: HttpRequest: Get the data from the form
     :return: A page that has a form for adding a new genome
     """
-    form = AddGenomeForm()
     if request.method == 'POST':
         form = AddGenomeForm(request.POST, request.FILES)
         if form.is_valid():
-            try:
-                fileCds = request.FILES['cds_file']
-                filePep = request.FILES['pep_file']
-                fileGen = request.FILES['fasta_file']
-                for record in SeqIO.parse(fileGen, "fasta"):
-                    genome = Genome()
-                    genome.id = request.POST['ID']
-                    genome.fullSequence = record.seq
-                    genome.save()
-                    break
-                sequences, annotations = fastaParser(fileCds.readlines(), genome)
-                s, a = fastaParser(filePep.readlines(), genome)
-                sequences.extend(s)
-                annotations.extend(a)
-                Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
-                Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
-            except:
-                messages.error(request, 'At least one of the file is not well formatted...')
+            fileCds = io.TextIOWrapper(request.FILES['cds_file'])
+            filePep = io.TextIOWrapper(request.FILES['pep_file'])
+            fileGen = io.TextIOWrapper(request.FILES['fasta_file'])
+            for record in SeqIO.parse(fileGen, "fasta"):
+                genome = Genome()
+                genome.id = request.POST['ID']
+                genome.fullSequence = record.seq
+                genome.save()
+                break
+            sequences, annotations = fastaParser(fileCds.readlines(), genome)
+            s, a = fastaParser(filePep.readlines(), genome)
+            sequences.extend(s)
+            annotations.extend(a)
+            Annotation.objects.bulk_create(annotations, ignore_conflicts=True)
+            for i in range(len(allAnnotations)):
+                annotations[i].annotator = request.user
+                annotations[i].validator = request.user
+            Sequence.objects.bulk_create(sequences, ignore_conflicts=True)
+    else:
+        form = AddGenomeForm()
     return render(request, 'bacterial_genome_annotation/AddGenome.html', {'form':form})
 
 
