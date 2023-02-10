@@ -18,6 +18,32 @@
         
     </div>
 </div>
+
+<div class="backgroundPage">
+    <div class="searchAlign">    
+        <div class="searchPage">
+            <div class="container">
+                <form action="" method="GET" novalidate>
+                    {{ typeForm.as_p }}
+                </form>
+                <!--    </div> -->
+                <br/>
+            </div>
+            <div class="container">
+                <form action="" method="POST" novalidate>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input
+                        class="big_submit_button"
+                        type="submit"
+                        value="submit"
+                        id="submit"
+                    />
+                </form>
+            <br/>
+            </div>
+        </div>
+    </div>
             
 </body>
 
