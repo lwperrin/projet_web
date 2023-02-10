@@ -115,12 +115,16 @@
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.AddToFavorites"><code class="docutils literal notranslate"><span class="pre">AddToFavorites()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.Assign"><code class="docutils literal notranslate"><span class="pre">Assign()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.Delete_Annotation"><code class="docutils literal notranslate"><span class="pre">Delete_Annotation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.Downgrade"><code class="docutils literal notranslate"><span class="pre">Downgrade()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.FAQ"><code class="docutils literal notranslate"><span class="pre">FAQ()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.GenomeView"><code class="docutils literal notranslate"><span class="pre">GenomeView()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.LoginView"><code class="docutils literal notranslate"><span class="pre">LoginView</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.LogoutView"><code class="docutils literal notranslate"><span class="pre">LogoutView</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.MembersView"><code class="docutils literal notranslate"><span class="pre">MembersView()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.Parser"><code class="docutils literal notranslate"><span class="pre">Parser()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.PromoteToAdmin"><code class="docutils literal notranslate"><span class="pre">PromoteToAdmin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.PromoteToAnnotator"><code class="docutils literal notranslate"><span class="pre">PromoteToAnnotator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.PromoteToValidator"><code class="docutils literal notranslate"><span class="pre">PromoteToValidator()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.RemoveFromFavorites"><code class="docutils literal notranslate"><span class="pre">RemoveFromFavorites()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.Search"><code class="docutils literal notranslate"><span class="pre">Search()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.SequenceView"><code class="docutils literal notranslate"><span class="pre">SequenceView()</span></code></a></li>
@@ -128,6 +132,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.Valid_Annotation"><code class="docutils literal notranslate"><span class="pre">Valid_Annotation()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.alignment"><code class="docutils literal notranslate"><span class="pre">alignment()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.contact"><code class="docutils literal notranslate"><span class="pre">contact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.help"><code class="docutils literal notranslate"><span class="pre">help()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.home"><code class="docutils literal notranslate"><span class="pre">home()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.validate_email"><code class="docutils literal notranslate"><span class="pre">validate_email()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bacterial_genome_annotation.views.validate_password"><code class="docutils literal notranslate"><span class="pre">validate_password()</span></code></a></li>
@@ -242,6 +247,7 @@
 </section>
 <section id="module-bacterial_genome_annotation.admin">
 <span id="bacterial-genome-annotation-admin-module"></span><h2>bacterial_genome_annotation.admin module<a class="headerlink" href="#module-bacterial_genome_annotation.admin" title="Permalink to this heading"></a></h2>
+<p>This file defines the UserAdmin class.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.admin.UserAdmin">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.admin.</span></span><span class="sig-name descname"><span class="pre">UserAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/admin.html#UserAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.admin.UserAdmin" title="Permalink to this definition"></a></dt>
@@ -304,6 +310,7 @@
 </section>
 <section id="module-bacterial_genome_annotation.apps">
 <span id="bacterial-genome-annotation-apps-module"></span><h2>bacterial_genome_annotation.apps module<a class="headerlink" href="#module-bacterial_genome_annotation.apps" title="Permalink to this heading"></a></h2>
+<p>This file defines the AppConfig. It is usefully to link the signals to the application.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.apps.MyAppConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.apps.</span></span><span class="sig-name descname"><span class="pre">MyAppConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/apps.html#MyAppConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.apps.MyAppConfig" title="Permalink to this definition"></a></dt>
@@ -329,6 +336,7 @@
 </section>
 <section id="module-bacterial_genome_annotation.forms">
 <span id="bacterial-genome-annotation-forms-module"></span><h2>bacterial_genome_annotation.forms module<a class="headerlink" href="#module-bacterial_genome_annotation.forms" title="Permalink to this heading"></a></h2>
+<p>This is the forms file. It contains all forms to prompt data to the user.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.forms.AnnotFormById">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.forms.</span></span><span class="sig-name descname"><span class="pre">AnnotFormById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_order=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/forms.html#AnnotFormById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.forms.AnnotFormById" title="Permalink to this definition"></a></dt>
@@ -613,6 +621,7 @@
 </section>
 <section id="module-bacterial_genome_annotation.managers">
 <span id="bacterial-genome-annotation-managers-module"></span><h2>bacterial_genome_annotation.managers module<a class="headerlink" href="#module-bacterial_genome_annotation.managers" title="Permalink to this heading"></a></h2>
+<p>This file’s purpose is to overwrite the UserManager from django, so that it fits to our custom User model.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.managers.UserManager">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.managers.</span></span><span class="sig-name descname"><span class="pre">UserManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/managers.html#UserManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.managers.UserManager" title="Permalink to this definition"></a></dt>
@@ -636,6 +645,7 @@ for authentication instead of usernames.</p>
 </section>
 <section id="module-bacterial_genome_annotation.models">
 <span id="bacterial-genome-annotation-models-module"></span><h2>bacterial_genome_annotation.models module<a class="headerlink" href="#module-bacterial_genome_annotation.models" title="Permalink to this heading"></a></h2>
+<p>This is the models file. It contains the models as they are implemented in the database.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.models.Annotation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.models.</span></span><span class="sig-name descname"><span class="pre">Annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_biotype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transcript_biotype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isValidate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/models.html#Annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.models.Annotation" title="Permalink to this definition"></a></dt>
@@ -1779,6 +1789,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 </section>
 <section id="module-bacterial_genome_annotation.tests">
 <span id="bacterial-genome-annotation-tests-module"></span><h2>bacterial_genome_annotation.tests module<a class="headerlink" href="#module-bacterial_genome_annotation.tests" title="Permalink to this heading"></a></h2>
+<p>This file contains tests, mainly to know if signals work fine.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.tests.AnnotationSignalTestCase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.tests.</span></span><span class="sig-name descname"><span class="pre">AnnotationSignalTestCase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/tests.html#AnnotationSignalTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.tests.AnnotationSignalTestCase" title="Permalink to this definition"></a></dt>
@@ -1801,112 +1812,283 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 </section>
 <section id="module-bacterial_genome_annotation.utils">
 <span id="bacterial-genome-annotation-utils-module"></span><h2>bacterial_genome_annotation.utils module<a class="headerlink" href="#module-bacterial_genome_annotation.utils" title="Permalink to this heading"></a></h2>
+<p>This file contains usefully functions that are used in many functions, such as blast or fasta parser.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.utils.blastn">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.utils.</span></span><span class="sig-name descname"><span class="pre">blastn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blast</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#bacterial_genome_annotation.models.BlastResult" title="bacterial_genome_annotation.models.BlastResult"><span class="pre">BlastResult</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/utils.html#blastn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.utils.blastn" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The blastn function takes a BlastResult object as an argument and returns the results of a blastn search
+of the NCBI database. It does this by using BioPython to query the NCBI website for 100 hits with an expect value
+less than 1e-10, and then parses through these results to find relevant information about each hit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>blast:BlastResult</strong> – Get the blast result from the database</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the blast query</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.utils.blastp">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.utils.</span></span><span class="sig-name descname"><span class="pre">blastp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/utils.html#blastp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.utils.blastp" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The blastp function takes a sequence as input and returns the results of a blastp search of that sequence against
+the NCBI nr database. The function also saves the results to an xml file called ‘results.xml’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sequence:str</strong> – Input the sequence that is to be searched</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of a blastp search</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.utils.cds2compact">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.utils.</span></span><span class="sig-name descname"><span class="pre">cds2compact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/bacterial_genome_annotation/utils.html#cds2compact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.utils.cds2compact" title="Permalink to this definition"></a></dt>
-<dd><p>Compress a sequence</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>sequence (str): the sequence</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: the compression, but letters other than ACGT are nor correctly saved</p>
-</dd>
-</dl>
+<dd><p>Compress a DNA sequence from base 15 to base 15**4
+:param sequence:str: The full DNA sequence
+:return: The compressed DNA sequence.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.utils.compact2cds">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.utils.</span></span><span class="sig-name descname"><span class="pre">compact2cds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/bacterial_genome_annotation/utils.html#compact2cds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.utils.compact2cds" title="Permalink to this definition"></a></dt>
-<dd><p>uncompress the sequence</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>sequence (str): the compressed sequence</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: the final sequence</p>
-</dd>
-</dl>
+<dd><p>Uncompress a DNA sequence from base 15**4 to base 15
+:param sequence:str: The compressed DNA sequence
+:return: The full DNA sequence.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.utils.compact2pep">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.utils.</span></span><span class="sig-name descname"><span class="pre">compact2pep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/bacterial_genome_annotation/utils.html#compact2pep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.utils.compact2pep" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Uncompress a peptidic sequence from base 25**3 to base 25
+:param sequence:str: The compressed peptidic sequence
+:return: The full peptidic sequence.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.utils.fastaParser">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.utils.</span></span><span class="sig-name descname"><span class="pre">fastaParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genome</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#bacterial_genome_annotation.models.Genome" title="bacterial_genome_annotation.models.Genome"><span class="pre">Genome</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultAnnotator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#bacterial_genome_annotation.models.User" title="bacterial_genome_annotation.models.User"><span class="pre">User</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultValidator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#bacterial_genome_annotation.models.User" title="bacterial_genome_annotation.models.User"><span class="pre">User</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/utils.html#fastaParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.utils.fastaParser" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The fastaParser function parses a fasta file to extract sequence and annotations. It is better than the biopython
+parser because it deals with the read direction.
+:param fileName:str: The fasta file
+:param genome:Genome: The genome the fasta file is coding for
+:param defaultAnnotator:User: The annotator who annotated each annotation in this file
+:param defaultValidator:User: The validator who validated each annotation in this fil
+:return: Tuple of sequences, annotations</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.utils.pep2compact">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.utils.</span></span><span class="sig-name descname"><span class="pre">pep2compact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/bacterial_genome_annotation/utils.html#pep2compact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.utils.pep2compact" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Compress a peptidic sequence from base 25 to base 25**3
+:param sequence:str: The full peptidic sequence
+:return: The compressed peptidic sequence.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.utils.reverseSequence">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.utils.</span></span><span class="sig-name descname"><span class="pre">reverseSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/bacterial_genome_annotation/utils.html#reverseSequence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.utils.reverseSequence" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Find the complementary DNA sequence
+:param sequence:str: The original sequence
+:return: The complementary sequence</p>
+</dd></dl>
 
 </section>
 <section id="module-bacterial_genome_annotation.views">
 <span id="bacterial-genome-annotation-views-module"></span><h2>bacterial_genome_annotation.views module<a class="headerlink" href="#module-bacterial_genome_annotation.views" title="Permalink to this heading"></a></h2>
+<p>This is the views file. It contains all the views used by the website. You can find here the interface between front
+and back.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.ANNOT">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">ANNOT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#ANNOT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.ANNOT" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The ANNOT function is used to annotate a sequence. It takes in the id of the sequence and returns
+the annotation form for that sequence. The user can then fill out the form and submit it, which will
+save their annotations to the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request:HttpRequest</strong> – Get the user’s request</p></li>
+<li><p><strong>id:str</strong> – Get the sequence object from the database</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The annotation page</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.AboutUs">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">AboutUs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#AboutUs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.AboutUs" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The AboutUs function shows the About Us view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request:HttpRequest</strong> – The request</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The About Us view</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.AccountModificationView">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">AccountModificationView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#AccountModificationView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.AccountModificationView" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The AccountModificationView function is used to modify the user’s account information.
+It takes a request as an argument and returns a render of the AccountModification.html template with parameters
+containing the user, and form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request:HttpRequest</strong> – Pass the request from the view to the template</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A page that allows the user to change their information</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.AccountView">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">AccountView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#AccountView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.AccountView" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The AccountView function is used to display the account of a user.
+It displays all the annotations and/or validations done by this user, and all the ones that he has to do.
+Another role of this function is to show if a user is friend with another one, or if it’s his own account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request:HttpRequest</strong> – Get the user who is logged in</p></li>
+<li><p><strong>id:str</strong> – Identify the user</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The account of the user</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.AddGenome">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">AddGenome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#AddGenome"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.AddGenome" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The AddGenome function is used to add a new genome to the database.
+It takes in a request and returns an HttpResponse object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest: Get the data from the form</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A page that has a form for adding a new genome</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.AddToFavorites">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">AddToFavorites</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#AddToFavorites"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.AddToFavorites" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The AddToFavorites function is called when the user click on ‘Add to favorites’ button. It simply adds the account
+to his favorites.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request:HttpRequest</strong> – Get the user who is logged in</p></li>
+<li><p><strong>id:str</strong> – Identify the user</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The account of the user</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.Assign">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">Assign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#Assign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.Assign" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The Assign function is used to assign a sequence to an annotator.
+It takes in a request and the sequence id and returns a render function that will show the user’s favorites members
+list. Note that only members who are at least annotators are shown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request:HttpRequest</strong> – Get the user object from the request</p></li>
+<li><p><strong>id:str</strong> – The sequence id</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The assignation page</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.Delete_Annotation">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">Delete_Annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#Delete_Annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.Delete_Annotation" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The Delete_Annotation function is usefully for validators to delete an annotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request:HttpRequest</strong> – The request</p></li>
+<li><p><strong>id:str</strong> – Identify the annotation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The sequence view</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.views.Downgrade">
+<span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">Downgrade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#Downgrade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.Downgrade" title="Permalink to this definition"></a></dt>
+<dd><p>The Downgrade function is used to downgrade a user of one group.
+It takes in an id and removes their highest group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – HttpRequest: Get the user’s id</p></li>
+<li><p><strong>id</strong> – str: Get the id of the user we want to promote</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redirect to the account view</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.FAQ">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">FAQ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#FAQ"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.FAQ" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The FAQ function renders the FAQ.html template, which contains a list of frequently asked questions about the
+project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest: Get the information about the user’s request</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The faq page</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.GenomeView">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">GenomeView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#GenomeView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.GenomeView" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The GenomeView function is used to display the genome of a given bacterial species.
+It takes in an id as a parameter and returns the html page with all the relevant information.
+The function also uses pagination to allow for viewing of large genomes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request:HttpRequest</strong> – Get the user’s request</p></li>
+<li><p><strong>id:str</strong> – Get the id of the genome to be displayed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A page containing the selected genome with its cds highlighted</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.LoginView">
@@ -1915,13 +2097,34 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dl class="py method">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.LoginView.get_initial">
 <span class="sig-name descname"><span class="pre">get_initial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#LoginView.get_initial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.LoginView.get_initial" title="Permalink to this definition"></a></dt>
-<dd><p>Return the initial data to use for forms on this view.</p>
+<dd><p>The get_initial function is used to populate the initial data of a form. 
+It takes in self as an argument, and returns a dictionary that will be passed into the form’s __init__
+function.
+This allows us to pass in some information from outside our model into our form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> – Access the attributes and methods of the class in python</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The initial data of the form</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.LoginView.get_success_url">
 <span class="sig-name descname"><span class="pre">get_success_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#LoginView.get_success_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.LoginView.get_success_url" title="Permalink to this definition"></a></dt>
-<dd><p>Return the URL to redirect to after processing a valid form.</p>
+<dd><p>The get_success_url function is used to redirect the user back to the page they were on before making a change. 
+It’s important that this function returns a URL, not an HttpResponse object. The reverse() function will be
+called on whatever string is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> – Access the attributes and methods of the class</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The url to redirect to after a successful submission</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1945,27 +2148,160 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.MembersView">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">MembersView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#MembersView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.MembersView" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The MembersView function is used to display the members of the website.
+It takes in a request and returns a render function that will be loaded with
+the appropriate parameters for the MembersView page. The form is also passed in
+as well as all users from User model, paginator object and page object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request:HttpRequest</strong> – Get the user object from the request</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of all the users in the database</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.Parser">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">Parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#Parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.Parser" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The Parser function is used to parse the BLAST results and display them in a table.
+It takes as input an id, which is the primary key of a Sequence object.
+If no such sequence exists, it returns an error message. Otherwise, if the sequence has not been parsed yet
+(i.e., there is no corresponding BlastResult object),
+it creates one with that id and starts parsing its corresponding BLAST result file (either blastn or blastp
+depending on whether it’s a CDS or not). Then shows the results.
+Otherwise, if the sequence has already been parsed before (i.e., there already exists a BlastResult), it just shows
+the results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – HttpRequest: Get the request made by the user to access a specific page</p></li>
+<li><p><strong>id</strong> – Get the id of the sequence we want to annotate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A page with the results of the blast</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.views.PromoteToAdmin">
+<span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">PromoteToAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#PromoteToAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.PromoteToAdmin" title="Permalink to this definition"></a></dt>
+<dd><p>The PromoteToAdmin function is used to promote a user to admin.
+It takes in an id and checks if the user is already an admin, if not it adds them to the group of admins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – HttpRequest: Get the user’s id</p></li>
+<li><p><strong>id</strong> – str: Get the id of the user we want to promote</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redirect to the account view</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.views.PromoteToAnnotator">
+<span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">PromoteToAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#PromoteToAnnotator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.PromoteToAnnotator" title="Permalink to this definition"></a></dt>
+<dd><p>The PromoteToAnnotator function is used to promote a user to the annotator group.
+It takes in an id and checks if the user is already an annotator, if not it promotes them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – HttpRequest: Get the current user</p></li>
+<li><p><strong>id</strong> – str: Get the user id from the url</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redirect to the account view</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.views.PromoteToValidator">
+<span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">PromoteToValidator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#PromoteToValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.PromoteToValidator" title="Permalink to this definition"></a></dt>
+<dd><p>The PromoteToAdmin function is used to promote a user to validator.
+It takes in an id and checks if the user is already a validator, if not it adds them to the group of validators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – HttpRequest: Get the user’s id</p></li>
+<li><p><strong>id</strong> – str: Get the id of the user we want to promote</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redirect to the account view</p>
+</dd>
+<dt class="field-odd">Doc-author<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Trelent</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.RemoveFromFavorites">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">RemoveFromFavorites</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#RemoveFromFavorites"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.RemoveFromFavorites" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The RemoveFromFavorites function is called when the user click on ‘Remove from favorites’ button. It simply removes
+the account from his favorites.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request:HttpRequest</strong> – Get the user who is logged in</p></li>
+<li><p><strong>id:str</strong> – Identify the user</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The account of the user</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.Search">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">Search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#Search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.Search" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The Search function is used to search for a specific gene, transcript or genome.
+It takes in the following parameters:</p>
+<blockquote>
+<div><p>request - The HttpRequest object that contains metadata about the request made to this view.
+type - A string representing what kind of search it is (cds, genome or transcript)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest: Construct the httpresponse</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The page with the search results</p>
+</dd>
+<dt class="field-odd">Doc-author<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Trelent</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.SequenceView">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">SequenceView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#SequenceView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.SequenceView" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The SequenceView function is used to display the information of a specific sequence.
+It also displays all the annotations that have been made for this particular sequence, and it allows 
+the user to comment on this particular annotation. It also has links for assigning and validating an 
+annotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – HttpRequest: Get the request from the user</p></li>
+<li><p><strong>id</strong> – str: Get the id of the sequence to be displayed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The sequence page</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.SignUpView">
@@ -1980,7 +2316,20 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dl class="py method">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.SignUpView.form_valid">
 <span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#SignUpView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.SignUpView.form_valid" title="Permalink to this definition"></a></dt>
-<dd><p>If the form is valid, save the associated model.</p>
+<dd><p>The form_valid function is called when the form is valid.
+It should return an HttpResponse.
+If it returns None, then a redirect will be issued automatically; this does not happen in our case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self</strong> – Access the attributes and methods of the class in python</p></li>
+<li><p><strong>form</strong> – Create a new user</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of calling the form_valid method on the parent class</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1998,33 +2347,114 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.Valid_Annotation">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">Valid_Annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#Valid_Annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.Valid_Annotation" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The Valid_Annotation function is usefully for validators to validate an annotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request:HttpRequest</strong> – Get the user who is logged in</p></li>
+<li><p><strong>id:str</strong> – Identify the annotation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The sequence view</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.alignment">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">alignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#alignment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.alignment" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The alignment function takes a blast hit id and renders the alignment template with the query, match, and subject
+sequences.
+The alignment is done by taking three strings: query, match, and subject. The function iterates over each string
+to create a multiline string that contains all the characters in order from start to finish.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – HttpRequest: Get the request from the user</p></li>
+<li><p><strong>id</strong> – str: Get the blast hit with the given id</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The alignment of the query, match and subject sequences</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.contact">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#contact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.contact" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The contact function is used to send an email from the contact page. It takes a request and returns a redirect to
+the contact page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – Get the data from the form</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A render of the contact</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bacterial_genome_annotation.views.help">
+<span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#help"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.help" title="Permalink to this definition"></a></dt>
+<dd><p>The help function renders the help page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest: Pass the request to the view</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A rendered version of the help page</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.home">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">home</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#home"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.home" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The home function renders the home page of the LADN website.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest: Pass the request from the server to the function</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The home</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.validate_email">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">validate_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#validate_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.validate_email" title="Permalink to this definition"></a></dt>
-<dd><p>Check email availability</p>
+<dd><p>The validate_email function checks if the email is empty, taken or valid.
+If it is empty, it returns true for the first condition. If it is taken, 
+it returns true for the second condition. If not then false will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest: Get the data from the form</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A jsonresponse object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bacterial_genome_annotation.views.validate_password">
 <span class="sig-prename descclassname"><span class="pre">bacterial_genome_annotation.views.</span></span><span class="sig-name descname"><span class="pre">validate_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HttpRequest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bacterial_genome_annotation/views.html#validate_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bacterial_genome_annotation.views.validate_password" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The validate_password function is used to validate the password entered by the user. 
+It uses django’s built in validator v_p to check if the password is strong enough. 
+If it isn’t, then a ValidationError will be raised and an appropriate message will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – HttpRequest: Get the post data from the frontend</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A json response with the following keys:</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-bacterial_genome_annotation">
